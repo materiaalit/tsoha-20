@@ -16,7 +16,7 @@ before_script:
 - git config --global user.name "hnbot"
 - git config --global user.email "nygrenh+hnbot@gmail.com"
 - export COMMIT_MESSAGE=Update:\ $(git log -1 --pretty=%s)
-- git clone -b gh-pages --single-branch https://github.com/materiaalit/tsoha-18.git
+- git clone -b gh-pages --single-branch https://github.com/materiaalit/tsoha-19.git
   build
 script:
 - bundle exec middleman build
@@ -25,8 +25,7 @@ after_success:
 - git checkout HEAD README.md .github
 - git add --all
 - git commit -m "$COMMIT_MESSAGE"
-- git push "https://hnbot:$GITHUB_API_KEY@github.com/materiaalit/tsoha-18.git" gh-pages:gh-pages
-  2>&1 | sed "s/$GITHUB_API_KEY/<confidential>/g"
+- git push "https://hnbot:$GITHUB_API_KEY@github.com/materiaalit/tsoha-19.git" gh-pages:gh-pages 2>&1 | sed "s/$GITHUB_API_KEY/<confidential>/g"
 env:
   global:
-    secure: VTGPdcBdYE6Gfgja5i4giIyaXCYs8rzI3MxYEwgQCL7yl0OM5IZ9ry69L95dx821yWrH3+MWZZcfnq6kAxODC4FIZAEg9URRkgPA6WK7Ey4/LE8xHXWn1h+s6c7KH/n3X7t5QQoORYaSVueOvxAUdKt4GIhJ/w5d8Cs5qFhBVZaL1DX7G8YBmbI86zmU+NbXhMO8qDORaRhNP1rReLjAB/gRkq90ZqiAfvhy6/untw8lN89cG8UiOOkIXxaFMnfgP2ko0p2yV+8TvUyg+LCKTaVG0p3KIrgAU/ZpPYAwP5y6bbnWMem4pOa3LOTo0OcqRiDlJgQhXkpA4+06WWazv6jKNH6xClUFFNNteNsaLJ6mHASu3F/j86DyQvilZQco5PvIDC4fBb1EBLrUTrY3OJhCmuYzbTpZWaph2h6bq0YkHghWs3QIWlWTEYufzolfKxVLXcgqdN+Wkry1i5S9WFd5CxYNhGY4kuy7TKoXzpVc4CR8OnLTloBgN23n8VF4RiV8eD8x6NSV2P4qR3IKxV7V9cm+Ko2d2Dhc1wVyEzZGKavEcreyQoWp0an801ZwRWbFzToDTZyMnyOpve4PtJU6MX458GQ0CLfASEHth/21GmspuApG5NHp4/ari8TNXcfdEDeBrKL93kg/dY/ZFf/6KnQ+WRSypyaCQ4Oyz3Q=
+    secure: WWFp6JNFw43xFG6yS8yTQ0FY3QL6/8rZRH20koQ92OOkpMhDFFvdobs3/Qlq2cGs2sivoSsna6udLtBYFDeCXgQGOch1lCtr4FJp2y7f0tafCTgTUzBlExhitu/29TTEsvRJ6EYkluyJJSaHN0THQUq3rb8NbtxgfrkzObUsW5mtzbUKqsYYAG+sQ+wbPYfn9dRN24WOp0BGzSs7cZYGbBU8QvwVLJKObJiXq1CrVGNWF3vN2oZfWpBSXPdZDZX1zd34CtVU4XSFSugUsXcrjqvkVSK3X2x0zusoo8Vb+GzesPkiP558nsGecMTXI36WZEgwuQUCMX8p9TsUQtQ48IXt4Gpoelr9qdfyd5fZezpR/xJejb9UM7bPb0lTtF2lFatnLMGM7ll1HQLovkTGdULWTFstvePBRMYttbc3LQHSrS17L+VqPSTpSaEaY7/DE8aISyJ2c+HWXQWJx9p3fmFI6Qk2dnT2U50S/Ee4h9zlzyB9D58Ocjirw/S1YEZRXIurKq0BGRVgpVIq/18t2xsgO5yqUk+/GmTEwci0D2jr+DyH1C7N7UXM6gMGMzCjzCBLeXhUTMoJI2wO584cbzE6diTCvidrWew8y/O8aEua5S2vFyk/6+9dNeXbQ9Lyu8HtmzIXKyPLJATP8gGPK6BggORCywb27cFyl+kaWtI=

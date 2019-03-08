@@ -10,7 +10,6 @@ import '../stylesheets/index.scss';
 
 import Exercises from './exercises';
 import TableOfContents from './table-of-contents';
-import LoginModal from './login-modal';
 import Navigation from './navigation';
 
 function loginReset() {
@@ -26,6 +25,5 @@ $(() => {
 
   (new Exercises()).mount();
   (new TableOfContents()).mount();
-  (new LoginModal()).mount();
   (new Navigation()).mount();
 });
