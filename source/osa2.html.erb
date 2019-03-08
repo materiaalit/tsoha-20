@@ -1,5 +1,5 @@
 ---
-  title: Viikko 2
+  title: Osa 2
   exercise_page: false
   quiz_page: false
   published: true
@@ -633,7 +633,7 @@ if __name__ == '__main__':
 <% end %>
 
 <p>
-  Hyödynnämme aluksi <a href="https://www.sqlite.org/index.html" target="_blank" norel>SQLite</a>-tietokannanhallintajärjestelmää, käsittelemme myöhemmin (noin viikko 3) PostgreSQL:n käyttöönottoa.
+  Hyödynnämme aluksi <a href="https://www.sqlite.org/index.html" target="_blank" norel>SQLite</a>-tietokannanhallintajärjestelmää, käsittelemme myöhemmin (noin osa 3) PostgreSQL:n käyttöönottoa.
 </p>
 
 <p>
@@ -726,7 +726,7 @@ if __name__ == '__main__':
 <% partial 'partials/terminal' do %>
   (venv) ~/todosovellus$ python run.py
   ... 
-  2018-02-29 22:08:14,272 INFO sqlalchemy.engine.base.Engine 
+  2019-02-29 22:08:14,272 INFO sqlalchemy.engine.base.Engine 
   CREATE TABLE task (
       id INTEGER NOT NULL, 
       date_created DATETIME, 
@@ -929,7 +929,7 @@ if __name__ == '__main__':
   * Debugger is active!
   * Debugger PIN: 140-705-069
   Hei maailma!
-  127.0.0.1 - - [29/Feb/2018 22:44:08] "POST /tasks/ HTTP/1.1" 200 -
+  127.0.0.1 - - [29/Feb/2019 22:44:08] "POST /tasks/ HTTP/1.1" 200 -
 <% end %>
 
 <p>
@@ -973,7 +973,7 @@ if __name__ == '__main__':
   SQLite version 3.11.0 2016-02-15 17:29:24
   Enter ".help" for usage hints.
   sqlite&gt; SELECT * FROM Task;
-  1|2018-02-29 20:53:11|2018-02-29 20:53:11|Hei maailma!|0
+  1|2019-02-29 20:53:11|2019-02-29 20:53:11|Hei maailma!|0
   sqlite&gt; .exit
   (venv) ~/todosovellus$
 <% end %>
