@@ -13,10 +13,33 @@ published: true
     <li>Ulkoasun, käytettävyyden ja toiminnallisuuden viilausta</li>
     <li>Tarvittaessa päivitä jo tehtyjä dokumentaation osia</li>
     <li>Aloita puuttuvan dokumentaation kirjoittaminen</li>
+    <li>Koodikatselmointi</li>
   </ul>
 
 <% end %>
 
 <p>
-  Osassa 6 viet omaa sovellustasi eteenpäin ja tarkastelet myös muiden töitä. Päivitäthän viimeistään nyt myös alustavan tietokantakaaviosi sekä käyttötapaukset vastaamaan sovelluksen tilaa. Käyttötapauksissa voi käyttötapauskohtaisesti ilmoittaa niiden tilan, eli onko käyttötapaus jo toteutettu vai onko se vielä toteuttamatta.
+  Osassa 6 viet omaa sovellustasi eteenpäin ja tarkastelet myös muiden töitä katselmoinnissa. Tässä osassa päivitetään myös alustavan tietokantakaavio sekä käyttötapaukset vastaamaan sovelluksen tilaa. Käyttötapauksissa voi käyttötapauskohtaisesti ilmoittaa niiden tilan, eli onko käyttötapaus jo toteutettu vai onko se vielä toteuttamatta. Suurimman osan pitäisi tässä kohtaa kuitenkin olla jo toteutettuna. Erityisen vahva paino on myös dokumentaatiolla, jonka viimeistelystä lisää alla.
+</p>
+
+<% partial 'partials/material_heading' do %>
+    Dokumentaatio
+<% end %>
+
+<p>
+    Kertauksena johdannosta hieman tarkennettuna dokumentaation vaatimuksia, jotta työn saattaminen ajantasalle on helpompaa. Huomaathan, että alla olevat asiat on jo esitelty kurssin aikana, joten oletettavasti suurin osa on jo tehtynä. Tarkasta kuitenkin dokumentaatiosi ajantasaisuus.
+</p>
+
+<p>
+    Dokumentaation yleinen sisältö, eli mitä kaikkea oletetaan dokumentaatiosta löytyvän: 
+<ul>
+  <li>Aiheen kuvaus: README.md -tiedostossa ohjelmiston yleiskuvaus, josta selviää GitHub-repositoriotasi tarkastelevalle helposti, mistä työssä on kyse.</li> 
+  <li>Sovelluksen käyttöohje: Miten sovellus toimii? Mistä voi kirjautua, rekisteröityä? Miten perustoiminnot tehdään?</li> 
+  <li>Sovelluksen asennusohje:  Mitä erilaisia konfiguraatioita tai muuttujia tarvitsee asettaa, jotta sovelluksen voi saada pyörimään paikallisesti? Entä mitä tarvitsee tehdä, jotta sovelluksen saa toimimaan pilvessä, kuten Herokussa?</li> 
+  <li>Työn ja sovelluksen rajoitteet, puuttuvat ominaisuudet: Kurssin aikana ei välttämättä ehdi tehdä kaikkia toiminnallisuuksia. Mitä jäi kesken, miten voisi jatkokehittää?</li>
+  <li>Dokumentaation vastaavuus toteutettuun työhön: Dokumentaatiota on muokattu pitkin kurssia, ja sen pitäisi lopulta vastata sovelluksen todellista tilaa kaikilta osin.</li>
+  <li>Käyttötapaukset / user storyt ja niihin liittyvät SQL-kyselyt: Vaikka SQLalchemy tekee suurimman osan kyselyistä puolestasi, pitää sinunkin tietää ja ymmärtää, mitä kyselyitä todellisuudessa tietokannasta kysytään. Jokaista käyttötapausta vastaa yksi tietokantakysely. Jos et ole vielä tehnyt, lisää dokumentaatiossasi käyttötapauksiin niihin liittyvät kyselyt.</li>
+  <li>Tietokantarakenteen kuvaus: Kurssilla suunnitellaan nimensä mukaisesti tietokantasovellus. Tietokannan tulee olla normalisoitu, tai normalisoinnin puute perusteltu ja dokumentoitu. Tietokannasta tulee olla tietokantakaavio, joka vastaa sovelluksen todellista tietokantaa. Lisäksi dokumentaatiossa tulee olla CREATE TABLE-lauseet tietokannasta.
+  </li>
+
 </p>

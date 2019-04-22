@@ -20,6 +20,19 @@ published: true
   Tee viimeiset viilaukset sovellukseesi sekä sen dokumentaatioon. Tarkasta, että dokumentaatiossa olevat käyttötapaukset vastaavat sovelluksen toiminnallisuutta ja kaaviot tietokantaa. Varmista, että sovellus on käytettävä, ja katso että se on sellaisessa kunnossa, että sen voi ottaa käyttöön ja sitä voi demota muille.
 </p>
 
+<% partial 'partials/material_sub_heading' do %>
+  Arvostelu
+<% end %>
+
 <p>
-  Kertaa myös arvosteluperusteet materiaalin <%= link_to 'johdantosivulta', 'index.html'%> ja mieti puuttuuko harjoitustyöstäsi jotain oleellista.
+  Työ arvostellaan useamman osan summana:
 </p>
+
+<ul>
+  <li>Dokumentaatio, tietokantarakenteen toimivuus valittuun ongelmaan (18p): Dokumetaatiosta olikin tarkemmin jo edellisessä osassa. Lisäksi tarkastellaan tietokannan soveltuvuutta ja toimivuutta sekä tietokantajärjestelmiä (esim. SQLite paikallisesti, PSQL tuotantosovelluksessa).</li>
+  <li>Tietokannan toteutus ja tietokantaa käyttävän sovelluksen tietokantaa käyttävän osan rakenne, ml. tietoturva (12p): Tietokanta on toteutettu tietoturvallisesti (tietosyötteiden validointi palvelimella, ei SQL-injektioita), tietokantakyselyiden tehokkuus, monimutkaisempien yhteenvetokyselyiden olemassaolo ja toteutus.</li>
+  <li>Web-sovelluksen tietokantaan kuulumaton puoli (6p): Sovellus toimii päällisin puolin, syötteet on validoitu, sovellus on yhtenäinen ja siisti.</li>
+  <li>Käytettävyys (6p): Sovellus on loogisesti käytettävä, selkeä ja käyttäjän virheistä annetaan selkeitä ohjeita/virheilmoituksia.</li>
+  <li>Koodin ja sovelluksen ylläpidettävyys (6p): Konfiguroitavissa sekä paikallisesti että tuotantoympäristöön, koodi ei sisällä salasanoja tai poiskommentoitua koodia. Koodi on selkeää ja tarvittaessa kommentoitua.</li>
+  <li>Aikataulussa pysyminen, osapalautukset, demo ja koodikatselmoinnit (12p): Osien deadlineista 6p, demosta 2p, koodikatselmoinneista 4p.</li>
+</ul>
