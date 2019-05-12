@@ -200,19 +200,25 @@
   Kun olet valinnut aiheen..
 <% end %>
 
+<% partial 'partials/material_heading' do %>
+  Tietokantakaavio
+<% end %>
+
 <p>
-  Kun olet valinnut aiheen, kirjoita siitä kuvaus tai mukauta aiheen kuvausta itsellesi sopivaksi.
+  Tee työllesi alustava tietokantakaavio. Kaavion on tarkoitus kuvata suunnitelmaa mihin työtäsi kurssin aikana viet. Näin myös sinun on helppo seurata kurssin edetessä omaa suunnitelmaasi ja tarvittaessa päivittää sitä.
 </p>
 
-<% partial 'partials/material_sub_sub_heading' do %>
+
+
+<% partial 'partials/material_heading' do %>
   Luo aiheelle github-repositorio
 <% end %>
 
 <p>
-  Luo github-tunnuksesi alle uusi repositorio. Aseta repositorion nimeksi aiheesi nimi. Luo tämän jälkeen repositorion juureen tiedosto <code>README.md</code>, johon kirjoitat aihekuvauksen.
+  Luo github-tunnuksesi alle uusi repositorio. Aseta repositorion nimeksi aiheesi nimi. Luo tämän jälkeen repositorion juureen tiedosto <code>README.md</code>, johon kirjoitat aihekuvauksen. Kuvauksen ei tarvitse olla tässä vaiheessa pitkä, muutama lause riittää.
 </p>
 
-<% partial 'partials/material_sub_sub_heading' do %>
+<% partial 'partials/material_sub_heading' do %>
   Siirrä sovellus Githubiin
 <% end %>
 
@@ -221,7 +227,7 @@
 </p>
 
 <p>
-  Lisätään githubissa oleva repositorio kansion paikallisen versionhallinnan etäpisteeksi. Projektin osoite löytyy githubista (se on tyypillisesti muotoa <code>https://github.com/käyttäjätunnus/projektin-nimi.git</code>.
+  Lisätään githubissa oleva repositorio kansion paikallisen versionhallinnan etäpisteeksi. Projektin osoite löytyy githubista (se on tyypillisesti muotoa <code>https://github.com/käyttäjätunnus/projektin-nimi.git</code>. Esimerkeissä oletetaan sovelluksen olevan kansiossa <code>demo</code>, josta ajamme myös komennot. Vastaavaa esimerkkiä käytetään jatkossakin kurssin aikana.
 </p>
 
 <% partial 'partials/terminal' do %>
