@@ -675,12 +675,24 @@
 </p>
 
 
-<% partial 'partials/material_sub_sub_heading' do %>
+<% partial 'partials/material_heading' do %>
+  Sovelluksen tallentaminen ja siirto pilveen
+<% end %>
+
+<p>
+  Seuraava osuus saattaa vaikuttaa tutulta edellisestä osasta erityisesti GitHubin osalta, ja osittain ne ovatkin samanlaiset. Osassa 0 luotiin jo repositorio omaa aihetta varten. Nyt meillä onkin jo websovellus, joka tarvitsee myös tallentaa repositorioon. Sen lisäksi haluamme, että sovellus toimii muuallakin kuin omalla koneella. Käytämme tässä palvelintarjoaja Herokua, jolta saamme käyttöömme ilmaista tallennustilaa sovellustamme varten.
+</p>
+
+<p>
+  Jos seurasit materiaalia ja teit esimerkkisovellusta, älä tallenna sitä Osassa 0 tekemääsi repositorioon, vaan tee sille oma repositorio, jotta työkalut tulevat tutummaksi. Jos taas teit jo omaa sovellustasi, käytä valmista repositoriotasi. Seuraavassa Osassa aloitetaan joka tapauksessa oman projektin tekeminen reippaasti, eli kumpikin vaihtoehto on toimiva. Tärkeintä on, että GitHub ja Heroku tulevat tutuiksi.
+</p>
+
+<% partial 'partials/material_sub_heading' do %>
   Luo harjoitustyölle github-repositorio
 <% end %>
 
 <p>
-  Jos teet tätä osaa harjoituksen vuoksi, luo github-tunnuksesi alle uusi repositorio. Aseta repositorion nimeksi haluamasi nimi. Jos teet jo omaa sovellusta, käytä edellisessä osassa tekemääsi repositoriota.
+  Jos teet tätä osaa harjoituksen vuoksi, luo github-tunnuksesi alle uusi repositorio. Kuten aiemmin, aseta repositorion nimeksi haluamasi nimi. Jos teet jo omaa sovellusta, käytä edellisessä osassa tekemääsi repositoriota.
 </p>
 
 <% partial 'partials/material_sub_sub_heading' do %>
@@ -738,7 +750,7 @@
 </p>
 
 
-<% partial 'partials/material_sub_sub_heading' do %>
+<% partial 'partials/material_sub_heading' do %>
   Siirrä sovellus Herokuun
 <% end %>
 

@@ -196,10 +196,6 @@
   <li>Äänestys</li>
 </ul>
 
-<% partial 'partials/material_sub_heading' do %>
-  Kun olet valinnut aiheen..
-<% end %>
-
 <% partial 'partials/material_heading' do %>
   Tietokantakaavio
 <% end %>
@@ -208,10 +204,8 @@
   Tee työllesi alustava tietokantakaavio. Kaavion on tarkoitus kuvata suunnitelmaa mihin työtäsi kurssin aikana viet. Näin myös sinun on helppo seurata kurssin edetessä omaa suunnitelmaasi ja tarvittaessa päivittää sitä.
 </p>
 
-
-
 <% partial 'partials/material_heading' do %>
-  Luo aiheelle github-repositorio
+  Luo aiheelle github-repositorio ja kuvaus
 <% end %>
 
 <p>
@@ -255,7 +249,7 @@
   Osa- ja loppupalautusten arvioinnit perustuvat github-repositoriossasi olevaan koodiin, joten ota käyttöön Herokun automaattinen <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">github-integraatio</a>. Tällöin sovellusta ei päivitetä itse Herokuun, vaan Heroku hakee käyttöön automaattisesti kaikki Githubiin talletetut päivitykset.
 </p>
 
-<% partial 'partials/material_sub_sub_heading' do %>
+<% partial 'partials/material_heading' do %>
   Palauta työ labtooliin
 <% end %>
 
