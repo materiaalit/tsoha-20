@@ -184,7 +184,7 @@ published: true
 <% end %>
 
 <p>
-  Yhteenvetokyselyt (aggregate query, aggregate function) ovat kyselyitä, joilla haetaan yhteenvetotietoa tietokannasta. Käyttäjiä ja tehtäviä sisältävässä esimerkissämme yhteenvetokyselyitä voisivat olla muunmuassa "kuinka monta tekemätöntä tehtävää tietokannassa on?", "kuinka monta tehtävää kullakin käyttäjällä on?", ja "ketkä käyttäjät ovat tehneet kaikki heille määrätyt tehtävät?".
+  Yhteenvetokyselyt (aggregate query, aggregate function) ovat kyselyitä, joilla haetaan yhteenvetotietoa tietokannasta. Käyttäjiä ja tehtäviä sisältävässä esimerkissämme yhteenvetokyselyitä voisivat olla muunmuassa "kuinka monta tekemätöntä tehtävää tietokannassa on?", "kuinka monta tehtävää kullakin käyttäjällä on?", ja "ketkä käyttäjät ovat tehneet kaikki heille määrätyt tehtävät?". Tarkalleenottaen SQL:n kyselyt <code>MIN, MAX, SUM, AVG ja COUNT</code> ovat yhteenvetokyselyitä.
 </p>
 
 <p>
@@ -208,6 +208,10 @@ published: true
       GROUP BY Account.id
       HAVING COUNT(Task.id) = 0
 <% end %>
+
+<p>
+  Näistä kaksi viimeistä vastaavat kurssiarvostelun "laajempia yhteenvetokyselyitä". Vaikka ensimmäinenkin on toki yhteenvetokysely, se on hyvin yksinkertainen ja kattaa vain yhden taulun.
+</p>
 
 <p>
   Yhteenvetokyselyt määritellään models.py -tiedostoon luokkakohtaisina metodeina. Alla esimerkki, missä viimeinen yllä kuvatuista kyselyistä suoritetaan sekä kyselyn tulokset tulostetaan konsoliin.
