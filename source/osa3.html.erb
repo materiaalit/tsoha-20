@@ -543,6 +543,17 @@ published: true
   Mikäli tiedostossa <code>tasks.db</code> on paljon turhaa tietoa, tai sen haluaa alustaa uudestaan, onnistuu uudelleen alustaminen poistamalla tiedoston ja käynnistämällä sovelluksen uudestaan.
 </p>
 
+<% partial 'partials/hint', locals: { name: 'Lomakkeet ja tietokannan kentät' } do %>
+
+  <p>
+    Huomioi työtä tehdessäsi että SQLAlchemy ainoastaan luo puolestasi taulut joita ei ole olemassa ennestään. Jos teet muutoksia olemassa olevien taulujesi rakenteeseen, joudut poistamaan tietokannan kuten yllä jotta se luotaisiin uudestaan. Huomioi että kun myöhemmin otat käyttöön Postgres-tietokannan Herokussa, joudut tälläisissä tapauksissa poistamaan tietokannan myös Herokusta.
+  </p>
+
+  <p>
+    Projektin aikana tietokantaan tehtävät muutokset saa organisoitua järkevämmin jonkun migraatiotyökalun avulla (ks. esim <a href="https://flask-migrate.readthedocs.io/en/latest/" target="_blank" norel>Flask-Migrate</a>).
+  </p>
+
+<% end %>
 
 <% partial 'partials/material_sub_heading' do %>
   Kirjautumislomake
