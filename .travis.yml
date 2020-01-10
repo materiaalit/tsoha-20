@@ -25,4 +25,8 @@ after_success:
 - git checkout HEAD README.md .github
 - git add --all
 - git commit -m "$COMMIT_MESSAGE"
-- git push "https://hnbot:$GITHUB_API_KEY@github.com/materiaalit/tsoha-20.git" gh-pages:gh-pages 2>&1 | sed "s/$GITHUB_API_KEY/<confidential>/g"
+- git push "https://hnbot:$GITHUB_API_KEY@github.com/materiaalit/tsoha-20.git" gh-pages:gh-pages
+  2>&1 | sed "s/$GITHUB_API_KEY/<confidential>/g"
+env:
+  global:
+    secure: vT78gd8hVkxEOh4EjBV04wz4enJdDdkecKIoNEW/i8UymCpA6Mg+59FsVEi3vm36diPg0zBDvZno67y5eNzs+GxbKYmzHwNDotXJb0GFEY2t2ycK1TiO080JOcHtnGHiTR+XM752p36bhrsk50M577qzVjhu28W1ER1Wi0EdUIApDC8GAQNb+AkASZbZ+j8ZveyVO4ypxwyRYd4ocXeIiZK5pOp0POQropI0woKN4dlg/awvMfiKdMcUYvtnCD3LGMciywEjIMv/l0vYyUOCn9QAGvKGFWX5FYzk+al06wL9XfGcAkbV2Ts617waQS0WHajReWu2bdQ6BfiveKSfq1gkQCzrmwspBxhtL4/EYvt/2ZnqPcTX5TSF86TKBpvmNhVTzNEH4JPuMQMhStKb18X4klJWE1Ik7ecvwq9ULUAvy5HjFpksloOxnJRfoboIvq7GZBlfmYpUwWomk899ArnvHjcb+xZIVMMNgEOAyCmQ8nD8cdXY6fWxyDktF/RUSO+Sb9J8c6639GFA/pFrjqvAsJYi5AAnaBoWbZxyvMhSuD/S6gi2IEpUp8LZOLRoCyHWcTyJZjHjFcOpH/HLaXVQULEa/dUXiD/XnqP5/sNdyZBuWoPQR2gI7AFC5XfIC0luF9qDuAzWLIpsnN49C97Gx5BxmRDR5ZWv3GRWWRQ=
