@@ -132,7 +132,7 @@ class LoginModal {
     if (!username || !password) {
       this.showError('Käyttäjätunnus tai salasana puuttuu');
     } else {
-      store.set('tmc.course', 'tsoha-19');
+      store.set('tmc.course', 'tsoha-20');
 
       client.authenticate({ username: username, password: password })
         .then(response => {
