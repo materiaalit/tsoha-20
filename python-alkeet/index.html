@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tietokantasovellus, 2019 | Python-alkeet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-9213a7cf.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../tyovalineet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=tyovalineet.html&gt;')">Kurssin työvälineet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa0/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa0.html&gt;')">Osa 0</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=python-alkeet.html&gt;')">Python-alkeet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../vertaisarviointi/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=vertaisarviointi.html&gt;')">Vertaisarviointi</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://t.me/tkt_tsoha" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+
+          
+<h1 class="material-heading">
+    Python-kielen alkeet
+
+</h1>
+
+<p>
+  Tässä esitellään lyhyesti Python-kielen perusteet. Oletuksena on, että lukija on käynyt Helsingin yliopiston kurssit Ohjelmoinnin perusteet (TKT-10002) ja Ohjelmoinnin jatkokurssi (TKT-10003).
+</p>
+
+
+<h2 class="material-heading">
+    Python-ohjelman suorittaminen
+
+</h2>
+
+<p>
+  Mikäli et ole asentanut vielä harjoitustyössä tarvittavia työvälineitä, tee se nyt. Ohjeet löytyvät yläpalkin valikosta kohdasta <a href="../tyovalineet/" norel>Kurssin työvälineet</a>.
+</p>
+
+<p>
+  Python-ohjelmia voidaan suorittaa usealla eri tavalla. Kokeilut tehdään tyypillisesti Python-tulkissa, josta lähdekoodia kopioidaan tarvittaessa erillisiin lähdekooditiedostoihin. Python-tulkin käynnistäminen tapahtuu komentoriviltä komennolla <code>python3</code>.
+</p>
+
+<pre class="terminal">$ python3
+Python 3.5.2 (default, Nov 23 2017, 16:37:01) 
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print("Hello world!")
+Hello world!
+>>> muuttuja = 5
+>>> print(muuttuja)
+5
+>>> def testi():
+...     print("Testi!")
+... 
+>>> testi()
+Testi!
+>>> exit()
+$
+</pre>
+
+
+<p>
+  Python-kieliset ohjelmat tallennetaan <code>.py</code>-päätteisiin lähdekooditiedostoihin. Lähdekooditiedostot ovat tekstimuotoisia (aivan samalla tavalla kuin Java-kieliset lähdekooditiedostot). Oletetaan, että alla oleva lähdekoodi on tallennettu tiedostoon <code>ohjelma.py</code> ja että käyttäjä on komentoriviltä samassa kansiossa tiedoston kanssa. Tällöin ohjelman suoritus onnistuu komennolla <code>python3 ohjelma.py</code> -- tässä pyydetään Python-tulkkia suorittamaan tiedostossa <code>ohjelma.py</code> oleva lähdekoodi. 
+</p>
+
+<pre class="sh_python code-highlight"><code>def esimerkki():
+    print("Tämä on esimerkki")
+
+esimerkki()
+</code></pre>
+
+<pre class="terminal">$ ls
+ohjelma.py
+$ python3 ohjelma.py
+Tämä on esimerkki
+$
+</pre>
+
+<h2 class="material-heading">
+    Muuttujat ja tyypitys
+
+</h2>
+
+<p>
+  Muuttujan esittely tapahtuu kirjoittamalla muuttujan nimi, yhtäsuuruusmerkki, ja muuttujalle asetettava arvo. Alla olevassa ohjelmassa luodaan muuttuja nimeltä luku, johon asetetaan arvo 42.
+</p>
+
+<pre class="sh_python code-highlight"><code>muuttuja = 42
+</code></pre>
+
+<p>
+  Pythonissa on karkeasti ajatellen kuusi erilaista muuttujatyyppiä: luvut (kokonaisluku ja liukuluku), merkkijonot, listat, muuttumattomat listat ("tuplet"), joukot, ja sanakirjat ("Javan hajautustaulut"). Näiden lisäksi ohjelmoija voi luoda omia luokkia ja esitellä tätä kautta uusia muuttujatyyppejä.
+</p>
+
+<pre class="sh_python code-highlight"><code>kokonaisluku = 42
+print(kokonaisluku)
+print(type(kokonaisluku))
+
+liukuluku = 3.14159
+print(liukuluku)
+print(type(liukuluku))
+
+merkkijono = "42/3.14159 ~ 13.37"
+print(merkkijono)
+print(type(merkkijono))
+
+muuttumatonlista = (42, 21, 10.5)
+print(muuttumatonlista)
+print(type(muuttumatonlista))
+
+lista = [42, 21, 10.5]
+print(lista)
+print(type(lista))
+
+joukko = {"123", "456", 42}
+print(joukko)
+print(type(joukko))
+
+sanakirja = {"eka":1, "toka": 2}
+print(sanakirja)
+print(type(sanakirja))
+</code></pre>
+  
+<pre class="sample-output">42
+&lt;type 'int'&gt;
+3.14159
+&lt;type 'float'&gt;
+42/3.14159 ~ 13.37
+&lt;type 'str'&gt;
+(42, 21, 10.5)
+&lt;type 'tuple'&gt;
+[42, 21, 10.5]
+&lt;type 'list'&gt;
+set([42, '123', '456'])
+&lt;type 'set'&gt;
+{'toka': 2, 'eka': 1}
+&lt;type 'dict'&gt;
+</pre>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Python on dynaamisesti tyypitetty kieli
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Dynaamisesti tyypitetyssä kielessä muuttujan nimi on linkitetty olioon tai null-viitteeseen. Tämä tarkoittaa sitä, että muuttujan arvon muuttaminen -- eli nimen linkittäminen johonkin toiseen olioon -- muuttaa myös muuttujan tyyppiä.
+  </p>
+
+  <p>
+    Vahvasti tyypitetyssä kielessä kuten Java muuttujan nimeen on linkitetty sekä tyyppi että olio. Tämä tarkoittaa sitä, että muuttujan tyyppi ei voi muuttua sen jälkeen kun se on kertaalleen asetettu. 
+  </p>
+  
+
+  </div>
+</div>
+
+
+<p>
+  Koska Python on dynaamisesti tyypitetty kieli, on myös seuraavanlainen ohjelmointi mahdollista.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>muuttuja = 42
+print(muuttuja)
+print(type(muuttuja))
+
+muuttuja = 3.14159
+print(muuttuja)
+print(type(muuttuja))
+
+muuttuja = "42/3.14159 ~ 13.37"
+print(muuttuja)
+print(type(muuttuja))
+
+muuttuja = (42, 21, 10.5)
+print(muuttuja)
+print(type(muuttuja))
+
+muuttuja = [42, 21, 10.5]
+print(muuttuja)
+print(type(muuttuja))
+
+muuttuja = {"123", "456", 42}
+print(muuttuja)
+print(type(muuttuja))
+
+muuttuja = {"eka":1, "toka": 2}
+print(muuttuja)
+print(type(muuttuja))
+</code></pre>
+
+<pre class="sample-output">42
+&lt;type 'int'&gt;
+3.14159
+&lt;type 'float'&gt;
+42/3.14159 ~ 13.37
+&lt;type 'str'&gt;
+(42, 21, 10.5)
+&lt;type 'tuple'&gt;
+[42, 21, 10.5]
+&lt;type 'list'&gt;
+set([42, '123', '456'])
+&lt;type 'set'&gt;
+{'toka': 2, 'eka': 1}
+&lt;type 'dict'&gt;
+</pre>
+
+
+
+<p>
+  Yllä olevassa esimerkissä demonstroidaan sekä pythonin muuttujia että dynaamista tyypitystä. Muuttujan tyyppiä voi vaihtaa asettamalla siihen uuden arvon.
+
+<p>
+  Muuttujien elinkaari on Pythonissa ja Javassa samankaltainen. Muuttuja on olemassa sen esittelyhetkestä lähtien siihen asti kunnes muuttujaan ei enää viitata ohjelmakoodissa. Pythonissa, kuten Javassa, on automaattinen roskienkerääjä, joka vapauttaa muuttujia varten varatun muistin kun niihin ei enää viitata. 
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Nimeämiskäytänteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Pythonissa muuttujien, metodien, funktioiden, luokkien ym nimet aloitetaan kirjaimella (A-Z tai a-z) tai alaviivalla (_), joita seuraa nollasta äärettömään määrä kirjaimia, alaviivoja tai numeroita. Python-ohjelmoinnissa noudatetaan yleisesti seuraavia nimeämiskäytänteitä:
+  </p>
+  
+  <ul>
+    <li>
+      Luokkien nimet aloitetaan isolla kirjaimella. Kaikki muut muuttujat aloitetaan pienellä kirjaimella.
+    </li>
+    <li>
+      Yhdellä alaviivalla aloitettu muuttujan nimi tarkoittaa, että muuttujaa tulee ajatella kapseloituna (Javan private). Esimerkiksi muuttuja nimeltä "_ika" olisi oliomuuttuja, jota tulee käsitellä vain olion tarjoamista metodeista.
+    </li>
+    <li>
+      Kapselointia voi korostaa kahdella alaviivalla. Esimerkiksi muuttujaa nimeltä "__ika" ei missään nimessä tule käsitellä muualta kuin olion tarjoamista metodeista.
+    </li>
+
+  </ul>
+
+  <p>
+    Python on case-sensitive, eli pienillä kirjaimilla kirjoitettuun muuttujan nimeen ei voi viitata isoilla kirjaimilla kirjoitetulla muuttujan nimellä. Käytännössä siis "muuttuja" on eri kuin "Muuttuja" tai "MUUTTUJA".
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Kontrollirakenteet
+
+</h2>
+
+<p>
+  Kontrollirakenteilla ohjataan ohjelman suoritusta. Pythonissa on ohjelmointikielille tyypilliset ehtolauseet ja toistolauseet. 
+</p>
+
+<h3 class="material-heading">
+    Ehtolause
+
+</h3>
+
+<p>
+  Ehtolause <code>if</code> toteutetaan Pythonissa seuraavasti. 
+</p>
+
+<pre class="sh_python code-highlight"><code>muuttuja = 42
+
+if muuttuja == 42:
+    print("Muuttujan arvo oli 42")
+</code></pre>
+
+<pre class="sample-output">Muuttujan arvo oli 42
+</pre>
+
+<p>
+  Ehtolauseen lauseketta ei ympäröidä suluilla eikä ehtolauseen lohkoa rajata aaltosuluilla. Ehtolauseen lauseke päättyy kaksoispisteeseen, jota seuraa suoritettava lohko. Ohjelmakoodin sisennys kertoo lohkoon kuuluvat lauseet.
+</p>
+
+<pre class="sh_python code-highlight"><code>muuttuja = 42
+
+if muuttuja != 42:
+    print("Muuttujan arvo oli 42")
+    print("Jei!")
+
+print("Ok!")
+</code></pre>
+
+<pre class="sample-output">Ok!
+</pre>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Sisennys kertoo lohkosta, johon rivi kuuluu
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Python-kielessä sisennyksellä on kriittinen rooli ohjelman toiminnallisuuden kannalta. Sisennys määrittelee lohkon, johon kukin rivi kuuluu. Mikäli sisennys on väärin, näemme virheen <code>IndentationError</code>.
+  </p>
+
+  <p>
+    Sisennys on tyypillisesti neljä välilyöntiä. Alla olevassa esimerkissä sisennys on virheellinen.
+  </p>
+
+<pre class="sh_python code-highlight"><code>muuttuja = 42
+
+if muuttuja == 42:
+    print("Muuttujan arvo oli 42")
+   print("Virheellinen sisennys")
+
+print("Ok!")
+</code></pre>
+
+  <p>
+    Ohjelman suorittaminen antaa virheen:
+  </p>
+  
+
+<pre class="sample-output">  File "ohjelma.py", line 6
+    print("Virheellinen sisennys")
+                                 ^
+IndentationError: unindent does not match any outer indentation level
+</pre>
+
+  <p>
+    Alla olevassa esimerkissä taas sisennys on kunnossa.
+  </p>
+
+<pre class="sh_python code-highlight"><code>muuttuja = 42
+
+if muuttuja == 42:
+    print("Muuttujan arvo oli 42")
+    print("Oikein oleva sisennys")
+
+print("Ok!")
+</code></pre>
+
+  <p>
+    Sisennyksiä voi olla sisäkkäin useampia. Alla oleva esimerkki on Python-kielen näkökulmasta oikein toimiva.
+  </p>
+
+<pre class="sh_python code-highlight"><code>muuttuja = 42
+toinen = 13
+
+if muuttuja == 42:
+    print("Muuttujan arvo oli 42")
+    print("Oikein oleva sisennys")
+
+    if toinen == 13:
+        print("Toisen muuttujan arvo oli 13")
+    
+print("Ok!")
+</code></pre>
+  
+<pre class="sample-output">Muuttujan arvo oli 42
+Oikein oleva sisennys
+Toisen muuttujan arvo oli 13
+Ok!
+</pre>
+  
+
+  </div>
+</div>
+
+
+<p>
+  Javasta tutut <code>if</code>, <code>else if</code> ja <code>else</code> löytyvät Pythonissa nimillä <code>if</code>, <code>elif</code> ja <code>else</code>. 
+</p>
+
+<pre class="sh_python code-highlight"><code>muuttuja = 13
+
+if muuttuja == 42:
+    print("Muuttujan arvo oli 42")
+elif muuttuja == 13:
+    print("Muuttujan arvo oli 13")
+else:
+    print("Muuttujan arvo ei ollut 42 tai 13")
+  
+print("Ok!")
+</code></pre>
+
+
+<p>
+  Pythonissa on käytössä kaikki Javasta tutut loogiset operaatiot: pienempi kuin <code>&lt;</code>, suurempi kuin <code>&gt;</code>, pienempi tai yhtäsuuri kuin <code>&lt;=</code>, suurempi tai yhtä suuri kuin <code>&gt;=</code>, yhtä suuri kuin <code>==</code> ja erisuuri kuin <code>!=</code>.
+</p>
+
+<p>
+  Javasta poiketen Python käyttää lausekkeiden vertailussa <code>ja</code> ja <code>tai</code> sanojen englanninkielisiä vastineita. Javan <code>||</code> merkitään Pythonissa <code>or</code>. Vastaavasti Javan <code>&&</code> merkitään Pythonissa <code>and</code>. 
+
+<p>
+  Suluilla voidaan ryhmitellä vertailuja -- alla oleva esimerkki tarkastaa onko muuttujan vuosi arvo karkausvuosi.
+</p>
+
+<pre class="sh_python code-highlight"><code>vuosi = 2020
+
+if vuosi % 4 == 0 and (vuosi % 100 != 0 or vuosi % 400 == 0):
+    print("Annettu vuosi oli karkausvuosi.")
+</code></pre>
+
+
+<h3 class="material-heading">
+    Toistolause
+
+</h3>
+
+<p>
+  Pythonista löytyy sekä <code>while</code> että <code>for</code> -toistolauseet. Pythonissa on myös avainsanat <code>continue</code>, jonka suorittaminen siirtää ohjelman suorituksen toistolauseen alkuun, sekä <code>break</code>, jonka suorittaminen lopettaa toistolauseen suorituksen jolloin seuraava suoritettava lause on toistolauseen lohkoa seuraava rivi. 
+</p>
+
+<p>
+  Klassinen while-true -toistolause kirjoitetaan seuraavasti. Pythonissa on valmiina totuusarvoinen muuttuja <code>True</code>, joka vastaa Javan <code>true</code>-arvoa.
+</p>
+
+<pre class="sh_python code-highlight"><code>arvo = 0
+
+while True:
+    print(arvo)
+    arvo += 1
+
+    if arvo == 3:
+        break
+</code></pre>
+
+<pre class="sample-output">0
+1
+2
+</pre>
+
+<p>
+  Toistolauseen <code>while</code> avainsanaa seuraa lauseke, jonka evaluoinnin tuloksena saatu totuusarvo kertoo jatketaanko toistolauseen suoritusta. Yllä olevassa esimerkissä lausekkeen arvo on aina totta. Lausekkeen voi kirjoittaa myös auki ehtona -- alla olevan esimerkin tulostus vastaa edellä olevaa esimerkkiä.
+</p>
+
+<pre class="sh_python code-highlight"><code>arvo = 0
+
+while arvo != 3:
+    print(arvo)
+    arvo += 1
+</code></pre>
+
+<p>
+  Pythonin <code>for</code>-toistolause poikkeaa Javan <code>for</code>-lauseesta: se muistuttaa enemmänkin Javan <code>for-each</code>-lausetta.
+</p>
+
+<p>
+  Pythonin <code>for</code>-toistolauseella käydään kokoelmia läpi. Lukujen läpikäynti onnistuu erillisen <code>range</code>-funktion avulla, joka palauttaa luvut nollasta yhtä annettua arvoa pienempään asti.
+</p>
+
+<p>
+  Alla olevassa esimerkissä tulostetaan for-lauseen avulla luvut 0, 1 ja 2.
+</p>
+
+<pre class="sh_python code-highlight"><code>for arvo in range(3):
+    print(arvo)
+</code></pre>
+
+<pre class="sample-output">0
+1
+2
+</pre>
+
+
+
+<h2 class="material-heading">
+    Tietorakenteet
+
+</h2>
+
+
+<h3 class="material-heading">
+    Lista
+
+</h3>
+
+<p>
+  Listaan voi lisätä tietoa ja listasta voi poistaa tietoa. Listan koko on käytännössä rajoittamaton, eli se kasvaa sitä mukaa kun sinne lisätään tietoa. Pythonin lista on toteutukseltaan Javan ArrayListin kaltainen.
+</p>
+
+<p>
+  Listamuuttuja luodaan hakasulkeilla <code>[]</code>. Arvojen lisääminen listaan onnistuu määrittelemällä arvot hakasulkeiden sisälle. Tietyssä listan indeksissä olevaan arvoon viitataan samalla tavalla kuin Javan taulukoissa eli hakasulkeiden avulla. Alla olevassa esimerkissä luodaan neljä arvoa sisältävä lista ja tulostetaan ensimmäisessä ja kolmannessa indeksissä olevat arvot.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>lista = [100, 10, 1, 0]
+print(lista[1])
+print(lista[3])
+</code></pre>
+
+<pre class="sample-output">10
+0
+</pre>
+
+<p>
+  Python tarjoaa listojen käsittelyyn joukon metodeja, joista alla muutama.
+</p>
+
+<ul>
+  <li>
+    <code>lista.append(arvo)</code> lisää arvo listan loppuun.
+  </li>
+  <li>
+    <code>lista.insert(indeksi, arvo)</code> siirtää annetussa indeksissä ja indeksiä seuraavissa indekseissä olevia arvoja yhden eteenpäin ja asettaa annetun arvon indeksiin
+  </li>
+  <li>
+    <code>lista.index(arvo)</code> etsii annettua arvoa listasta ja palauttaa arvon indeksin mikäli se löytyy. Mikäli arvoa ei löydy, heittää poikkeuksen.
+  </li>
+  <li>
+    <code>lista.remove(arvo)</code> etsii annettua arvoa listasta ja poistaa arvon mikäli se löytyy. Mikäli arvoa ei löydy, heittää poikkeuksen.
+  </li>
+</ul>
+
+<p>
+  Lisää metodeja löytyy Pythonin dokumentaatiosta <a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" norel>https://docs.python.org/3/tutorial/datastructures.html</a>.
+</p>
+
+<p>
+  Metodien käyttöä on demonstroitu alla.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>lista = []
+lista.append(5)
+lista.append(2.5)
+lista.append(1.25)
+
+print(lista.index(1.25))
+print(lista[lista.index(1.25)])
+
+lista.remove(5)
+
+print(lista.index(1.25))
+print(lista[lista.index(1.25)])
+
+lista.insert(0, 100)
+
+print(lista.index(1.25))
+print(lista[lista.index(1.25)])
+</code></pre>
+
+<pre class="sample-output">2
+1.25
+1
+1.25
+2
+1.25
+</pre>
+
+<p>
+  Listan läpikäynti onnistuu for-lauseen avulla suoraviivaisesti.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>lista = [100, 10, 1, 0]
+for luku in lista:
+    print(luku)
+</code></pre>
+
+<pre class="sample-output">100
+10
+1
+0
+</pre>
+
+<h3 class="material-heading">
+    Muuttumaton lista
+
+</h3>
+
+<p>
+  Listasta on mahdollista tehdä myös muuttumaton lista. Muuttumaton lista esitellään sulkujen avulla.
+</p>
+  
+<pre class="sh_python code-highlight"><code>lista = (100, 10, 1, 0)
+print(lista[0])
+print(lista[2])
+  
+for luku in lista:
+    print(luku)
+</code></pre>
+
+<pre class="sample-output">100
+1
+100
+10
+1
+0
+</pre>
+
+<p>
+  Muuttumaton lista poikkeaa tavallisesta listasta siinä, että sillä on vain rajattu joukko tavallisen listan metodeja käytössään. Esimerkiksi lisääminen tai poistaminen aiheuttaa virheen.
+</p>
+
+<pre class="sh_python code-highlight"><code>lista = (100, 10, 1, 0)
+lista.append(-1)
+</code></pre>
+
+<pre class="sample-output">Traceback (most recent call last):
+  File "ohjelma.py", line 2, in &lt;module&gt;
+    lista.append(-1)
+AttributeError: 'tuple' object has no attribute 'append'
+</pre>
+
+<p>
+  Yllä olevasta virheviestistä huomaamme, että kyseessä ei ole oikeastaan lista vaan monikko (tuple). Muuttumattomien listojen käyttö on Pythonissa tyypillistä, kun haluamme esimerkiksi palauttaa funktiosta arvopareja.
+</p>
+
+
+<h3 class="material-heading">
+    Joukko ja sanakirja
+
+</h3>
+
+<p>
+  Python tarjoaa myös Javan HashSet ja HashMap-luokkia vastaavat tietorakenteet. Pythonissa nämä ovat <code>set</code> ja <code>dictionary</code>.
+</p>
+
+<pre class="sh_python code-highlight"><code>joukko = {1, 3, 5, 5, 3, 1}
+print(joukko)
+
+sanakirja = {"yksi": 1, "kolme": 3}
+print(sanakirja)
+</code></pre>
+
+
+<pre class="sample-output">set([1, 3, 5])
+{'yksi': 1, 'kolme': 3}
+</pre>
+
+<p>
+  Näistäkin tietorakenteista löytyy lisää tietoa Pythonin dokumentaatiosta osoitteesta <a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" norel>https://docs.python.org/3/tutorial/datastructures.html</a>.
+</p>
+
+
+<h2 class="material-heading">
+    Funktiot
+
+</h2>
+
+<p>
+  Kuten Javassa, Pythonissa funktiot ovat suoritettavia nimettyjä lähdekoodilohkoja. Funktion määrittely Pythonissa tapahtuu avainsanalla <code>def</code>, jota seuraa funktion nimi, sulut, mahdolliset parametrit sekä kaksoispiste. Kaksoispisteen jälkeen alkaa lohko, joka sisältää funktion lähdekoodin.
+</p>
+
+<pre class="sh_python code-highlight"><code>def tulostaHei():
+    print("Hei!")
+</code></pre>
+
+<p>
+  Kun funktio on esitelty, sen kutsuminen tapahtuu nimen perusteella. Esimerkiksi yllä kuvattua funktiota <code>tulostaHei</code> kutsutaan kutsulla <code>tulostaHei()</code>.
+</p>
+
+<pre class="sh_python code-highlight"><code>tulostaHei()
+</code></pre>
+
+<pre class="sample-output">Hei!
+</pre>
+
+<p>
+  Parametrien määrittely tapahtuu lisäämällä parametrit funktion määrittelyn yhteydessä annettujen sulkujen sisään. Alla olevassa esimerkissä luodaan funktio, joka tulostaa merkkijonon "Hei!" parametrina annetusta luvusta riippuvan määrän.
+</p>
+
+<pre class="sh_python code-highlight"><code>def tulosta(montakoKertaa):
+    for kerta in range(montakoKertaa):
+        print("Hei!")
+</code></pre>
+
+<p>
+  Funktion kutsu:
+</p>
+
+<pre class="sh_python code-highlight"><code>tulosta(5)
+</code></pre>
+
+<pre class="sample-output">Hei!
+Hei!
+Hei!
+Hei!
+Hei!
+</pre>
+
+<p>
+  Funktiolle voidaan määritellä useampi parametri. Parametrit erotellaan toisistaan pilkuilla. Alla edellistä funktiota on muokattu siten, että funktiolle annetaan parametrina lukumäärän lisäksi myös tulostettava arvo.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>def tulosta(montakoKertaa, tulostettava):
+    for kerta in range(montakoKertaa):
+        print(tulostettava)
+</code></pre>
+
+<pre class="sh_python code-highlight"><code>tulosta(3, "Hei")
+</code></pre>
+
+<pre class="sample-output">Hei
+Hei
+Hei
+</pre>
+
+<p>
+  Toisin kuin Javassa, Pythonissa funktioiden parametreille voidaan määritellä myös oletusarvot. Näitä arvoja käytetään mikäli funktiokutsun yhteydessä ei anneta parametrille arvoa.
+</p>
+
+<p>
+  Oletusarvojen määrittely tapahtuu parametrien määrittelyn yhteydessä yhtäsuuruusmerkillä. Alla määriteltävä funktio <code>tulosta</code> tulostaa oletuksena merkkijonon "Hei" kerran.
+</p>
+
+<pre class="sh_python code-highlight"><code>def tulosta(montakoKertaa = 1, tulostettava = "Hei"):
+    for kerta in range(montakoKertaa):
+        print(tulostettava)
+</code></pre>
+
+<pre class="sh_python code-highlight"><code>tulosta()
+</code></pre>
+
+<pre class="sample-output">Hei
+</pre>
+
+<pre class="sh_python code-highlight"><code>tulosta(2)
+</code></pre>
+
+<pre class="sample-output">Hei
+Hei
+</pre>
+
+<p>
+  Huomaa, että parametrien järjestyksellä on väliä. Seuraava kutsu aiheuttaa virheen.
+</p>
+
+<pre class="sh_python code-highlight"><code>tulosta("Heippa")
+</code></pre>
+
+<pre class="sample-output">Traceback (most recent call last):
+  File "ohjelma.py", line 5, in &lt;module&gt;
+    tulosta("Heippa")
+  File "ohjelma.py", line 2, in tulosta
+    for kerta in range(montakoKertaa):
+TypeError: range() integer end argument expected, got str.
+</pre>
+
+<p>
+  Parametrit voi toisaalta myös nimetä funktiokutsun yhteydessä. Alla edellinen esimerkki uudestaan toimivana.
+</p>
+
+<pre class="sh_python code-highlight"><code>tulosta(tulostettava="Heippa")
+</code></pre>
+
+<pre class="sample-output">Heippa
+</pre>
+
+
+<p>
+  Vaikka kaikki Pythonin muuttujat ovat olioita, on Pythonissa silti näkyvissä Javan kaltainen käyttäytyminen alkeis- ja viittaustyyppisiin muuttujiin liittyen. Käytännössä Pythonin luvut ovat muuttumattomia (immutable), ja niiden muuttaminen luo uuden olion.
+</p>
+
+<p>
+  Kun funktiokutsussa annetaan parametri, parametrin arvo kopioituu suoritettavan funktion käyttöön funktion suorituksen ajaksi. Tämä käytännössä tarkoittaa sitä, että muuttumattomien muuttujien käsittely funktion sisällä ei vaikuta muuttujan arvoon funktion ulkopuolella, kun taas muuttuvien muuttujien käsittely voi vaikuttaa myös funktion ulkopuolella olevaan muuttujan arvoon.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>def lisaaListaan(lista):
+    lista.append(1)
+
+def lisaaLukuun(luku):
+    luku += 1
+</code></pre>
+
+<pre class="sh_python code-highlight"><code>lista = []
+print(lista)
+lisaaListaan(lista)
+print(lista)
+
+luku = 0
+print(luku)
+lisaaLukuun(luku)
+print(luku)
+</code></pre>
+
+<pre class="sample-output">[]
+[1]
+0
+0
+</pre>
+
+<p>
+  Kuten Javassa, funktiosta voi palauttaa arvon <code>return</code>-komennolla.
+</p>
+
+<pre class="sh_python code-highlight"><code>def lisaaLukuun(luku):
+    luku += 1
+    return luku
+</code></pre>
+
+<pre class="sh_python code-highlight"><code>luku = 0
+print(luku)
+lisaaLukuun(luku)
+print(luku)
+luku = lisaaLukuun(luku)
+print(luku)
+</code></pre>
+
+<pre class="sample-output">0
+0
+1
+</pre>
+
+
+<p>
+  Lisää funktioiden määrittelystä osoitteessa <a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions" target="_blank" norel>https://docs.python.org/3/tutorial/controlflow.html#defining-functions</a>.
+</p>
+
+
+<h1 class="material-heading">
+    Olio-ohjelmointi
+
+</h1>
+
+<p>
+  Python tarjoaa välineet myös olio-ohjelmointiin. Kuten Javassa, luokan luominen Pythonissa luo kieleen uuden muuttujatyypin, johon voidaan viitata jatkossa. Luokka luodaan avainsanalla <code>class</code>, jota seuraa luokan nimi sekä kaksoispiste. Kaksoispistettä seuraa luokan sisältämä lohko.
+</p>
+
+<p>
+  Alla luodaan luokka <code>Henkilo</code> sekä määritellään sille konstruktori. Konstruktori on aina nimeltä <code>__init__</code> ja se saa parametrinaan vähintään <code>self</code>-viitteen. Viite <code>self</code> on Javan <code>this</code>-viitteen kaltainen ja se viittaa aina käsiteltävään olioon.
+</p>
+
+<p>
+  Javasta poiketen, Pythonissa oliomuuttujat määritellään tyypillisesti osana konstruktoria.
+</p>
+
+<pre class="sh_python code-highlight"><code>class Henkilo:
+    def __init__(self):
+        self.nimi = "Matti Meikäläinen"
+</code></pre>
+
+<p>
+  Konstruktoria kutsutaan luokan nimen kautta. Alla olevassa esimerkissä luodaan uusi henkilöolio, joka tulostetaan.
+</p>
+
+<pre class="sh_python code-highlight"><code>h = Henkilo()
+print(h)
+</code></pre>
+
+<pre class="sample-output"><__main__.Henkilo object at 0x7f8cb49e8898>
+</pre>
+
+<p>
+  Pythonissa Javan <code>toString</code>-metodia vastaa metodi <code>__str__</code>. Muokataan luokkaa <code>Henkilo</code> siten, että henkilön tulostaminen tulostaa henkilön nimen.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>class Henkilo:
+    def __init__(self):
+        self.nimi = "Matti Meikäläinen"
+
+    def __str__(self):
+        return self.nimi
+</code></pre>
+
+<p>
+  Nyt tulostus on ymmärrettävämpi.
+</p>
+
+<pre class="sh_python code-highlight"><code>h = Henkilo()
+print(h)
+</code></pre>
+
+<pre class="sample-output">Matti Meikäläinen
+</pre>
+
+<p>
+  Olioon liittyvien metodien määrittely tapahtuu määrittelemällä self-parametrillisia funktioita luokan sisälle. Alla luokan Henkilo konstruktoria on muutettu siten, että nimen voi halutessaan antaa parametrina. Tämän lisäksi henkilöllä on ikä, joka muuttuu metodia vanhene kutsuttaessa.
+</p>
+
+<pre class="sh_python code-highlight"><code>class Henkilo:
+    def __init__(self, nimi = "Matti Meikäläinen"):
+        self.nimi = nimi
+        self.ika = 0
+
+    def vanhene(self):
+        self.ika += 1
+
+    def __str__(self):
+        return self.nimi + ", ikä: " + str(self.ika)
+</code></pre>
+
+
+<pre class="sh_python code-highlight"><code>matti = Henkilo()
+print(matti)
+matti.vanhene()
+print(matti)
+
+maija = Henkilo("Maija Meikäläinen")
+print(maija)
+</code></pre>
+
+<pre class="sample-output">Matti Meikäläinen, ikä: 0
+Matti Meikäläinen, ikä: 1
+Maija Meikäläinen, ikä: 0
+</pre>
+
+<p>
+  Yllä esitetyllä tavalla esiteltyjä muuttujia voi muuttaa suoraan. Alla Maijan iäksi asetetaan 10.
+</p>
+
+<pre class="sh_python code-highlight"><code>maija = Henkilo("Maija Meikäläinen")
+maija.ika = 10
+print(maija)
+</code></pre>
+
+<pre class="sample-output">Maija Meikäläinen, ikä: 10
+</pre>
+
+<p>
+  Mikäli muuttujista halutaan Javan private-tyyppistä muuttujaa vastaavat, eli sellaiset ettei niitä voida käsitellä suoraan luokan ulkopuolelta, lisätään muuttujien nimen alkuun kaksi alaviivaa.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>class Henkilo:
+    def __init__(self, nimi = "Matti Meikäläinen"):
+        self.__nimi = nimi
+        self.__ika = 0
+
+    def vanhene(self):
+        self.__ika += 1
+
+    def __str__(self):
+        return self.__nimi + ", ikä: " + str(self.__ika)
+</code></pre>
+
+<p>
+  Nyt iän muuttaminen ei onnistu suoraan, mutta vanheneminen on yhä mahdollista.
+</p>
+
+<pre class="sh_python code-highlight"><code>maija = Henkilo("Maija Meikäläinen")
+maija.ika = 10
+maija.__ika = 10
+print(maija)
+maija.vanhene()
+print(maija)
+</code></pre>
+
+<pre class="sample-output">Maija Meikäläinen, ikä: 0
+Maija Meikäläinen, ikä: 1
+</pre>
+
+
+<p>
+  Lisää luokkien ja olioiden luomisesta löytyy Pythonin dokumentaatiosta osoitteessa <a href="https://docs.python.org/3/tutorial/classes.html" target="_blank" norel>https://docs.python.org/3/tutorial/classes.html</a>.
+</p>
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    <a href="../license/">Kiitokset ja materiaalista</a>
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/tsoha-20/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/tsoha-20/edit/master/source/python-alkeet.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/tsoha-20" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-aecf9e21.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+  </body>
+</html>

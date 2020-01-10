@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tietokantasovellus, 2019 | Osa 4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-9213a7cf.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../tyovalineet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=tyovalineet.html&gt;')">Kurssin työvälineet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa0/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa0.html&gt;')">Osa 0</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../python-alkeet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=python-alkeet.html&gt;')">Python-alkeet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../vertaisarviointi/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=vertaisarviointi.html&gt;')">Vertaisarviointi</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://t.me/tkt_tsoha" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Osan 4 etapit
+  </div>
+
+  <div class="hint__body">
+    
+
+  <ul>
+    <li>
+      Sovelluksessa on ainakin kolme tietokantataulua, joista jokainen on käytössä.
+    </li>
+    <li>
+      Sovelluksessa on ainakin yksi monimutkaisempi yhteenvetokysely, jonka tulokset näytetään käyttäjälle.
+    </li>
+    <li>
+      Ulkoasun viilaus. Sovelluksessa käytetään Bootstrap-kirjastoa (tai muuta vastaavaa) ulkoasun tyylittelyssä.
+    </li>
+    <li>
+      Toiminnallisuuden täydentäminen.
+    </li>
+  </ul>
+  
+  
+
+  </div>
+</div>
+
+
+<p>
+  Tietokantasovellus-kurssin neljännen osan materiaali sisältää esimerkin perinnän käytöstä toisteisen sisällön vähentämiseksi tietokohteiden yhteydessä. Tämän lisäksi materiaalissa tarkastellaan yhteenvetokyselyiden rakentamista sekä tulosten näyttämistä. Lopulta tutustutaan lyhyesti Bootstrap-kirjaston käyttöön materiaalin ulkoasun tyylittelyssä.
+</p>
+
+<p>
+  Huomaathan, että materiaali ei sisällä kaikkea harjoitustyöhön tarvittavaa. Oman harjoitustyön tulee luonnollisesti olla erillinen tästä materiaalista.
+</p>
+
+
+<h1 class="material-heading">
+    Tietokohteiden lisääminen
+
+</h1>
+
+<p>
+  Edellisen osan esimerkissä on kaksi tietokantataulua kuvaavaa luokkaa: <code>Task</code> ja <code>User</code>. Luokat ovat seuraavanlaiset.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>from application import db
+  
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
+        onupdate=db.func.current_timestamp())
+
+    name = db.Column(db.String(144), nullable=False)
+    done = db.Column(db.Boolean, nullable=False)
+
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
+        nullable=False)
+
+    def __init__(self, name):
+        self.name = name
+        self.done = False
+</code></pre>
+
+
+<pre class="sh_python code-highlight"><code>from application import db
+from application.models import BaseTable
+
+class User(db.Model):
+
+    __tablename__ = "account"
+  
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
+        onupdate=db.func.current_timestamp())
+
+    name = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False)
+    password = db.Column(db.String(144), nullable=False)
+
+    tasks = db.relationship("Task", backref='account', lazy=True)
+  
+    def __init__(self, name):
+        self.name = name
+  
+    def get_id(self):
+        return self.id
+  
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def is_authenticated(self):
+        return True
+</code></pre>
+
+<p>
+  Kuten huomaamme, luokissa on toisteisuutta. Sekä <code>Task</code> että <code>User</code> sisältävät numeerisen pääavaimen, tiedon luomishetkestä, ja tiedon viimeisestä päivityshetkestä. Olio-ohjelmoinnissa vastaava toisteisuus tyypillisesti yleistetään abstraktiin luokkaan. Sama onnistuu myös tässä.
+</p>
+
+<p>
+  Luodaan <code>application</code>-kansioon tiedosto <code>models.py</code>, ja luodaan tiedostoon "abstrakti" luokka <code>Base</code>. Luokka määritellään "abstraktiksi" SQLAlchemyä varten rivillä <code>__abstract__ = True</code>. Luokka <code>Base</code> tulee sisältämään pääavaimen, tiedon luomishetkestä sekä tiedon viimeisestä päivityshetkestä.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>from application import db
+
+class Base(db.Model):
+
+    __abstract__ = True
+  
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
+        onupdate=db.func.current_timestamp())
+</code></pre>
+
+<p>
+  Kun luokat <code>Task</code> ja <code>User</code> perivät luokan <code>Base</code>, ei luokassa <code>Base</code> määriteltyjä muuttujia tarvitse määritellä uudestaan luokissa <code>Task</code> ja <code>User</code>. Luokan perintä onnistuu lisäämällä perittävän luokan nimi määriteltävän luokan perään sulkuihin. Alla luokat <code>Task</code> ja <code>User</code> uudelleen määriteltyinä siten, että ne perivät luokan <code>Base</code>.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import db
+from application.models import Base
+
+class Task(Base):
+
+    name = db.Column(db.String(144), nullable=False)
+    done = db.Column(db.Boolean, nullable=False)
+
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+
+    def __init__(self, name):
+        self.name = name
+        self.done = False
+</code></pre>
+
+<pre class="sh_python code-highlight"><code>from application import db
+from application.models import Base
+
+class User(Base):
+
+    __tablename__ = "account"
+
+    name = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False)
+    password = db.Column(db.String(144), nullable=False)
+
+    tasks = db.relationship("Task", backref='account', lazy=True)
+  
+    def __init__(self, name):
+        self.name = name
+
+    def get_id(self):
+        return self.id
+  
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def is_authenticated(self):
+        return True
+</code></pre>
+
+<p>
+  Tietokantataulujen määrän kasvaessa vastaavia abstrakteja luokkia voi luoda useampia. Esimerkiksi nimen sisältävä abstrakti luokka saattaa olla hyödyllinen..
+</p>
+
+
+<h1 class="material-heading">
+    Yhteenvetokyselyt
+
+</h1>
+
+<p>
+  Yhteenvetokyselyt (aggregate query, aggregate function) ovat kyselyitä, joilla haetaan yhteenvetotietoa tietokannasta. Käyttäjiä ja tehtäviä sisältävässä esimerkissämme yhteenvetokyselyitä voisivat olla muunmuassa "kuinka monta tekemätöntä tehtävää tietokannassa on?", "kuinka monta tehtävää kullakin käyttäjällä on?", ja "ketkä käyttäjät ovat tehneet kaikki heille määrätyt tehtävät?". Tarkalleenottaen SQL:n kyselyt <code>MIN, MAX, SUM, AVG ja COUNT</code> ovat yhteenvetokyselyitä.
+</p>
+
+<p>
+  SQL-kielellä SQLitessä kyselyt olisivat muotoa:
+</p>
+
+<pre class="sh_sql code-highlight"><code>SELECT COUNT(Task.id) FROM Task WHERE Task.done = 0; 
+</code></pre>
+
+<pre class="sh_sql code-highlight"><code>SELECT Account.id, Account.name, COUNT(Task.id) FROM Account
+    LEFT JOIN Task ON Task.account_id = Account.id
+    GROUP BY Account.id
+</code></pre>
+
+<pre class="sh_sql code-highlight"><code>SELECT Account.id, Account.name FROM Account
+    LEFT JOIN Task ON Task.account_id = Account.id
+    WHERE (Task.done IS null OR Task.done = 1)
+    GROUP BY Account.id
+    HAVING COUNT(Task.id) = 0
+</code></pre>
+
+<p>
+  Näistä kaksi viimeistä vastaavat kurssiarvostelun "laajempia yhteenvetokyselyitä". Vaikka ensimmäinenkin on toki yhteenvetokysely, se on hyvin yksinkertainen ja kattaa vain yhden taulun.
+</p>
+
+<p>
+  Yhteenvetokyselyt määritellään models.py -tiedostoon luokkakohtaisina metodeina. Alla esimerkki, missä viimeinen yllä kuvatuista kyselyistä suoritetaan sekä kyselyn tulokset tulostetaan konsoliin.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import db
+from application.models import Base
+
+from sqlalchemy.sql import text
+
+class User(Base):
+
+    __tablename__ = "account"
+
+    name = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False)
+    password = db.Column(db.String(144), nullable=False)
+
+    tasks = db.relationship("Task", backref='account', lazy=True)
+  
+    def __init__(self, name):
+        self.name = name
+
+    def get_id(self):
+        return self.id
+  
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def is_authenticated(self):
+        return True
+
+
+    @staticmethod
+    def find_users_with_no_tasks():
+        stmt = text("SELECT Account.id, Account.name FROM Account"
+                    " LEFT JOIN Task ON Task.account_id = Account.id"
+                    " WHERE (Task.done IS null OR Task.done = 1)"
+                    " GROUP BY Account.id"
+                    " HAVING COUNT(Task.id) = 0")
+        res = db.engine.execute(stmt)
+  
+        for row in res:
+            print(row[0])
+            print(row[1])
+</code></pre>
+
+<p>
+  Kun luokassa <code>User</code> määriteltyä metodia <code>find_users_with_no_tasks</code> kutsutaan, tulostuu kyselyn tulosrivit konsoliin.
+</p>
+
+<p>
+  Metodia voi luonnollisesti muokata siten, että se palauttaa arvon. Alla tuloksista luodaan lista, joka sisältää jokaiseen tulosriviin liittyvän hajautustaulun.
+</p>
+
+<pre class="sh_python code-highlight"><code># ...
+  
+    @staticmethod
+    def find_users_with_no_tasks():
+        stmt = text("SELECT Account.id, Account.name FROM Account"
+                     " LEFT JOIN Task ON Task.account_id = Account.id"
+                     " WHERE (Task.done IS null OR Task.done = 1)"
+                     " GROUP BY Account.id"
+                     " HAVING COUNT(Task.id) = 0")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response
+</code></pre>
+
+<p>
+  Nyt metodia voidaan kutsua muualta sovelluksesta. Luodaan sovellukseen mahdollisuus tehtäviä tarvitsevien käyttäjien listaamiseen. Lisätään ensin <code>application</code>-kansion tiedostoon <code>views.py</code> kutsu metodiin ja lisätään metodikutsun palauttama lista osaksi pääsivun luomista.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import render_template
+from application import app
+from application.auth.models import User
+
+@app.route('/')
+def index():
+    return render_template("index.html", needs_tasks=User.find_users_with_no_tasks())
+</code></pre>
+
+<p>
+  Muokataan tämän jälkeen etusivua (eli <code>templates</code>-kansion tiedostoa <code>index.html</code>) siten, että se listaa <code>needs_tasks</code>-listan sisällön mikäli listalla on sisältöä. Alla hajautustaulun avaimiin viitataan HTML-tiedostosta suoraan niiden nimillä.
+</p>
+
+<pre class="sh_xml code-highlight"><code>{% extends "layout.html" %}
+
+{% block body %}
+&lt;p&gt;
+  Hello world!
+&lt;/p&gt;
+
+{% if needs_tasks is defined %}
+&lt;p&gt;
+  The following users need work:
+&lt;/p&gt;
+
+&lt;ul&gt;
+  {% for user in needs_tasks %}
+  &lt;li&gt;
+    {{user.id}} {{user.name}}
+  &lt;/li&gt;
+  {% endfor %}
+&lt;/ul&gt;
+
+{% endif %}
+
+{% endblock %}
+</code></pre>
+
+<p>
+  Nyt sovelluksen etusivu näyttää (esimerkiksi) seuraavalta. Alla olevassa esimerkissä tietokannassa on yksi käyttäjä, jolla ei ole tällä hetkellä tehtäviä.
+</p>
+
+<img src="../img/needs_work-08e1033b.png" alt="Etusivulla näkyy käyttäjä, joka tarvitsee työtä."/>
+
+<p>
+  &nbsp;
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>SQL-injektiot, parametrit ja lisää aiheesta
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Kyselyihin halutaan usein lisätä parametreja. Mikäli parametrit lisätään suoraan osaksi SQL-lausetta, luodaan mahdollisuus SQL-injektioon. SQLAlchemy tarjoaa mahdollisuuden parametrien lisäämiseen <code>text</code>-metodin palauttaman arvon sisältämän <code>params</code>-metodin avulla. Tällöin parametrit määritellään osaksi tekstimuodossa annettavaa kyselyä kaksoispisteiden avulla, esim <code>arvo = :parametri</code>, ja parametrien arvot annetaan metodilla <code>params</code>.
+  </p>
+
+  <p>
+    Muokataan yllä olevaa esimerkkiä siten, että voimme valita joko edellisen esimerkin tai toiminnallisuuden, jolla haemme käyttäjiä, joilla ei ole koskaan ollutkaan tehtäviä tai joilla on tekemättömiä tehtäviä. Tämä tapahtuu muuntamalla kyselyä siten, että <code>Task.done</code>-kentän arvo voidaan määritellä parametrina.
+  </p>
+
+<pre class="sh_python code-highlight"><code># ...
+    @staticmethod
+    def find_users_with_no_tasks(done=0):
+        stmt = text("SELECT Account.id, Account.name FROM Account"
+                     " LEFT JOIN Task ON Task.account_id = Account.id"
+                     " WHERE (Task.done IS null OR Task.done = :done)"
+                     " GROUP BY Account.id"
+                     " HAVING COUNT(Task.id) = 0").params(done=done)
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response
+</code></pre>
+
+  <p>
+    Nyt metodikutsulle voitaisiin antaa myös parametrina arvo <code>1</code>, jolloin kyselyn toiminnallisuus muuttuu.
+  </p>
+
+  <p>
+    SQLAlchemy tarjoaa myös mahdollisuuden yhteenvetokyselyiden tekemiseen ohjelmallisesti. Harjoitustyössä yhteenvetokyselyt tulee kirjoittaa SQL-kielellä. Aiheesta lisää <a href="http://docs.sqlalchemy.org/en/latest/orm/tutorial.html" target="_blank">http://docs.sqlalchemy.org/en/latest/orm/tutorial.html</a>.
+  </p>
+  
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Ulkoasun viilaus
+
+</h1>
+
+<p>
+  Isohko osa verkkosovelluksista käyttää nykyään ulkoasun määrittelyyn <a href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)" target="_blank" norel>Bootstrap</a>-kirjastoa. Osoitteessa <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank" norel>https://getbootstrap.com/docs/4.0/getting-started/introduction/</a> on ohjeistus alkuun pääsemiseksi ja osoitteessa <a href="https://getbootstrap.com/docs/4.0/examples/" target="_blank" norel>https://getbootstrap.com/docs/4.0/examples/</a> on nippu esimerkkejä. Verkossa on myös liuta muita sivustoja kuten <a href="https://startbootstrap.com/" target="_blank" norel>https://startbootstrap.com/</a>, jotka tarjoavat Bootstrap-teemoja.
+</p>
+
+<p>
+  Muokataan tässä sovellustamme siten, että valikko ja kirjautuminen on yläpalkissa, ja tehtävien listaus on hieman tyylikkäämpi.
+</p>
+
+<p>
+  Muokkaus aloitetaan lisäämällä <code>templates</code>-kansion <code>layout.html</code>-tiedostoon tarvittavat riippuvuudet.
+</p>
+
+<pre class="sh_xml code-highlight"><code>  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;TodoApplication&lt;/title&gt;
+      &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"&gt;
+    &lt;/head&gt;
+    
+    &lt;body&gt;
+      {% if current_user.is_authenticated %}
+      &lt;p&gt;
+	Kirjautunut nimellä {{ current_user.name }}. &lt;a href="{{ url_for('auth_logout') }}"&gt;Kirjaudu ulos&lt;/a&gt;
+      &lt;/p&gt;
+      {% else %}
+      &lt;a href="{{ url_for('auth_login') }}"&gt;Kirjaudu&lt;/a&gt;
+      {% endif %}
+      
+      &lt;ul&gt;
+	&lt;li&gt;&lt;a href="{{ url_for('tasks_index') }}"&gt;List tasks&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="{{ url_for('tasks_form') }}"&gt;Add a task&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      
+      {% block body %}
+      &lt;p&gt;
+	Content.
+      &lt;/p&gt;
+      {% endblock %}
+
+      &lt;script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"&gt;&lt;/script&gt;
+      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"&gt;&lt;/script&gt;
+      &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</code></pre>
+
+<p>
+  Nyt Bootstrap on sovelluksen käytössä. Tämä näkyy heti etusivun ulkoasun muutoksena, sillä fontit näyttävät hieman erilaiselta.
+</p>
+
+<img src="../img/bootstrap-1-c669d4db.png" alt="Ulkoasu muuttunut. Sivun fontit näyttävät erilaiselta."/>
+
+<p>
+  Lisätään seuraavaksi yläpalkki. Käytetään osoitteessa <a href="https://getbootstrap.com/docs/4.0/examples/navbar-static/" target="_blank" norel>https://getbootstrap.com/docs/4.0/examples/navbar-static/</a> olevaa sivua esimerkkinä. Sivun lähdekoodista huomaamme, että yläpalkin luomiseen on käytetty seuraavaa koodia.
+</p>
+
+<pre class="sh_xml code-highlight"><code>&lt;nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;Top navbar&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarCollapse"&gt;
+    &lt;ul class="navbar-nav mr-auto"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="#"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link disabled" href="#"&gt;Disabled&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;form class="form-inline mt-2 mt-md-0"&gt;
+      &lt;input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"&gt;
+      &lt;button class="btn btn-outline-success my-2 my-sm-0" type="submit"&gt;Search&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<p>
+  Muokataan yläpalkista käyttötarkoitukseemme sopiva. Käyttöliittymässä on linkit tehtävien listaukseen sekä tehtävien lisäämiseen. Näiden lisäksi käyttäjä voi kirjautua.
+</p>
+
+<pre class="sh_xml code-highlight"><code>  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;TodoApplication&lt;/title&gt;
+      &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"&gt;
+    &lt;/head&gt;
+    
+    &lt;body&gt;
+
+      &lt;nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4"&gt;
+	&lt;a class="navbar-brand" href="#"&gt;TodoApplication&lt;/a&gt;
+	&lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"&gt;
+          &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+	&lt;/button&gt;
+	&lt;div class="collapse navbar-collapse" id="navbarCollapse"&gt;
+          &lt;ul class="navbar-nav mr-auto"&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link" href="{{ url_for('tasks_index') }} "&gt;List tasks&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link" href="{{ url_for('tasks_form') }} "&gt;Add a task&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class="form-inline mt-2 mt-md-0"&gt;
+	    {% if current_user.is_authenticated %}
+	    &lt;a href="{{ url_for('auth_logout') }}"&gt;Hello {{ current_user.name }} -- Logout&lt;/a&gt;
+	    {% else %}
+	    &lt;a href="{{ url_for('auth_login') }}"&gt;Login&lt;/a&gt;
+	    {% endif %}
+          &lt;/div&gt;
+	&lt;/div&gt;
+      &lt;/nav&gt;
+      
+      {% block body %}
+      &lt;p&gt;
+	Content.
+      &lt;/p&gt;
+      {% endblock %}
+
+      &lt;script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"&gt;&lt;/script&gt;
+      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"&gt;&lt;/script&gt;
+      &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</code></pre>
+
+<p>
+  Sovellus näyttää nyt seuraavanlaiselta.
+</p>
+
+<img src="../img/bootstrap-2-cdbc0a07.png" alt="Ulkoasussa on yläpalkki."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Suurimmassa osassa sovelluksista käyttäjälle näytettävä sisältö on ruudulla ainakin osittain keskitetty. Myös tähän löytyy valmis esimerkki -- hyödynnetään osoitteessa <a href="https://getbootstrap.com/docs/4.0/examples/starter-template/" target="_blank" norel>https://getbootstrap.com/docs/4.0/examples/starter-template/</a> olevan sivun tyyliä sivun keskiosan asettelussa. Sivun lähdekoodia tarkastelemalla huomaamme, että asettelu onnistuu seuraavalla tavalla.
+</p>
+
+
+<pre class="sh_xml code-highlight"><code>&lt;main role="main" class="container"&gt;
+
+  &lt;div class="starter-template"&gt;
+    &lt;h1&gt;Bootstrap starter template&lt;/h1&gt;
+    &lt;p class="lead"&gt;Use this document as a way to quickly start any new project.&lt;br&gt; All you get is this text and a mostly barebones HTML document.&lt;/p&gt;
+  &lt;/div&gt;
+
+&lt;/main&gt;
+</code></pre>
+
+<p>
+  Tuodaan tyyli osaksi tiedostoa <code>layout.html</code>.
+</p>
+
+<pre class="sh_xml code-highlight"><code>  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;TodoApplication&lt;/title&gt;
+      &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"&gt;
+    &lt;/head&gt;
+    
+    &lt;body&gt;
+
+      &lt;nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4"&gt;
+	&lt;a class="navbar-brand" href="#"&gt;TodoApplication&lt;/a&gt;
+	&lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"&gt;
+          &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+	&lt;/button&gt;
+	&lt;div class="collapse navbar-collapse" id="navbarCollapse"&gt;
+          &lt;ul class="navbar-nav mr-auto"&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link" href="{{ url_for('tasks_index') }} "&gt;List tasks&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link" href="{{ url_for('tasks_form') }} "&gt;Add a task&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class="form-inline mt-2 mt-md-0"&gt;
+	    {% if current_user.is_authenticated %}
+	    &lt;a href="{{ url_for('auth_logout') }}"&gt;Hello {{ current_user.name }} -- Logout&lt;/a&gt;
+	    {% else %}
+	    &lt;a href="{{ url_for('auth_login') }}"&gt;Login&lt;/a&gt;
+	    {% endif %}
+          &lt;/div&gt;
+	&lt;/div&gt;
+      &lt;/nav&gt;
+
+      
+      &lt;main role="main" class="container"&gt;
+	{% block body %}
+	&lt;p&gt;
+	  Content.
+	&lt;/p&gt;
+	{% endblock %}
+      &lt;/main&gt;
+
+      &lt;script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"&gt;&lt;/script&gt;
+      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"&gt;&lt;/script&gt;
+      &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</code></pre>
+
+
+<p>
+  Sovellus näyttää nyt seuraavanlaiselta.
+</p>
+
+<img src="../img/bootstrap-3-355c879f.png" alt="Ulkoasussa on yläpalkki ja sisältö on keskitetty."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Sovelluksen sisäsivujen kuten lomakkeiden ulkoasun viilauksessa on hyvä käyttää myös Bootstrap-kirjastoa. Sivun <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank" norel>https://getbootstrap.com/docs/4.0/getting-started/introduction/</a> hakutoiminnallisuuden kautta löytää suurimman osan yksinkertaisilla verkkosivuilla tarvituista komponenteista. Esimerkiksi lomakkeiden tyylittelyyn löytyy ohjeistusta osoitteesta <a href="https://getbootstrap.com/docs/4.0/components/forms/" target="_blank" norel>https://getbootstrap.com/docs/4.0/components/forms/</a>.
+</p>
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    <a href="../license/">Kiitokset ja materiaalista</a>
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/tsoha-20/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/tsoha-20/edit/master/source/osa4.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/tsoha-20" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-aecf9e21.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+  </body>
+</html>

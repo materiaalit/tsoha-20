@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tietokantasovellus, 2019 | Osa 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-9213a7cf.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../tyovalineet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=tyovalineet.html&gt;')">Kurssin työvälineet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa0/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa0.html&gt;')">Osa 0</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../python-alkeet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=python-alkeet.html&gt;')">Python-alkeet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../vertaisarviointi/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=vertaisarviointi.html&gt;')">Vertaisarviointi</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://t.me/tkt_tsoha" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Osan 2 etapit
+  </div>
+
+  <div class="hint__body">
+    
+
+  <ul>
+    <li>
+      Githubissa olevan projektin rakenne on selkeä
+      <ul>
+	<li>erillinen kansio sovellukselle</li>
+	<li>erillinen kansio dokumentaatiolle</li>
+	<li>sovelluksen toiminnallisuutta jaoteltu kansioihin</li>
+      </ul>
+    </li>
+    <li>
+      Projektissa käytössä tietokanta sekä yksi tietokohde (tietokantataulu).
+      <ul>
+	<li>tietokannasta voi hakea tietoa</li>
+	<li>tietokantaan voi lisätä tietoa</li>
+	<li>tietokannassa olevaa tietoa voi päivittää</li>
+	<li>tietokantaa käytetään paikallisesti SQLite-tietokannanhallintajärjestelmän avulla</li>
+      </ul>
+    </li>
+    <li>
+      Projektissa on näkymät (html-sivut) tiedon listaamiseen, tiedon lisäämiseen sekä tiedon päivittämiseen (mikäli käyttötapausten kannalta oleellista). HTML-sivujen tarjoama toiminnallisuus yhteydessä Flaskin kautta tietokantaan.
+    </li>
+    <li>
+      Projektissa on valikko, josta pääsee helposti oleellisimmille sivuille.
+    </li>
+    <li>
+      Dokumentaatio kehittyy.
+      <ul>
+	<li>
+	  Projektin päädokumentti (juuren README.md) sisältää myös linkin Herokussa toimivaan sovellukseen.
+	</li>
+	<li>	  
+	  Dokumentaatiokansiossa sovelluksen toiminnallisuuden kannalta oleelliset käyttötapaukset tai user storyt (kts. <a href="https://www.mountaingoatsoftware.com/agile/user-stories" target="_blank" norel>esimerkkejä</a>).
+	</li>
+	<li>
+	  Projektin päädokumentti (juuren README.md) sisältää linkit käyttötapauksiin tai user storyihin sekä tietokantakaavioon.
+	</li>
+	<li>
+	  Muista kirjoittaa dokumentaatio Markdown-muodossa. Voit katsoa vihjeitä muotoiluun esimerkiksi <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" norel>täältä.</a>
+	</li>
+      </ul>
+    </li>
+    
+    <li>
+      Commit-viestit githubiin järkeviä.
+    </li>
+    <li>
+      Githubissa ei turhia tiedostoja (virtuaaliympäristöä kuvaava kansio, cachet, käyttöjärjestelmäkohtaiset tiedot..).
+    </li>
+      <li>
+        Sovellus toimii ja on olemassa Herokussa.
+    </li>
+  </ul>
+  
+  
+
+  </div>
+</div>
+
+
+<p>
+  Tietokantasovellus-kurssin toisen osan materiaali sisältää esimerkin tehtävien hallintaan tarkoitetun sovelluksen luomisesta. Materiaalissa luodaan ensin hieman isommalle projektille sopiva projektirakenne, jonka jälkeen luodaan tehtävien hallintaan tarvittavaa toiminnallisuutta projektia varten. Esimerkin keskiössä on tietokannan käyttö valmiin ORM-kirjaston kautta sekä tietokannan ja näkymien yhteiskäyttö. Käytännössä tässä osassa siis aloitetaan oman projektin tekeminen.
+</p>
+
+<p>
+  Huomaathan, että materiaali ei sisällä kaikkea harjoitustyöhön tarvittavaa. Oman harjoitustyön tulee luonnollisesti olla erillinen tästä materiaalista.
+</p>
+
+<h1 class="material-heading">
+    Hieman isomman projektin rakenne
+
+</h1>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Huom!
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Huom! Tässä pohjan rakennus lähtee tyhjästä. Jos edellistä osaa tehdessä aloitit jo tekemään omaa sovellusta, seuratessasi mieti miten saat saman tehtyä jo olemassaolevalle projektipohjallesi -- sen sijaan, että teet uusia tiedostoja, siirtelet todennäköisesti asioita paikasta toiseen.
+  </p>
+
+  <p>
+    Esimerkiksi materiaalin lukujen 1.1 ja 1.2 askelten pitäisi olla jo projektissasi kunnossa, jos oma projektisi on aloitettu.
+  </p>
+
+  <p>
+    Edellisessä osassa harjoiteltiin työkalujen käyttöä. Nyt otetaan hankittu osaaminen käyttöön ja aloitetaan oman sovelluksen tekeminen. Tämän osan avulla saat projektin rakenteen oikeanlaiseksi.
+  </p>
+
+
+  </div>
+</div>
+
+<p>
+  Luodaan ensin "walking skeleton" eli toimiva lähes tyhjä projektipohja. Kun käytössämme on toimiva pohja, voimme aloittaa toiminnallisuuden lisäämisen. Tämä kertaa vahvasti osan 1 materiaalia, mutta mukana on uutta tietoa esimerkiksi moduulien (kansioiden) hallintaan.
+</p>
+
+<p>
+  Koska projektimme on laajempi, suunnitellaan projektin hakemistorakenne uusiksi. Oleellisin muutos edelliseen osaan on se, että sovellukseen liittyvät lähdekooditiedostot ovat omassa kansiossaan -- tällöin projektin kasvaessa juurihakemisto pysyy selkeänä.
+</p>
+
+<ul>
+  <li><code>/venv/</code> - kansio sisältää virtuaaliympäristön tiedot.</li>
+  <li><code>/application/</code> - kansio sisältää sovelluksen tiedostot.</li>
+  <li><code>/documentation/</code> - kansio sisältää sovelluksen dokumentaation.</li>
+  <li><code>README.md</code> - juurikansiossa oleva dokumentaatio, näkyy projektiin liittyvän Github-repon etusivulla.</li>
+  <li><code>run.py</code> - sovelluksen käynnistämiseen tarvittava Python-lähdekoodi.</li>
+  <li><code>requirements.txt</code> - virtuaaliympäristön riippuvuudet.</li>
+  <li><code>Procfile</code> - ohjeistus tiedoston käynnistämiseen Herokussa.</li>
+  <li><code>.gitignore</code> - tieto projektiin liittyvistä tiedostoista, joita ei säilötä versionhallinnassa.</li>
+</ul>
+
+<h2 class="material-heading">
+    Sovelluskansion luominen ja virtuaaliympäristö
+
+</h2>
+
+<p>
+  Luodaan ensin kansio sovellukselle, jonka alle kaikki tiedot tulevat. Tässä esimerkissä rakennetaan tehtävien hallintaan käytettävää sovellusta, joten luonteva nimi kansiolle on <code>todosovellus</code>.
+</p>
+
+<pre class="terminal">$ mkdir todosovellus
+$ cd todosovellus
+~/todosovellus$
+</pre>
+
+<p>
+  Luodaan seuraavaksi kansioon virtuaaliympäristö <code>venv</code>, johon tulee projektin riippuvuudet.
+</p>
+
+<pre class="terminal">~/todosovellus$ python3 -m venv venv
+~/todosovellus$ ls -a
+. .. venv
+~/todosovellus$ 
+</pre>
+
+<p>
+  Aktivoidaan tämän jälkeen virtuaaliympäristö.
+</p>
+
+<pre class="terminal">~/todosovellus$ source venv/bin/activate
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Nyt ladattavat riippuvuudet tulevat tämän projektin käyttöön, eivätkä ne vaikuta muihin projekteihin.
+</p>
+
+<p>
+  Lisätään jo tässä vaiheessa "venv"-kansio tiedostoon <code>.gitignore</code>. Tällöin virtuaaliympäristöön liittyviä tiedostoja ei lisätä versionhallintaan.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ echo "venv" >> .gitignore
+(venv) ~/todosovellus$ cat .gitignore
+venv
+(venv) ~/todosovellus$ ls -a
+. .. venv .gitignore
+(venv) ~/todosovellus$
+</pre>
+
+
+<h2 class="material-heading">
+    Riippuvuuksien hakeminen
+
+</h2>
+
+<p>
+  Haetaan seuraavaksi projektin käyttöön Flask. Päivitetään ensin riippuvuuksien hakemiseen tarvittava <code>pip</code>.
+</p>
+
+<pre class="terminal">~/todosovellus$ source venv/bin/activate
+(venv) ~/todosovellus$ pip install --upgrade pip
+  ...
+Successfully installed pip-9.0.1
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Ja asennetaan Flask.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ pip install Flask
+  ... 
+Successfully installed Flask-0.12.2 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 click-6.7 itsdangerous-0.24
+(venv) ~/todosovellus$
+</pre>
+
+
+<h2 class="material-heading">
+    Sovellus omaan kansioon
+
+</h2>
+
+<p>
+  Aloitetaan nyt sovelluskansion luominen. Sovellus tulee kansioon <code>/application</code> -- luodaan se.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ mkdir application
+(venv) ~/todosovellus$ ls -a
+. .. application venv .gitignore
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Python käsittelee jokaisen kansion moduulina, jotka käyttäytyvät hieman kuin Javan pakkaukset. Jokaisella moduulilla (pakkauksella) tulee olla tiedosto nimeltä <code>__init__.py</code>, joka kertoo Pythonille, että kyseinen kansio sisältää projektin kannalta oleellista lähdekoodia.
+</p>
+
+<p>
+  Tiedosto <code>__init__.py</code> voi sisältää myös lähdekoodia, joka suoritetaan sovelluksen alustamisen yhteydessä. Sovelluksemme on Flask-sovellus -- käynnistetään Flask osana <code>__init__.py</code>-tiedoston suoritusta. Kansiossa <code>application</code> olevan tiedoston <code>__init__.py</code> sisältö tulee olemaan aluksi seuraava.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+</code></pre>
+
+<pre class="terminal">(venv) ~/todosovellus$ cd application
+(venv) ~/todosovellus/application$ cat __init__.py
+from flask import Flask
+app = Flask(__name__)
+(venv) ~/todosovellus/application$ cd ..
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Sovelluksen käyttöön tulee siis muuttuja <code>app</code>, joka viittaa Flaskiin.
+</p>
+
+<p>
+  Luodaan seuraavaksi sovelluksen juurikansioon tiedosto <code>run.py</code>, jota käytetään sovelluksen käynnistämiseen. Tiedoston ensimmäiselle riville tulee komento <code>from application import app</code>, eli lataa moduulista <code>application</code> muuttuja <code>app</code>. Tässä moduuli <code>application</code> tarkoittaa käytännössä kansiota <code>application</code> ja <code>app</code> kansiossa olevan <code>__init__.py</code> lähdekoodin suorittamisen yhteydessä luotavaa <code>app</code>-muuttujaa, joka viittaa Flaskiin.
+</p>
+
+<p>
+  Tämän lisäksi tiedostoon tulee sovelluksen käynnistämiseen tarvittava komento. Tiedosto <code>run.py</code> kokonaisuudessaan.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import app
+
+if __name__ == '__main__':
+    app.run(debug=True)
+</code></pre>
+
+<p>
+  Komentoriviltä tiedoston <code>run.py</code> tarkastelu onnistuu <code>cat</code>-komennolla.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ cat run.py
+from application import app
+
+if __name__ == '__main__':
+    app.run(debug=True)
+(venv) ~/todosovellus$ ls -a
+. .. application venv run.py .gitignore
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Nyt sovelluksen voi käynnistää komennolla <code>python run.py</code>.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ python run.py
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+* Restarting with stat
+* Debugger is active!
+* Debugger PIN: 140-705-06
+</pre>
+
+<p>
+  Kun osoite <a href="http://localhost:5000/" target="_blank" norel>http://localhost:5000/</a> tai <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a> avataan selaimessa, vastauksena on sivu, joka kertoo ettei osoitteesta löydy mitään.
+</p>
+
+<img src="../img/not-found-64769d9c.png" alt="Not found."/>
+
+<p>
+  Tarkemmin ottaen sivu kertoo, että osoitteessa <em>on</em> olemassa pyyntöjä vastaanottava palvelin. Palvelimella ei vaan ole kytketty toiminnallisuutta kyseiseen polkuun.
+</p>
+
+<p>
+  Sovellus sammuu painamalla <code>ctrl</code> ja <code>c</code> samaan aikaan terminaalissa. Huomaamme vielä, että kansioon <code>application</code> on tullut sovelluksen käynnistyksen yhteydessä uutta sisältöä.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ python run.py
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+* Restarting with stat
+* Debugger is active!
+* Debugger PIN: 140-705-06
+^C(venv) ~/todosovellus$ ls -a application
+. .. __pycache__ __init__.py
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Jokaiseen kansioon, jossa olevassa python-tiedostossa tuodaan käyttöön muiden moduulien tietoja (esim <code>from flask import Flask</code>), luodaan Pythonin puolesta <code>__pycache__</code>-kansio. Se sisältää paikallisia välimuistitiedostoja sovellukseen liittyen. Emme halua niitä versionhallintaan, joten päivitetään projektin <code>.gitignore</code>-tiedoston sisältöä.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ cat .gitignore
+venv
+(venv) ~/todosovellus$ echo "__pycache__" >> .gitignore
+(venv) ~/todosovellus$ cat .gitignore
+venv
+__pycache__
+(venv) ~/todosovellus$ 
+</pre>
+
+
+<h2 class="material-heading">
+    Ensimmäiset HTML-sivut
+
+</h2>
+
+<p>
+  Tehdään sovellukselle HTML-sivut, joita käytetään sisällön näyttämiseen. Luodaan kansioon <code>application</code> kansio <code>templates</code>, jonka alle HTML-sivut asetetaan.
+</p>
+
+
+<pre class="terminal">(venv) ~/todosovellus$ cd application
+(venv) ~/todosovellus/application$ mkdir templates
+(venv) ~/todosovellus/application$ cd templates
+(venv) ~/todosovellus/application/templates$ 
+</pre>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Kansio <code>templates</code>
+  </div>
+
+  <div class="hint__body">
+      
+  <p>
+    Huomaathan, että kansion nimen tulee olla täsmälleen <code>templates</code>. Tämä liittyy ns. <a href="https://en.wikipedia.org/wiki/Convention_over_configuration" target="_blank" norel>convention over configuration</a> -ajatteluun -- Flask olettaa, että näkymät löytyvät kansiosta <code>templates</code>. Mikäli päätät käyttää jotain toista kansiota näkymille, joudut sekä muokkamaan <a href="http://flask.pocoo.org/docs/0.12/api/#application-object" target="_blank" norel>sovelluksen käynnistyskomentoa</a> että dokumentoimaan kansion nimen tuleville sukupolville.
+  </p>
+    
+
+  </div>
+</div>
+
+<p>
+  Luodaan kansioon <code>templates</code> tiedostot <code>layout.html</code>, jota käytetään sivun ulkoasun pohjana, ja <code>index.html</code>, joka toimii sivuston pääsivuna.
+</p>
+
+<p>
+  Tiedoston <code>layout.html</code> sisällöksi tulee seuraava.
+</p>
+
+<pre class="sh_xml code-highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;TodoApp&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    {% block body %}
+      &lt;p&gt;
+        Content.
+      &lt;/p&gt;
+    {% endblock %}
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+
+<p>
+  Ja tiedoston <code>index.html</code> sisällöksi seuraava.
+</p>
+
+<pre class="sh_xml code-highlight"><code>{% extends "layout.html" %}
+
+{% block body %}
+  &lt;p&gt;
+    Hello world!
+  &lt;/p&gt;
+{% endblock %}
+</code></pre>
+
+<p>
+  Nyt kansion <code>templates</code> sisältö on seuraava.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus/application/templates$ ls -a
+. .. index.html layout.html
+</pre>
+
+
+
+<h2 class="material-heading">
+    Sivujen näyttäminen sovelluksen kautta
+
+</h2>
+
+<p>
+  Lisätään sovellukselle seuraavaksi toiminnallisuus, joka näyttää käyttäjälle edellä luodun HTML-sivun sisällön. Luodaan kansioon <code>application</code> tiedosto <code>views.py</code>, joka sisältää ohjeistuksen sovelluksen pääsivulle pääsemiseen. 
+</p>
+
+<p>
+  Tiedosto <code>views.py</code> ohjeistaa Flaskia käsittelemään jokaisen sovelluksen juuripolkuun <code>/</code> tulevan pyynnön siten, että käyttäjälle näytetään tiedoston <code>index.html</code> sisältö. 
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import render_template
+from application import app
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+</code></pre>
+
+<p>
+  Kun käynnistämme sovelluksen ja avaamme osoitteen <a href="http://localhost:5000" target="_blank" norel>http://localhost:5000</a> sivu näyttää yhä seuraavalta.
+</p>
+
+<img src="../img/not-found-64769d9c.png" alt="Not found." />
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Sivua ei vieläkään löydy.
+</p>
+
+<p>
+  Tämä johtuu siitä, että sovellustamme ei ole ohjeistettu lataamaan tiedoston <code>views.py</code> sisältöä käyttöön. Muokataan kansiossa <code>application</code> olevaa <code>__init__.py</code> tiedostoa siten, että tiedoston <code>views.py</code> sisältö ladataan käyttöön sovelluksen käynnistyessä.
+</p>
+
+<p>
+  Tarkemmin sanoen, lisätään tiedostoon rivi <code>from application import views</code>. Tiedosto <code>__init__.py</code> on nyt kokonaisuudessaan seuraava.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+
+from application import views
+</code></pre>
+
+<p>
+  Nyt sovellus toimii ja näyttää halutun sivun.
+</p>
+
+
+<img src="../img/hello-world-16eec7c2.png" alt="Hello world!" />
+
+<p>
+  &nbsp;
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Syklinen riippuvuus
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Yllä olevassa esimerkissä luodaan syklinen riippuvuus, eli tilanne, missä komponentit riippuvat toisistaan. Yllä siis <code>__init__.py</code> riippuu kansion tiedostosta <code>views.py</code>, ja toisaalta <code>views.py</code> on riippuvainen tiedostosta <code>__init__.py</code>.
+  </p>
+
+  <p>
+    Yleisesti ottaen tämä on paha tilanne, mutta tässä tapauksessa ok. Emme käytä <code>views.py</code>-tiedostoa <code>__init__.py</code>-tiedostossa, vaan varmistamme vain että kyseinen tiedosto on ladattu käyttöön.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Valmius Herokuun siirtämiseen
+
+</h2>
+
+<p>
+  Heroku käyttää palvelimen käynnistämisessä <a href="http://gunicorn.org/" target="_blank" norel>Gunicorn</a>-palvelinta. Lisätään se sovelluksen käyttöön.
+</p>
+
+
+<pre class="terminal">(venv) ~/todosovellus$ pip install gunicorn
+Collecting gunicorn
+  ... 
+Successfully installed gunicorn-19.7.1
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Luodaan seuraavaksi sovellukselle tiedosto <code>Procfile</code>, joka antaa Herokulle ohjeet sovelluksen käynnistämiseen. Haluamme, että Heroku käynnistää <code>application</code>-moduulissa määritellyn app-sovelluksen, eli Flaskin.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ echo "web: gunicorn --preload --workers 1 application:app" > Procfile
+(venv) ~/todosovellus$ cat Procfile
+web: gunicorn --preload --workers 1 application:app
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Heroku -- ja oikeastaan muutkin sovellusta käyttävät tahot -- tarvitsevat myös tiedon sovelluksen käyttämistä riippuvuuksista. Lisätään riippuvuudet <code>requirements.txt</code>-tiedostoon.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ pip freeze | grep -v pkg-resources > requirements.txt
+(venv) ~/todosovellus$ cat requirements.txt
+click==6.7
+Flask==0.12.2
+gunicorn==19.7.1
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+Werkzeug==0.14.1
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Yllä poistamme myös riippuvuuden <code>pkg-resources</code>, jonka olemassaolo aiheuttaisi ongelmia Herokussa.
+</p>
+
+<p>
+  Nyt sovelluksen saisi tarvittaessa käynnistymään Herokussa.
+</p>
+
+
+<h2 class="material-heading">
+    Sovelluksen rakenne
+
+</h2>
+
+<p>
+  Tarkastellaan vielä sovelluksen rakennetta kokonaisuudessaan.
+</p>
+
+<pre class="terminal">── application
+│   ├── __init__.py
+│   ├── templates
+│   │   ├── index.html
+│   │   └── layout.html
+│   ├── views.py
+├── run.py
+├── .gitignore
+├── Procfile
+├── requirements.txt  
+...
+</pre>
+
+<p>
+  Projektista puuttuu kansio <code>documentation</code> sekä tiedosto <code>README.md</code>.
+</p>
+
+
+<pre class="terminal">(venv) ~/todosovellus$ mkdir documentation
+(venv) ~/todosovellus$ echo "# TodoApp" > README.md
+</pre>
+
+<p>
+  Sovelluksen runko on lähes valmis. Mutta...
+</p>
+
+<p>
+  Sovelluksessa saattaa olla ohjelmointiympäristöön liittyviä tiedostoja, jotka kannattaa jättää pois versionhallinnasta. Osoitteessa <a href="https://github.com/github/gitignore/blob/master/Python.gitignore" target="_blank" norel>https://github.com/github/gitignore/blob/master/Python.gitignore</a> on hyvä lista <code>.gitignore</code>-tiedostoon lisättävistä asioista. Lisää ne projektisi <code>.gitignore</code>-tiedostoon.
+</p>
+
+<p>
+  Laajemmin ottaen voit ajatella versionhallinnassa säilöttävien asioiden lisäämisestä seuraavasti: "oletko luonut tiedoston tai kansion? Jos et, tiedosto/kansio on autogeneroitu ja kuuluu gitignoreen".
+</p>
+
+
+<h1 class="material-heading">
+    Tehtävien hallinta
+
+</h1>
+
+<p>
+  Luodaan tässä sovellus tehtävien hallintaan. Sovellus tarjoaa listauksen tehtävistä sekä mahdollisuuden tehtävien luomiseen, tarkasteluun, muokkaamiseen ja poistamiseen.
+</p>
+
+<p>
+  Luodaan ensin sovellukseemme erillinen kansio <code>tasks</code> (kansio <code>tasks</code> tulee kansion <code>application</code> alikansioksi) ja luodaan sen sisälle tyhjä <code>__init__.py</code>-tiedosto. Kansioon <code>tasks</code> tulee tehtävien hallintaan liittyvä ohjelmakoodi.
+</p>
+
+
+<pre class="terminal">── application
+│   ├── __init__.py
+│   ├── tasks
+│   │   └── __init__.py
+│   ├── templates
+│   │   ├── index.html
+│   │   └── layout.html
+│   ├── views.py
+├── run.py
+├── .gitignore
+├── Procfile
+├── requirements.txt
+├── README.md
+...
+</pre>
+
+
+<h2 class="material-heading">
+    Sovelluksen polut
+
+</h2>
+
+<p>
+  Uutta toiminnallisuutta rakennettaessa on hyvä miettiä sekä toiminnallisuus että toiminnallisuuteen liittyvät polut. Jokaiseen polkuun tulee liittyä selkeä tehtävä -- pyyntömetodin GET tulee liittyä aina tiedon hakemiseen, ja pyyntömetodin POST aina tiedon lähettämiseen.
+</p>
+
+<p>
+  Sovitaan, että polut ja toiminnallisuudet ovat seuravat.
+</p>
+
+<ul>
+  <li>GET <code>/tasks/</code> näyttää tehtävät listana.</li>
+  <li>GET <code>/tasks/new/</code> näyttää lomakkeen, jota käytetään uuden tehtävän luomiseen.</li>
+  <li>POST <code>/tasks/</code> lisää uuden tehtävän pyynnössä tulevien tietojen perusteella.</li>
+  <li>POST <code>/tasks/42/</code> asettaa tehdyksi sen tehtävän, jonka pääavaimen arvo on <code>42</code>.</li>
+</ul>
+
+
+<h2 class="material-heading">
+    Tietokannan käyttöönotto
+
+</h2>
+
+<p>
+  Tuodaan sovelluksen käyttöön tietokanta. Tietokantatoiminnallisuuden toteuttamiseen käytetään <a href="https://www.sqlalchemy.org/" target="_blank" norel>SQLAlchemy</a>-kirjastoa. SQLAlchemy on ORM-kirjasto, joka tarjoaa tuen luokkien ja tietokannan taulujen kytkemiseen. Flaskia varten on kehitetty laajennus <code>flask-sqlalchemy</code> kyseisestä kirjastosta. Tuodaan se käyttöön.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ pip install flask-sqlalchemy
+Collecting flask-sqlalchemy
+...
+Successfully installed SQLAlchemy-1.2.5 flask-sqlalchemy-2.3.2
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Hyödynnämme aluksi <a href="https://www.sqlite.org/index.html" target="_blank" norel>SQLite</a>-tietokannanhallintajärjestelmää, käsittelemme myöhemmin (noin osa 3) PostgreSQL:n käyttöönottoa.
+</p>
+
+<p>
+  Lisätään SQLAlchemyn käyttöönotto sovelluksemme <code>application</code>-kansiossa sijaitsevaan <code>__init__.py</code>-tiedostoon. Tiedosto sisältää sovelluksen käynnistyessä suoritettavan lähdekoodin. Lähdekoodi on kommentoitu.
+</p>
+
+<pre class="sh_python code-highlight"><code># Tuodaan Flask käyttöön
+from flask import Flask
+app = Flask(__name__)
+
+# Tuodaan SQLAlchemy käyttöön
+from flask_sqlalchemy import SQLAlchemy
+# Käytetään tasks.db-nimistä SQLite-tietokantaa. Kolme vinoviivaa
+# kertoo, tiedosto sijaitsee tämän sovelluksen tiedostojen kanssa
+# samassa paikassa
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
+# Pyydetään SQLAlchemyä tulostamaan kaikki SQL-kyselyt
+app.config["SQLALCHEMY_ECHO"] = True
+
+# Luodaan db-olio, jota käytetään tietokannan käsittelyyn
+db = SQLAlchemy(app)
+
+# Luetaan kansiosta application tiedoston views sisältö
+from application import views
+
+
+# Luodaan lopulta tarvittavat tietokantataulut
+db.create_all()
+</code></pre>
+
+<p>
+  Sovelluksessa on nyt siis käytössä <code>db</code>-olio, jota käytetään tietokantaan liittyvien operaatioiden hallinnassa.
+</p>
+
+<p>
+  SQLAlchemyä käytettäessä tietokantataulujen määrittely tapahtuu ohjelmallisesti. Haluamme, että jokaiseen tehtävään liittyy tieto sen nimestä sekä siitä, että onko tehtävä tehty. Tämän lisäksi jokaisella tehtävällä tulee olla luonnollisesti pääavain sekä tieto tehtävän luomis- ja mahdollisesta päivityspäivästä.
+</p>
+
+<p>
+  Luodaan kansioon <code>tasks</code> tiedosto <code>models.py</code>. Tiedostoon <code>models.py</code> tulee tehtävien hallintaan liittyvä luokka. Tiedoston sisältö on seuraava.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import db
+
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
+    onupdate=db.func.current_timestamp())
+
+    name = db.Column(db.String(144), nullable=False)
+    done = db.Column(db.Boolean, nullable=False)
+
+    def __init__(self, name):
+        self.name = name
+        self.done = False
+</code></pre>
+
+<p>
+  Yllä etuliitteellä <code>db</code> määritellyt muuttujat ovat <code>flask-sqlalchemy</code>-kirjastosta saatavia apuvälineitä. Käytännössä yllä oleva luokka, yhdessä SQLAlchemyn kanssa, tuo käyttöömme tietokantataulun tehtävien määrittelyyn sekä siihen liittyvät yksinkertaiset kyselyt.
+</p>
+
+<p>
+  Jotta luokka olisi käytössä, tulee se vielä tuoda <code>application</code>-kansion <code>__init__.py</code>-tiedostoon. Tiedoston <code>__init__.py</code> sisältö on nyt seuraava.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+
+from flask_sqlalchemy import SQLAlchemy
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
+app.config["SQLALCHEMY_ECHO"] = True
+
+db = SQLAlchemy(app)
+
+from application import views
+
+from application.tasks import models
+
+db.create_all()
+</code></pre>
+
+<p>
+  Sovelluksen käynnistäminen näyttää nyt hyvin mielenkiintoiselta. 
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ python run.py
+... 
+2019-02-29 22:08:14,272 INFO sqlalchemy.engine.base.Engine 
+CREATE TABLE task (
+    id INTEGER NOT NULL, 
+    date_created DATETIME, 
+    date_modified DATETIME, 
+    name VARCHAR(144) NOT NULL, 
+    done BOOLEAN NOT NULL, 
+    PRIMARY KEY (id), 
+    CHECK (done IN (0, 1))
+)
+...
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+* Restarting with stat
+...
+* Debugger is active!
+* Debugger PIN: 140-705-069
+</pre>
+
+<p>
+  Käynnistykseen liittyvä tulostus on tuttua, mutta mukana on myös paljon uutta. Yllä näemme CREATE TABLE -lauseen, joka suoritetaan sovelluksen käynnistyksen yhteydessä.
+</p>
+
+<p>
+  Sovellukseemme ilmestyy nyt myös uusi tiedosto. Kansioon <code>application</code> tulee SQLiten hallinnoima tiedosto <code>tasks.db</code>.
+</p>
+
+<pre class="terminal">── application
+│   ├── __init__.py
+│   ├── tasks
+│   │   ├── models.py
+│   │   └── __init__.py
+│   ├── templates
+│   │   ├── index.html
+│   │   └── layout.html
+│   ├── views.py
+│   ├── tasks.db
+├── run.py
+├── .gitignore
+├── Procfile
+├── requirements.txt
+├── README.md
+...
+</pre>
+
+<p>
+  Tiedosto on normaali SQLiten avulla avattava tietokantatiedosto. Voimme tarkastella sitä myös sqlite3:n avulla.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ sqlite3 application/tasks.db
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite&gt; .schema
+CREATE TABLE task (
+    id INTEGER NOT NULL, 
+    date_created DATETIME, 
+    date_modified DATETIME, 
+    name VARCHAR(144) NOT NULL, 
+    done BOOLEAN NOT NULL, 
+    PRIMARY KEY (id), 
+    CHECK (done IN (0, 1))
+);
+sqlite&gt; SELECT * FROM Task;
+sqlite&gt; .exit
+(venv) ~/todosovellus$
+</pre>
+
+<p>
+  Näyttää suhteellisen tutulta tietokantojen perusteet -kurssia ajatellen.
+</p>
+
+<p>
+  Koska SQLAlchemy luo tarvittaessa tietokantatiedoston automaattisesti, ja tietokannan eri versioiden yhdistäminen gitillä on hankalaa, lisäämme myös <code>tasks.db</code>-tiedoston .gitignore-tiedostoon.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ echo "tasks.db" >> .gitignore
+</pre>
+
+<p>
+ Yritetään seuraavaksi luoda toiminnallisuus tiedon tietokantaan lisäämiseen.
+</p>
+
+
+<h2 class="material-heading">
+    Tiedon lisääminen tietokantaan
+
+</h2>
+
+<p>
+  Tiedon lisäämiseksi tietokantaan tarvitsemme (1) palvelimelle toiminnallisuuden, joka lisää tietoa tietokantaan sekä (2) lomakkeen, joka lähetetään palvelimelle. Jatketaan samalla nimeämislinjalla, missä tehtävien hallintaan liittyvä toiminnallisuus lisätään kansioon <code>tasks</code>.
+</p>
+
+<p>
+  Luodaan <code>application</code>-kansion alla olevaan kansioon <code>tasks</code> tiedosto nimeltä <code>views.py</code>. Tiedosto tulee sisältämään tehtävien käsittelyyn ja näkymien näyttämiseen liittyvät toiminnallisuudet.
+</p>
+
+<p>
+  Lisätään tiedostoon ensin kaksi funktiota. Osoitteeseen <code>/tasks/new</code> tehty pyyntö näyttää käyttäjälle lomakkeen, jota käytetään tehtävien luomiseen, ja osoitteeseen <code>/tasks</code> tehty POST-pyyntö lisää uuden tehtävän pyynnössä lähetetyn lomakkeen perusteella. Oletetaan myös, että lomakkeessa on kenttä nimeltä <code>name</code>, johon asetetaan tehtävän nimi.
+</p>
+
+<p>
+  Pyynnön käsittelyyn tarvittavat toiminnallisuudet löytyy flaskin <code>request</code>-moduulista. Lomakkeella lähetetyn kentän nimeltä "name" arvon saa kutsulla <code>request.form.get("name")</code>.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import app
+from flask import render_template, request
+
+@app.route("/tasks/new/")
+def tasks_form():
+    return render_template("tasks/new.html")
+
+@app.route("/tasks/", methods=["POST"])
+def tasks_create():
+    print(request.form.get("name"))
+  
+    return "hello world!"
+</code></pre>
+
+<p>
+  Kun käyttäjä avaa sovelluksen ja menee osoitteeseen <code>/tasks/new</code>, Flask yrittää näyttää käyttäjälle tiedostoa <code>new.html</code> kansiosta <code>tasks</code>.
+</p>
+
+<p>
+  Luodaan kyseinen tiedosto seuraavaksi. Luodaan kansioon <code>templates</code> kansio <code>tasks</code>, johon tulee tehtävien hallintaan liittyvät HTML-sivut. Luodaan tämän jälkeen kansioon <code>tasks</code> tiedosto <code>new.html</code>, jota käytetään uuden tehtävän lisäämiseen.
+</p>
+
+<pre class="sh_xml code-highlight"><code>{% extends "layout.html" %}
+  
+{% block body %}
+&lt;form method="POST" action="{{ url_for('tasks_create') }}"&gt;
+  &lt;input type="text" name="name"/&gt;
+  &lt;input type="submit" value="Add a new task"/&gt;
+&lt;/form&gt;
+{% endblock %}
+</code></pre>
+
+<p>
+  Sivu on muuten tutun näköinen, mutta lomakkeen action-attribuutille annettu arvo <code>{{ url_for('tasks_create') }}</code> on ensi näkymältä hieman hämmentävä. Kyseessä on Flaskin tarjoama funktio, joka selvittää <code>tasks_create</code>-nimisen funktion kuunteleman osoitteen. Käytännössä <code>url_for</code> etsii sille annettua nimeä kaikista <code>@app.route</code>-dekoraattorilla (tai Javan termein annotaatiolla) merkityistä funktioista. Funktio löytyy <code>tasks</code>-kansion <code>views.py</code>-tiedostosta, missä se on kytketty <code>/tasks</code>-polkuun. Lopulta action-kentän arvoksi tulee siis <code>/tasks</code>.
+</p>
+
+<p>
+  Kokeillaan sovelluksen toimintaa -- mennään osoitteeseen <a href="http://localhost:5000/tasks/new/" target="_blank" norel>http://localhost:5000/tasks/new/</a>, missä pitäisi olla lomake, jolla voidaan lähettää tietoa palvelimelle.
+</p>
+
+<img src="../img/tasks-new-not-found-41176507.png" alt="Not found." />
+
+<p>
+  Déjà vu -- tuntuu tutulta.
+</p>
+
+<p>
+  Sivu näyttää viestin "Not Found". Tämä johtuu siitä, että kansion <code>application</code> sisällä olevassa kansiossa <code>tasks</code> olevaa <code>views.py</code> tiedostoa ei ole ladattu sovelluksen käyttöön. Muokataan kansion <code>application</code> tiedostoa <code>__init__.py</code> ja ladataan kyseinen tiedosto käyttöön.
+</p>
+
+<p>
+  Tiedosto <code>__init__.py</code> on nyt kokonaisuudessaan seuraavanlainen.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+
+from flask_sqlalchemy import SQLAlchemy
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
+app.config["SQLALCHEMY_ECHO"] = True
+
+db = SQLAlchemy(app)
+
+from application import views
+
+from application.tasks import models
+from application.tasks import views
+  
+db.create_all()
+</code></pre>
+
+<p>
+  Tarkastellaan sivua uudestaan.
+</p>
+
+
+<img src="../img/tasks-new-found-90ab3121.png" alt="Sivu löytyy ja siellä näkyy lomake." />
+
+<p>
+  Sivu löytyy ja sivulla näkyy lomake. Kirjoitetaan lomakkeeseen teksti "Hei maailma" ja painetaan nappia "Add a new task". Päädymme osoitteeseen "/tasks/" ja näemme sivun, jossa lukee "hello world!". 
+</p>
+
+<img src="../img/tasks-hello-world-0b6381e6.png" alt="Sivulla näkyy teksti 'hello world!'." />
+
+<p>
+  Tarkastellaan vielä sovelluksen logeja. Logeissa pitäisi näkyä aiemmin lähettämämme teksti.
+</p>
+
+
+<pre class="terminal">(venv) ~/todosovellus$ python run.py
+...
+* Debugger is active!
+* Debugger PIN: 140-705-069
+Hei maailma!
+127.0.0.1 - - [29/Feb/2019 22:44:08] "POST /tasks/ HTTP/1.1" 200 -
+</pre>
+
+<p>
+  Näyttää toimivan oikein. Saamme lähetettyä palvelimelle viestin lomakkeesta, ja saamme palvelimella luettua lomakkeelta lähetetyn kentän arvon.
+</p>
+
+<p>
+  Lisätään palvelimelle seuraavaksi toiminnallisuus, millä lomakkeella lähetetty tieto tallennetaan tietokantaan. Muokataan kansiossa <code>tasks</code> olevaa tiedostoa <code>views.py</code> siten, että funtio <code>tasks_create</code> lisää rivin tietokantaan. 
+</p>
+
+<p>
+  Lisätään tiedostoon tarvittavat "importit" eli tietokannan käyttöön liittyvä toiminnallisuus. Muuttuja <code>db</code> liittyy Flaskin SQLAlchemy-liitännäiseen, ja se tarjoaa tietokantaan lisäämiseen tarvittavaa toiminnallisuutta. Kutsulla <code>db.session().add(olio)</code> harkitsemme uuden olion lisäämistä tietokantaan ja kutsulla <code>db.session().commit()</code> teemme harkinnasta totta. Lisää SQLAlchemyn sessioista osoitteessa <a href="https://docs.sqlalchemy.org/en/latest/orm/session.html" target="_blank" norel>http://docs.sqlalchemy.org/en/latest/orm/session.html</a>.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import app, db
+from flask import render_template, request
+from application.tasks.models import Task
+
+@app.route("/tasks/new/")
+def tasks_form():
+    return render_template("tasks/new.html")
+
+@app.route("/tasks/", methods=["POST"])
+def tasks_create():
+    t = Task(request.form.get("name"))
+
+    db.session().add(t)
+    db.session().commit()
+  
+    return "hello world!"
+</code></pre>
+
+<p>
+  Käytetään lomaketta samalla tavalla kuin edellä -- eli lähetetään lomakkeella teksti "hei maailma!" -- ja tarkastellaan tiedokannan sisältöä SQLiten avulla.
+</p>
+
+
+<pre class="terminal">(venv) ~/todosovellus$ sqlite3 application/tasks.db
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite&gt; SELECT * FROM Task;
+1|2019-02-29 20:53:11|2019-02-29 20:53:11|Hei maailma!|0
+sqlite&gt; .exit
+(venv) ~/todosovellus$
+</pre>
+
+<p>
+  Tietokantaan menee tietoa, huraa!
+</p>
+
+
+<h2 class="material-heading">
+    Lisäämisen järkevöittäminen ja tiedon listaaminen
+
+</h2>
+
+<p>
+  Lisätään seuraavaksi toiminnallisuus tehtävien listaamiseen ja järkevöitetään lisäystoiminnallisuutta. Luodaan ensin listaukseen käytettävä sivu <code>list.html</code>, joka asetetaan <code>templates</code>-kansion alla olevaan <code>tasks</code>-kansioon. Listataan jokaisesta tehtävästä nimi sekä tieto siitä, onko tehtävä tehty. 
+</p>
+
+<p>
+  HTML-sivu on seuraava.
+</p>
+
+
+<pre class="sh_xml code-highlight"><code>{% extends "layout.html" %}
+
+{% block body %}
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Task&lt;/th&gt;
+      &lt;th&gt;Done&lt;/th&gt;
+    &lt;/tr&gt;
+    {% for task in tasks %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ task.name }}&lt;/td&gt;
+      &lt;td&gt;{{ task.done }}&lt;/td&gt;
+    &lt;/tr&gt;
+    {% endfor %}
+  &lt;/table&gt;
+{% endblock %}
+</code></pre>
+
+<p>
+  Sivulla odotetaan <code>tasks</code>-nimistä listaa. Luodaan seuraavaksi tehtävien näyttämiseen tarkoitettuun <code>views.py</code>-tiedostoon toiminnallisuus tehtävien listaamiseen liittyen. Luodaan funktio <code>tasks_index</code>, joka kuuntelee GET-tyyppisiä pyyntöjä polkuun <code>/tasks</code>. Funktio renderöi kansiosta <code>tasks</code> sivun <code>list.html</code>. Sivun luomista varten annetaan lista kaikista tehtävistä. Kaikkien tehtävien hakeminen (eli "SELECT * FROM Task") onnistuu SQLAlchemyn kutsulla <code>Task.query.all()</code>.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import app, db
+from flask import render_template, request
+from application.tasks.models import Task
+
+@app.route("/tasks", methods=["GET"])
+def tasks_index():
+    return render_template("tasks/list.html", tasks = Task.query.all())
+
+@app.route("/tasks/new/")
+def tasks_form():
+    return render_template("tasks/new.html")
+
+@app.route("/tasks/", methods=["POST"])
+def tasks_create():
+    t = Task(request.form.get("name"))
+
+    db.session().add(t)
+    db.session().commit()
+  
+    return "hello world!"
+</code></pre>
+
+<p>
+  Nyt osoitteessa <code>/tasks</code> listataan tietokannassa olevat tehtävät, ja osoitteessa <code>/tasks/new</code> voi luoda uuden tehtävän tietokantaan.
+</p>
+
+<p>
+  Muokataan sovellusta vielä siten, että tehtävän lisäämisen jälkeen käyttäjä ohjataan sivulle, missä tehtävät listataan. Tämä tapahtuu Pythonin <code>redirect</code>-funktion avulla. Funktiolle annetaan polku, johon pyyntö uudelleenohjataan -- tässä uudelleenohjaus tehdään polkuun, johon liittyvän funktion nimi on <code>tasks_index</code> -- polun määrittely tapahtuu funktiolle <code>url_for</code>. Myös nämä funktiot tulee tuoda Flaskin käyttöön.  
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import app, db
+from flask import redirect, render_template, request, url_for
+from application.tasks.models import Task
+
+@app.route("/tasks", methods=["GET"])
+def tasks_index():
+    return render_template("tasks/list.html", tasks = Task.query.all())
+
+@app.route("/tasks/new/")
+def tasks_form():
+    return render_template("tasks/new.html")
+
+@app.route("/tasks/", methods=["POST"])
+def tasks_create():
+    t = Task(request.form.get("name"))
+
+    db.session().add(t)
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+</code></pre>
+
+<p>
+  Nyt tehtävien luominen sekä listaus toimii.
+</p>
+  
+<img src="../img/tehtavien-luominen-215b7b14.gif" alt="Animaatio, joka näyttää tehtävien luomisen." />
+
+
+<h2 class="material-heading">
+    Tehtävän tehdyksi merkkaaminen
+
+</h2>
+
+<p>
+  Lisätään sovellukseen seuraavaksi toiminnallisuus tehtävän tehdyksi merkkaamiseen. Sovitaan, että pyyntö osoitteeseen <code>/tasks/42</code> muuntaa tehtävän, jonka pääavain on 42, tehdyksi.
+</p>
+
+<p>
+  Polkuihin asetettavat parametrit saadaan kiinni Flaskissa pienempi- ja suurempi kuin-merkkien avulla. Alla kuvattu funktio <code>tasks_set_done</code> käsittelee POST-tyyppisiä pyyntöjä osoitteeseen <code>/tasks/(jotain)</code>. Pyynnöstä saatu parametri asetetaan suoraan funktion parametriksi.
+</p>
+
+<p>
+  Tietokantatoiminnallisuus toimii siten, että haemme annettua pääavainta vastaavan tietokantarivin. Esimerkiksi kutsu <code>Task.query.get(42)</code> palauttaisi tehtävän, jonka pääavaimen arvo on <code>42</code>. Alla pääavaimen arvo otetaan suoraan polusta. Funktio muuttaa tehtävän tehdyksi, jonka jälkeen muutos viedään tietokantaan.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>from application import app, db
+from flask import redirect, render_template, request, url_for
+from application.tasks.models import Task
+
+@app.route("/tasks", methods=["GET"])
+def tasks_index():
+    return render_template("tasks/list.html", tasks = Task.query.all())
+
+@app.route("/tasks/new/")
+def tasks_form():
+    return render_template("tasks/new.html")
+  
+@app.route("/tasks/&lt;task_id&gt;/", methods=["POST"])
+def tasks_set_done(task_id):
+
+    t = Task.query.get(task_id)
+    t.done = True
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+
+@app.route("/tasks/", methods=["POST"])
+def tasks_create():
+    t = Task(request.form.get("name"))
+
+    db.session().add(t)
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+</code></pre>
+
+<p>
+  Funktion <code>tasks_set_done</code> sisällä tapahtuva tietokannasta haetun tehtävän muuntaminen on mielenkiintoista. Missään ei oikeastaan sanota, että juuri kyseinen tehtävä pitäisi tallentaa tietokantaan. Flask ja SQLAlchemy toimivat yhdessä kuten hyvin monet muut Web-sovelluskehykset ja ORM-kirjastot -- tietokannasta haettava olio on hallinnoitu, ja siihen tapahtuvia muutoksia tarkastellaan sovelluksen toimesta. Kun funktiossa <code>tasks_set_done</code> tehdään kutsu <code>db.session().commit()</code>, SQLAlchemy tietää että tehtävä on muuttunut ja tallentaa sen tietokantaan.
+</p>
+
+<p>
+  Lisätään vielä tehtävien listaussivulle <code>list.html</code> mahdollisuus tehtävän muuttamiseen tehdyksi. Huomaa alla, miten lomake lähetetään funktioon <code>tasks_set_done</code> liittyvään osoitteeseen ja miten lomakkeelle määritellään funktion tarvitsema parametri <code>task_id</code>. 
+</p>
+  
+
+<pre class="sh_xml code-highlight"><code>{% extends "layout.html" %}
+
+{% block body %}
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Task&lt;/th&gt;
+      &lt;th&gt;Done&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+    {% for task in tasks %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ task.name }}&lt;/td&gt;
+      &lt;td&gt;{{ task.done }}&lt;/td&gt;
+      &lt;td&gt;
+	&lt;form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}"&gt;
+	  &lt;input type="submit" value="Change status!"/&gt;
+	&lt;/form&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    {% endfor %}
+  &lt;/table&gt;
+{% endblock %}
+</code></pre>
+
+<p>
+  Nyt myös tehtävien muuntaminen tehdyiksi onnistuu.
+</p>
+
+<img src="../img/tehtavien-merkinta-tehdyksi-8a6dbaa2.gif" alt="Animaatio, joka näyttää tehtävän merkinnän tehdyksi." />
+
+
+<h2 class="material-heading">
+    Pieni käytettävyysparannus
+
+</h2>
+
+<p>
+  Sovellus on tällä hetkellä hieman hölmö, sillä jokainen osoite tulee muistaa ulkoa. Muokataan sovellusta siten, että asettelusivulla <code>layout.html</code> on linkit oleellisiin sivuihin.
+</p>
+
+<pre class="sh_xml code-highlight"><code>  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;TodoApplication&lt;/title&gt;
+    &lt;/head&gt;
+    
+    &lt;body&gt;
+      &lt;ul&gt;
+	&lt;li&gt;&lt;a href="{{ url_for('tasks_index') }}"&gt;List tasks&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="{{ url_for('tasks_form') }}"&gt;Add a task&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      
+      {% block body %}
+      &lt;p&gt;
+	Content.
+      &lt;/p&gt;
+      {% endblock %}
+    &lt;/body&gt;
+  &lt;/html&gt;
+</code></pre>
+
+<p>
+  Nyt sivuilla on pysyvä valikko, jonka avulla oleelliset toiminnallisuudet löytyvät helposti.
+</p>
+
+
+<img src="../img/tehtavasivu-3d472239.gif" alt="Animaatio, joka näyttää sivuilla navigoinnin." />
+
+
+<h2 class="material-heading">
+    Riippuvuuksien päivitys
+
+</h2>
+
+<p>
+  Päivitetään vielä lopulta tiedostossa <code>requirements.txt</code> olevat riippuvuudet.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ pip freeze | grep -v pkg-resources > requirements.txt
+(venv) ~/todosovellus$ cat requirements.txt
+click==6.7
+Flask==0.12.2
+Flask-SQLAlchemy==2.3.2
+gunicorn==19.7.1
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+SQLAlchemy==1.2.5
+Werkzeug==0.14.1
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Nyt sovelluksen voi taas siirtää GitHubiin ja Herokuun, kuten edellisessä osassa harjoiteltiin. Käytä Osassa 0 tehtyä repositoriota, tai päivitä Labtooliin uusi repositorio, jos loit nyt uuden. Muista sisällyttää mukaan työsi kuvaus ja tietokantakaavio. Muistathan varmistaa, että versionhallintaan ei päädy turhia tiedostoja, ja että sinne mahdollisesti päätyneet turhat tiedostot poistetaan.
+</p>
+
+<p>
+  Työn osa- ja loppuarvostelut perustuvat GitHubissa olevaan koodiin ja sovelluksen toimivuus testataan Herokussa, joten ota käyttöön Herokun automaattinen <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">github-integraatio</a>. Tällöin sovellusta ei päivitetä itse Herokuun, vaan Heroku hakee käyttöön automaattisesti kaikki GitHubiin talletetut päivitykset.
+</p>
+
+<p>
+  Esimerkkisovellus löytyy tarkasteltavaksi osoitteessa <a href="https://github.com/avihavai/tsoha-18-vk2" target="_blank" norel>https://github.com/avihavai/tsoha-18-vk2</a>. Sovellus löytyy myös Herokusta osoitteessa <a href="https://tsoha-18-todo-vk2.herokuapp.com/" target="_blank" norel>https://tsoha-18-todo-vk2.herokuapp.com/</a>.
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Riippuvuuksien lataaminen requirements.txt -tiedostosta
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Kun suoritamme komennon <code>pip freeze</code>, sovellus tulostaa projektiin liittyvät riippuvuudet. Seuraava sovellusta kehittävä henkilö saa riippuvuudet helposti käyttöönsä -- mikäli riippuvuudet on määritelty tiedostossa <code>requirements.txt</code>, onnistuu niiden lataaminen komennolla <code>pip install -r requirements.txt</code>.
+  </p>
+  
+
+
+  </div>
+</div>
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    <a href="../license/">Kiitokset ja materiaalista</a>
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/tsoha-20/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/tsoha-20/edit/master/source/osa2.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/tsoha-20" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-aecf9e21.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+  </body>
+</html>

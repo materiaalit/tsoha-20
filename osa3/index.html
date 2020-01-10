@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tietokantasovellus, 2019 | Osa 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-9213a7cf.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../tyovalineet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=tyovalineet.html&gt;')">Kurssin työvälineet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa0/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa0.html&gt;')">Osa 0</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../osa7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=osa7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../python-alkeet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=python-alkeet.html&gt;')">Python-alkeet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../vertaisarviointi/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=vertaisarviointi.html&gt;')">Vertaisarviointi</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://t.me/tkt_tsoha" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Osan 3 etapit
+  </div>
+
+  <div class="hint__body">
+    
+
+  <ul>
+    <li>
+      Sovelluksessa käytetyt lomakkeet validoivat syötetyn tiedon.
+    </li>
+    <li>
+      Sovelluksessa on mahdollisuus rekisteröitymiseen.
+    </li>
+    <li>
+      Sovelluksessa on mahdollisuus kirjautumiseen.
+      <ul>
+        <li>
+          Kirjoita testitunnusten kirjautumiseen vaaditut tiedot README.md-tiedostoon.
+        </li>
+      </ul>
+    </li>
+    <li>
+      Sovelluksessa on ainakin kaksi tietokantataulua.
+    </li>
+    <li>
+      Ainakin yhden tietokantataulun tietoihin liittyy täysi CRUD-toiminnallisuus sovelluksen kautta (yhden rivin luominen, yhden rivin tietojen näyttö, yhden rivin tietojen muokkaus, yhden rivin tietojen poisto, rivien listaus).
+    </li>
+    <li>
+      Githubissa on issuet päällä, jotta koodikatselmointi on mahdollista.
+    </li>
+    <li>
+      Commit-viestit ovat yhä järkeviä ja kuvaavat tehtyjä lisäyksiä ja/tai muutoksia.
+    </li>
+    <li>
+      Herokussa käytetään Herokun tarjoamaa PostgreSQL-tietokannanhallintajärjestelmää.
+    </li>
+  </ul>
+  
+  
+
+  </div>
+</div>
+
+
+<p>
+  Tietokantasovellus-kurssin kolmannen osan materiaali sisältää esimerkin lomakkeiden luomiseen käytettävän <code>wtforms</code>-pakkauksen käytöstä sekä kirjautumisesta. Materiaalissa tarkastellaan myös erillisiä konfiguraatioita projektin tuotanto- ja kehitysympäristöjä varten sekä PostgreSQL-tietokannan käyttöä.
+</p>
+
+<p>
+  Huomaathan, että materiaali ei sisällä kaikkea harjoitustyöhön tarvittavaa. Oman harjoitustyön tulee luonnollisesti olla erillinen tästä materiaalista.
+</p>
+
+<h1 class="material-heading">
+    Kirjasto lomakkeiden luomiseen
+
+</h1>
+
+<p>
+  <a href="https://wtforms.readthedocs.io/" target="_blank" norel>WTForms</a> on kirjasto lomakkeiden luomiseen sekä lomakkeissa käsiteltävän datan validointiin. Jatketaan edellisen osan esimerkkiä ja muunnetaan tehtävien syöttöön tarkoitettu lomake WTFormsia käyttäväksi. Flaskia varten WTFormsista löytyy integraatiopakkaus <a href="https://flask-wtf.readthedocs.io/" target="_blank" norel>flask-wtf</a>. 
+</p>
+
+<pre class="terminal">~/todosovellus$ source venv/bin/activate
+(venv) ~/todosovellus$ pip install flask-wtf
+Collecting flask-wtf
+...
+Successfully installed WTForms-2.1 flask-wtf-0.14.2
+(venv) ~/todosovellus$ 
+</pre>
+
+
+<h2 class="material-heading">
+    Lomaketta kuvaavan luokan luominen
+
+</h2>
+
+<p>
+  Lomakkeita varten luodaan omat luokat. Luodaan kansioon <code>tasks</code> tiedosto <code>forms.py</code>, joka tulee sisältämään tehtävien käsittelyyn tarvittavat lomakkeet. Luodaan lomakkeesta ensimmäinen versio, joka sisältää tekstikentän tehtävän nimeä varten. Lomakkeelle määritellään ainakin toistaiseksi lisäksi metatietona muuttuja <code>csrf = false</code>, millä turvautuminen cross-site request forgery -hyökkäyksiä vastaan kytketään pois päältä.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask_wtf import FlaskForm
+from wtforms import StringField
+
+class TaskForm(FlaskForm):
+    name = StringField("Task name")
+ 
+    class Meta:
+        csrf = False
+</code></pre>
+
+<p>
+  Jokainen flask-wtf -integraatiota käyttävä lomakeluokka perii FlaskForm-luokan (merkitään <code>class Luokka(<em>perittava</em>)</code>. Erilaisia kenttätyyppejä (esim. tekstikenttä, StringField) löytyy <a href="https://wtforms.readthedocs.io/en/latest/fields.html" target="_blank" norel>WTFormsin dokumentaatiosta</a> sekä netin hakukoneista. 
+</p>
+
+
+<h2 class="material-heading">
+    Lomakkeen lisääminen näkymään
+
+</h2>
+
+<p>
+  Lomakkeiden lisääminen näkymään tapahtuu <code>views.py</code>-tiedostossa. Muokataan uuden lomakkeen näyttämiseen tarkoitettua funktiota <code>tasks_form</code> siten, että sen käyttämä <code>render_template</code> saa parametrinaan <code>form</code>-nimisen muuttujan, jonka arvona on uusi <code>TaskForm</code>-olio.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import render_template, request, redirect, url_for
+
+from application import app, db
+from application.tasks.models import Task
+from application.tasks.forms import TaskForm
+
+@app.route("/tasks/new/")
+def tasks_form():
+    return render_template("tasks/new.html", form = TaskForm())
+
+# ...
+</code></pre>
+
+<p>
+  Nyt käyttäjän mennessä polkuun <code>/tasks/new</code>, luotavan HTML-sivun käytössä on lomake. Lisätään lomake vielä HTML-sivulle. WTFormsin avulla luotavilla lomakkeilla on lomakkeen kenttää kuvaava nimi <code>label</code> sekä itse lomakekenttä. Alla luotava lomake näyttää lomakkeen tekstikentälle nimen "Task name".
+</p>
+
+
+<pre class="sh_xml code-highlight"><code>  {% extends "layout.html" %}
+
+  {% block body %}
+  &lt;form method="POST" action="{{ url_for('tasks_create') }}"&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+	&lt;td&gt;
+	  {{ form.name.label }}
+	&lt;/td&gt;
+	&lt;td&gt;
+	  {{ form.name }}
+	&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+	&lt;td colspan="2"&gt;
+	  &lt;input type="submit" value="Add a new task"/&gt;
+	&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/form&gt;
+  {% endblock %}
+</code></pre>
+
+<p>
+  Nyt lomake näyttää seuraavalta.
+</p>
+
+<img src="../img/wtforms-task-new-fd3fe369.png" alt="Lomake tekstikentällä."/>
+
+
+<h2 class="material-heading">
+    Lomakekenttien lisääminen
+
+</h2>
+
+<p>
+  Lomakekenttien lisääminen tapahtuu lisäämällä halutut kentät lomaketta kuvaavaan luokkaan sekä lisäämällä lomakkeen kentät lomakkeen näyttämiseen käytettävään HTML-dokumenttiin.
+</p>
+
+<p>
+  Muokataan lomaketta ja lisätään siihen kenttä, jonka avulla käyttäjä pystyy määrittelemään tehtävän tehdyksi tai tekemättömäksi. Tämä onnistuu <code>BooleanField</code>-tyyppisellä kentällä. Muokataan kansiossa <code>tasks</code> olevaa tiedostoa <code>forms.py</code> seuraavaan muotoon.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask_wtf import FlaskForm
+from wtforms import BooleanField, StringField
+
+class TaskForm(FlaskForm):
+    name = StringField("Task name")
+    done = BooleanField("Done")
+  
+    class Meta:
+        csrf = False
+</code></pre>
+
+<p>
+  Nyt näkymää varten luotava lomakeolio sisältää kentät nimeä ja tehdyksi merkkaamista varten. Muokataan vielä HTML-sivua siten, että uusi lomakkeen kenttä näkyy myös HTML-sivulla. Alla määritelty HTML-sivu näyttää kaksi lomakkeen kenttää <code>name</code> ja <code>done</code> sekä niihin liitetyt nimet "Task name" ja "Done". 
+</p>
+
+
+<pre class="sh_xml code-highlight"><code>  {% extends "layout.html" %}
+
+  {% block body %}
+  &lt;form method="POST" action="{{ url_for('tasks_create') }}"&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+	&lt;td&gt;
+	  {{ form.name.label }}
+	&lt;/td&gt;
+	&lt;td&gt;
+	  {{ form.name }}
+	&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+	&lt;td&gt;
+	  {{ form.done.label }}
+	&lt;/td&gt;
+	&lt;td&gt;
+	  {{ form.done }}
+	&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+	&lt;td colspan="2"&gt;
+	  &lt;input type="submit" value="Add a new task"/&gt;
+	&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/form&gt;
+  {% endblock %}
+</code></pre>
+
+<p>
+  Lomake näyttää nyt seuraavalta.
+</p>
+
+<img src="../img/wtforms-task-new-with-done-ae8e78fd.png" alt="Lomake kahdella kentällä."/>
+
+
+<h2 class="material-heading">
+    Lomakkeen avulla lähetetyn tiedon tallentaminen
+
+</h2>
+
+<p>
+  Kun tarkastelemme edellä luodun lomakkeen toimintaa, lomakkeen <code>done</code> kentän arvo ei tallennu tietokantaan. Mitä ihmettä?
+</p>
+
+<p>
+  Tarkastellaan lomakkeesta lähetetyn tiedon tallentamiseen tarkoitettua <code>tasks_create</code>-funktiota. 
+</p>
+
+
+<pre class="sh_python code-highlight"><code># ...
+@app.route("/tasks/", methods=["POST"])
+def tasks_create():
+    t = Task(request.form.get("name"))
+  
+    db.session().add(t)
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+# ...
+</code></pre>
+
+<p>
+  WTFormsin avulla luodun lomakkeen kautta tapahtunut tehtävän lisääminen onnistui aiemmin osittain tuurilla. Kun loimme lomakkeen ensimmäisen version, lomakkeeseen tuli kenttä nimeltä <code>name</code>. Samaa kenttää käytettiin myös lomakkeelta saadun tiedon tallentamiseen tarkoitetussa funktiossa.
+</p>
+
+<p>
+  WTFormsia käytettäessä lomakkeen käsittely tapahtuu hieman eri tavalla. Pyynnössä tulevasta lomakedatasta <code>request.form</code> voidaan luoda lomaketta kuvaava olio, esim <code>form = TaskForm(request.form)</code>. Nyt <code>form</code>-olion kautta pääsee lomakekenttiin sekä niiden sisältämään dataan. 
+</p>
+
+<p>
+  Lomakekenttien data löytyy kenttää kuvaavan muuttujan alta <code>data</code>-nimisestä muuttujasta. Esimerkiksi lomakkeessa <code>form</code> olevan tekstikentän nimeltä <code>name</code> arvo löytyy muuttujasta <code>data</code>, joka kirjoitetaan kokonaisuudessaan muodossa <code>form.name.data</code>. Vastaavasti tehtävän tehdyksi merkkaavan muuttujan <code>done</code> arvo löytyy muuttujasta <code>form.done.data</code>. 
+</p>
+
+<p>
+  Muokataan funktion <code>tasks_create</code> toiminnallisuutta siten, että funktiossa luodaan <code>Task</code>-olio lomaketta hyödyntäen. Tämä tapahtuu seuraavasti.
+</p>
+
+<pre class="sh_python code-highlight"><code># ...
+  
+@app.route("/tasks/", methods=["POST"])
+def tasks_create():
+    form = TaskForm(request.form)
+
+    t = Task(form.name.data)
+    t.done = form.done.data
+  
+    db.session().add(t)
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+# ...
+</code></pre>
+
+<p>
+  Nyt lomakkeen avulla lähetetty data tallennetaan myös tietokantaan.
+</p>
+
+
+<img src="../img/tehtavan-luominen-lomakkeella-9758bf67.gif" alt="Lomake kahdella kentällä tallentaa tietoa tietokantaan."/>
+
+
+<h2 class="material-heading">
+    Lomakkeen kautta lähetetyn tiedon validointi
+
+</h2>
+
+<p>
+  Lomakkeiden avulla lähetettävä tieto halutaan usein validoida ennen sen tallentamista tietokantaan. Validointi sisältää muunmuassa toivotun muodon tarkastamisen, tyhjien syötteiden karsinnan ym ym. WTForms tarjoaa lomakkeiden validointiin valmista toiminnallisuutta.
+</p>
+
+<p>
+  Mikäli lomakkeen haluaa validoida, tulee lomaketta kuvaavaan luokkaan määritellä validointisäännöstö lomakkeiden kentille, lomaketta kuvaavalle HTML-sivulle lisätä toiminnallisuus mahdollisten virheviestien näyttämiseksi, sekä tiedon tallentamiseen keskittyvään funktioon tulee lisätä validointikutsu.
+</p>
+
+<p>
+  Lisätään tehtävien lisäämiseen käytettyyn lomakkeeseen esimerkinomaisesti tekstikenttään syötetyn merkkijonon pituuden validointi. Haluamme, että merkkijono on vähintään kaksi merkkiä pitkä.
+</p>
+
+<p>
+  Muokkaamme ensin lomaketta kuvaavaa luokkaa. Validoitavaan kenttään lisätään validointisäännöt -- alla tekstikentän pituuden tulee olla vähintään kaksi.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask_wtf import FlaskForm
+from wtforms import BooleanField, StringField, validators
+
+class TaskForm(FlaskForm):
+    name = StringField("Task name", [validators.Length(min=2)])
+    done = BooleanField("Done")
+  
+    class Meta:
+        csrf = False
+</code></pre>
+
+<p>
+  Muokataan seuraavaksi HTML-sivua siten, että se näyttää mahdolliset validointivirheet. Validointivirheet tallennetaan lomakkeeseen kenttäkohtaisesti kunkin kentän alla sijaitsevaan muuttujaan nimeltä <code>errors</code>. Virheitä voi olla useita, joten muuttuja <code>errors</code> on lista, joka tulee käydä läpi kun se tulostetaan.
+</p>
+
+<pre class="sh_xml code-highlight"><code>  {% extends "layout.html" %}
+
+  {% block body %}
+  &lt;form method="POST" action="{{ url_for('tasks_create') }}"&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+	&lt;td&gt;
+	  {{ form.name.label }}
+	&lt;/td&gt;
+	&lt;td&gt;
+	  {{ form.name }}
+	&lt;/td&gt;
+	&lt;td&gt;
+	  &lt;ul&gt;
+	    {% for error in form.name.errors %}
+	    &lt;li&gt;{{ error }}&lt;/li&gt;
+	    {% endfor %}
+	  &lt;/ul&gt;
+	&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+	&lt;td&gt;
+	  {{ form.done.label }}
+	&lt;/td&gt;
+	&lt;td&gt;
+	  {{ form.done }}
+	&lt;/td&gt;
+	&lt;td&gt;
+	&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+	&lt;td colspan="3"&gt;
+	  &lt;input type="submit" value="Add a new task"/&gt;
+	&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/form&gt;
+  {% endblock %}
+</code></pre>
+
+<p>
+  Lomakkeen validointi tapahtuu osana funktiota, jonka vastuulla on lomakkeelta lähetetyn tiedon vastaanottaminen sekä käsittely. Konkreettinen validointi tapahtuu lomaketta kuvaavan olion <code>validate</code>-metodin avulla -- mikäli lomakkeesta saatu tieto ei ole validia, tulee käyttäjälle näyttää lomakesivu uudestaan. Lomakesivulle annetaan parametrina aiemmin saatu lomakeolio, jolloin sivulla näytetään aiemmin syötetyt arvot. 
+</p>
+
+<pre class="sh_python code-highlight"><code># ...
+@app.route("/tasks/", methods=["POST"])
+def tasks_create():
+    form = TaskForm(request.form)
+
+    if not form.validate():
+        return render_template("tasks/new.html", form = form)
+
+    t = Task(form.name.data)
+    t.done = form.done.data
+
+    db.session().add(t)
+    db.session().commit()
+
+    return redirect(url_for("tasks_index"))
+</code></pre>
+
+<p>
+  Nyt lomakkeella on validointi. Lisää validointisäätöjä sekä lisää validointisäännöistä löytyy osoitteesta <a href="https://wtforms.readthedocs.io/en/stable/validators.html" target="_blank" norel>https://wtforms.readthedocs.io/en/stable/validators.html</a> sekä hakukoneista.
+</p>
+
+
+<img src="../img/validointiesimerkki-309424ab.gif" alt="Lomake kahdella kentällä."/>
+
+<p>
+  &nbsp;
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Lomakkeet ja tietokannan kentät
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    WTFormsin ja SQLAlchemyn avulla käyttäjä voi luoda lomakkeita myös suoraan tietokantaa kuvaavista luokista, kts. esim. <a href="https://wtforms.readthedocs.io/en/stable/ext.html" target="_blank" norel>https://wtforms.readthedocs.io/en/stable/ext.html</a>. Tässä materiaalissa tuota toiminnallisuutta ei kuitenkaan käsitellä.
+  </p>
+
+  <p>
+    Laajemmin ajatellen aina välillä on hyvä miettiä lomakkeita sen kautta mitä käyttäjälle halutaan kullakin sivulla näyttää, eikä sen kautta mitä tietokantaan halutaan tallentaa.
+  </p>
+  
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Käyttäjät ja kirjautuminen
+
+</h1>
+
+<p>
+  Tarkastellaan seuraavaksi käyttäjien hallintaa web-sovelluksissa. Käyttäjien hallinta tapahtuu käytännössä palvelimen ja selaimen välisessä kommunikoinnissa välitettävien evästeiden avulla. Kun käyttäjä kirjautuu kirjautumislomakkeen (tai muun vastaavan) avulla, palvelin tunnistaa käyttäjän ja lähettää osana kirjautumispyynnön vastausta selaimelle evästeen. Jatkossa selain lähettää vastaanotetun evästeen palvelimelle jokaisen sivulle tehtävän pyynnön yhteydessä, jolloin palvelin osaa evästeen perusteella yhdistää pyynnön kirjautuneeseen käyttäjään. Kun käyttäjä kirjautuu ulos palvelusta, palvelimella oleva evästeeseen liitetty tieto. 
+</p>
+
+<p>
+  Flask tarjoaa käyttäjien ja kirjautumisen hallintaan paketin <code>flask-login</code>. Asennetaan se projektiimme. 
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ pip install flask-login
+Collecting flask-login
+...
+Successfully installed flask-login-0.4.1
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Kirjautumistoiminnallisuutta varten tarvitsemme (1) käyttäjän, (2) kirjautumislomakkeen, (3) kirjautumislomakkeen vastaanottavan ja käsittelevän toiminnallisuuden, sekä (4) sovellukseen lisättävän <code>flask-login</code>-toiminnallisuuden.
+</p>
+
+<p>
+  Luodaan kirjautumistoiminnallisuutta varten kansioon <code>application</code> uusi kansio <code>auth</code>, jonka alle kirjautumiseen liittyvä toiminnallisuus lisätään. Kirjautumislomake sekä muut kirjautumiseen liittyvät HTML-sivut luodaan kansion <code>templates</code> alle luotavaan kansioon <code>auth</code>.
+</p>
+
+
+<h2 class="material-heading">
+    Käyttäjää kuvaava luokka ja tietokantataulu
+
+</h2>
+
+<p>
+  Luodaan ensin käyttäjää kuvaava luokka <code>User</code>. Luokka luodaan kansion <code>auth</code> alle luotavaan tiedostoon <code>models.py</code>. Jokaisella käyttäjällä on tunnus, tieto luomisesta ja päivittämisestä, nimi, käyttäjänimi, sekä salasana. Näiden lisäksi flask-login määrää (kts. <a href="https://flask-login.readthedocs.io/en/latest/#your-user-class" target="_blank" norel>https://flask-login.readthedocs.io/en/latest/#your-user-class</a>), että jokaisella käyttäjälle on metodit <code>get_id</code>, <code>is_active</code>, <code>is_anonymous</code> sekä <code>is_authenticated</code>. 
+</p>
+
+<p>
+  Koska sana <a href="https://www.postgresql.org/docs/current/static/sql-keywords-appendix.html" target="_blank" norel>user</a> on varattu avainsana myöhemmin käytettävässä PostgreSQL:ssä, asetetaan luokan perusteella luotavan tietokantataulun nimeksi <code>account</code>.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import db
+
+class User(db.Model):
+
+    __tablename__ = "account"
+  
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
+                              onupdate=db.func.current_timestamp())
+
+    name = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False)
+    password = db.Column(db.String(144), nullable=False)
+
+    def __init__(self, name, username, password):
+        self.name = name
+        self.username = username
+        self.password = password
+  
+    def get_id(self):
+        return self.id
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def is_authenticated(self):
+        return True
+</code></pre>
+
+<p>
+  Lisätään luokka myös sovelluksen <code>__init__.py</code>-tiedostossa ladattaviin luokkiin, jolloin luokkaa kuvaava tietokantataulu luodaan sovelluksen käynnistyessä.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+  
+from flask_sqlalchemy import SQLAlchemy
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
+app.config["SQLALCHEMY_ECHO"] = True
+  
+db = SQLAlchemy(app)
+  
+from application import views
+  
+from application.tasks import models
+from application.tasks import views
+  
+from application.auth import models 
+  
+db.create_all()
+</code></pre>
+
+<p>
+  Nyt kun sovellus käynnistetään, tietokantataulu <code>account</code> luodaan tietokantaan ja se löytyy tietokannasta.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ sqlite3 application/tasks.db
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> .schema
+CREATE TABLE account (
+    id INTEGER NOT NULL, 
+    date_created DATETIME, 
+    date_modified DATETIME, 
+    name VARCHAR(144) NOT NULL, 
+    username VARCHAR(144) NOT NULL, 
+    password VARCHAR(144) NOT NULL, 
+    PRIMARY KEY (id)
+);
+CREATE TABLE task (
+    id INTEGER NOT NULL, 
+    date_created DATETIME, 
+    date_modified DATETIME, 
+    name VARCHAR(144) NOT NULL, 
+    done BOOLEAN NOT NULL, 
+    PRIMARY KEY (id), 
+    CHECK (done IN (0, 1))
+);
+sqlite> 
+</pre>
+
+<p>
+  Mikäli tiedostossa <code>tasks.db</code> on paljon turhaa tietoa, tai sen haluaa alustaa uudestaan, onnistuu uudelleen alustaminen poistamalla tiedoston ja käynnistämällä sovelluksen uudestaan.
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Lomakkeet ja tietokannan kentät
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Huomioi työtä tehdessäsi että SQLAlchemy ainoastaan luo puolestasi taulut joita ei ole olemassa ennestään. Jos teet muutoksia olemassa olevien taulujesi rakenteeseen, joudut poistamaan tietokannan kuten yllä jotta se luotaisiin uudestaan. Huomioi että kun myöhemmin otat käyttöön Postgres-tietokannan Herokussa, joudut tälläisissä tapauksissa poistamaan tietokannan myös Herokusta.
+  </p>
+
+  <p>
+    Projektin aikana tietokantaan tehtävät muutokset saa organisoitua järkevämmin jonkun migraatiotyökalun avulla (ks. esim <a href="https://flask-migrate.readthedocs.io/en/latest/" target="_blank" norel>Flask-Migrate</a>). Tätä ei harjoitustyössä vaadita.
+  </p>
+
+
+  </div>
+</div>
+
+<h2 class="material-heading">
+    Kirjautumislomake
+
+</h2>
+
+<p>
+  Kirjautumislomaketta varten tarvitaan kolme palaa:
+</p>
+
+<ul>
+  
+  <li>
+    Lomaketta kuvaava luokka. Luokka luodaan kansiossa <code>auth</code> olevaan tiedostoon <code>forms.py</code>. 
+  </li>
+  <li>
+    Lomakkeen näyttämisen ja lähetyksen vastaanottava toiminnallisuus. Toiminnallisuus luodaan kansiossa <code>auth</code> olevaan tiedostoon <code>views.py</code>. 
+  </li>
+  <li>
+    Lomaketta kuvaava HTML-tiedosto. HTML-tiedosto luodaan kansiossa <code>templates</code> olevaan kansioon <cude>auth</cude>.
+  </li>
+  
+</ul>
+
+<p>
+  Lomaketta kuvaava luokka sisältää kaksi kenttää: tekstikentän käyttäjätunnukselle sekä salasanakentän salasanalle. Kutsutaan lomaketta kuvaavaa luokkaa nimellä <code>LoginForm</code>. Luokka asetetaan kansion <code>auth</code> sisälle tiedostoon <code>forms.py</code>.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask_wtf import FlaskForm
+from wtforms import PasswordField, StringField
+  
+class LoginForm(FlaskForm):
+    username = StringField("Username")
+    password = PasswordField("Password")
+  
+    class Meta:
+        csrf = False
+</code></pre>
+
+<p>
+  Tehdään seuraavaksi ensimmäinen versio lomakkeen näyttämiseen sekä lähetetyn lomakkeen käsittelyyn tarvittavasta toiminnallisuudesta. Toiminnallisuus asetetaan kansion <code>auth</code> sisällä olevaan (tai sen sisälle luotavaan) tiedostoon <code>views.py</code>.
+</p>
+
+<p>
+  Toiminnallisuus sisältää sekä lomakkeen näyttämisen että lomakkeen käsittelyn. Mikäli pyyntö osoitteeseen <code>/auth/login</code> on GET-tyyppinen, eli käyttäjä hakee lomaketta, näytetään lomake käyttäjälle. Muulloin käsitellään pyynnössä saatu lomake ja etsitään tietokannasta lomakkeesta saatua käyttäjätunnusta ja salasanaa vastaava käyttäjä. Mikäli käyttäjää ei löydy (<code>if not user</code>), lomake näytetään uudestaan. Lomakkeen näyttämiseen lisätään tällöin myös virheviesti "No such username or password".
+</p>
+
+<p>
+  Mikäli käyttäjä löytyy, tulostetaan tieto käyttäjän tunnistamisesta ja palataan sivulle sovelluksen etusivulle. Huomaathan, että tämä ei ole vielä koko kirjautumistoiminnallisuus, vaan tässä tehdään kirjautumislomaketta.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import render_template, request, redirect, url_for
+
+from application import app
+from application.auth.models import User
+from application.auth.forms import LoginForm
+
+@app.route("/auth/login", methods = ["GET", "POST"])
+def auth_login():
+    if request.method == "GET":
+        return render_template("auth/loginform.html", form = LoginForm())
+
+    form = LoginForm(request.form)
+    # mahdolliset validoinnit
+
+    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+    if not user:
+        return render_template("auth/loginform.html", form = form,
+                               error = "No such username or password")
+
+
+    print("Käyttäjä " + user.name + " tunnistettiin")
+    return redirect(url_for("index"))    
+</code></pre>
+
+<p>
+  Luodaan vielä lopuksi HTML-tiedosto <code>loginform.html</code>, jota käytetään lomakkeen näyttämiseen. HTML-tiedosto asetetaan <code>templates</code>-kansion sisällä olevaan (tai sisälle luotavaan) kansioon <code>auth</code>.
+</p>
+
+<p>
+  Tiedoston tulee sisältää <code>LoginForm</code>-luokassa määritellyt kentät <code>username</code> ja <code>password</code> sekä niiden otsikkotekstit. Tämän lisäksi lomakkeessa on mahdollisuus virheviestin näyttämiseen.
+</p>
+
+<pre class="sh_xml code-highlight"><code>{% extends "layout.html" %}
+
+{% block body %}
+{{ error }}
+&lt;form method="POST" action="{{ url_for('auth_login') }}"&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+	{{ form.username.label }}
+      &lt;/td&gt;
+      &lt;td&gt;
+	{{ form.username }}
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+	{{ form.password.label }}
+      &lt;/td&gt;
+      &lt;td&gt;
+	{{ form.password }}
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;
+	&lt;input type="submit" value="Login"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/form&gt;
+{% endblock %}
+</code></pre>
+
+<p>
+  Käynnistetään sovellus ja tarkastellaan lomakkeen toimintaa. Tarkastellaan lomakkeen toimintaa.
+</p>
+
+<img src="../img/loginform-not-found-c7f32895.png" alt="Lomaketta ei löydy."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Lomaketta ei löydy. 
+</p>
+
+<p>
+  Virhe on tuttu. Emme ole lisänneet lomakkeen näyttämisestä vastuussa olevaa kansion <code>auth</code> <code>views</code>-tiedoston lataamista osaksi sovelluksen käynnistymistä. Muokataan <code>__init__.py</code>-tiedostoa siten, että tiedosto sisältää myös viitteen <code>auth</code>-kansion <code>views</code>.py-tiedostoon.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+
+from flask_sqlalchemy import SQLAlchemy
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
+app.config["SQLALCHEMY_ECHO"] = True
+
+db = SQLAlchemy(app)
+
+from application import views
+
+from application.tasks import models
+from application.tasks import views
+
+from application.auth import models
+from application.auth import views
+
+db.create_all()
+</code></pre>
+
+<p>
+  Nyt lomake löytyy ja käyttäjä voi yrittää kirjautua. Tällä hetkellä tietokannassa ei ole yhtäkään käyttäjää, joten "kirjautuminen" epäonnistuu aina.
+</p>
+
+<img src="../img/login-attempt-19b280b6.gif" alt="Kirjautumisyritys. Käyttäjää ei löydy."/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Lisätään tietokantaan käyttäjä. Käyttäjän nimeksi tulee "hello world", käyttäjätunnukseksi "hello" ja salasanaksi "world".
+</p>
+
+<pre class="terminal">SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> INSERT INTO account (name, username, password) VALUES ('hello world', 'hello', 'world');
+sqlite> 
+</pre>
+
+<p>
+  Nyt "kirjautuminen" edellä mainitulla tunnuksella onnistuu.
+</p>
+
+
+<h2 class="material-heading">
+    Konkreettinen kirjautuminen ja käyttäjän tunnistaminen
+
+</h2>
+
+<p>
+  Todellisuudessahan edellä toteutettu kirjautumistoiminnallisuus on oikeastaan vain lomake, johon lisättyjä tietoja etsitään tietokannasta. Lisätään sovellukseen kirjautumiseen vaadittava toiminnallisuus.
+</p>
+
+<h3 class="material-heading">
+    Konfiguraatiot
+
+</h3>
+
+<p>
+  Kirjautumistoiminnallisuutta varten tarvitaan kirjautumisten käsittelyyn tarvittava LoginManager-olio, joka kytketään osaksi sovellusta. Tämän lisäksi oliolle tulee määritellä kirjautumisen käsittelyyn käytettävä funktio (<code>login_view</code>), jotta sovellus osaa ohjata pyynnön kyseiselle funktiolle tarvittaessa. 
+</p>
+
+<p>
+  Lisätään tarvittu toiminnallisuus <code>__init__.py</code>-tiedostoon. Tiedosto on kokonaisuudessaan nyt seuraavanlainen.
+</p>
+
+<pre class="sh_python code-highlight"><code># flask-sovellus
+from flask import Flask
+app = Flask(__name__)
+
+# tietokanta
+from flask_sqlalchemy import SQLAlchemy
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
+app.config["SQLALCHEMY_ECHO"] = True
+
+db = SQLAlchemy(app)
+
+# oman sovelluksen toiminnallisuudet
+from application import views
+
+from application.tasks import models
+from application.tasks import views
+
+from application.auth import models
+from application.auth import views
+
+# kirjautuminen
+from application.auth.models import User
+from os import urandom
+app.config["SECRET_KEY"] = urandom(32)
+
+from flask_login import LoginManager
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+login_manager.login_view = "auth_login"
+login_manager.login_message = "Please login to use this functionality."
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+# luodaan taulut tietokantaan tarvittaessa
+db.create_all()
+</code></pre>
+
+<p>
+  Kirjautumiseen käytettävä funktio <code>load_user</code> lataa tietokannasta käyttäjän avaimen perusteella. 
+</p>
+
+
+<h3 class="material-heading">
+    Kirjautuminen
+
+</h3>
+
+<p>
+  Lisätään kirjautumislomakkeen käsittelyyn konkreettinen kirjautuminen. Kirjautuminen tapahtuu <code>flask_login</code>-pakkauksesta löytyvällä <code>login_user</code>-funktiolla. 
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import render_template, request, redirect, url_for
+from flask_login import login_user
+  
+from application import app
+from application.auth.models import User
+from application.auth.forms import LoginForm
+
+@app.route("/auth/login", methods = ["GET", "POST"])
+def auth_login():
+    if request.method == "GET":
+        return render_template("auth/loginform.html", form = LoginForm())
+
+    form = LoginForm(request.form)
+    # mahdolliset validoinnit
+
+    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+    if not user:
+        return render_template("auth/loginform.html", form = form,
+                                error = "No such username or password")
+
+
+    login_user(user)
+    return redirect(url_for("index"))    
+</code></pre>
+
+<p>
+  Lisätään näkymiin tieto kirjautuneesta käyttäjästä ja vaihtoehtoisesti pyydetään käyttäjää kirjautumaan. Tieto kirjautumisesta (tai sen puutteesta) löytyy käyttäjää kuvaavasta muuttujasta <code>current_user</code>. Muokataan <code>layout.html</code>-tiedostoa seuraavasti.
+</p>
+
+<pre class="sh_xml code-highlight"><code>  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;TodoApplication&lt;/title&gt;
+    &lt;/head&gt;
+    
+    &lt;body&gt;
+      {% if current_user.is_authenticated %}
+      &lt;p&gt;
+	Kirjautunut nimellä {{ current_user.name }}
+      &lt;/p&gt;
+      {% else %}
+      &lt;a href="{{ url_for('auth_login') }}"&gt;Kirjaudu&lt;/a&gt;
+      {% endif %}
+      
+      &lt;ul&gt;
+	&lt;li&gt;&lt;a href="{{ url_for('tasks_index') }}"&gt;List tasks&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="{{ url_for('tasks_form') }}"&gt;Add a task&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      
+      {% block body %}
+      &lt;p&gt;
+	Content.
+      &lt;/p&gt;
+      {% endblock %}
+    &lt;/body&gt;
+  &lt;/html&gt;  
+</code></pre>
+
+<p>
+  Nyt jokaisella sivulla on pääsy kirjautumislomakkeeseen ja käyttäjä voi kirjautua sovellukseen.
+</p>
+
+<img src="../img/kirjautuminen-9cd1c2df.gif" alt="Sivulla näkyy kirjautumislomake ja kirjautuminen onnistuu."/>
+
+
+<h3 class="material-heading">
+    Uloskirjautuminen
+
+</h3>
+
+<p>
+  Yllä luotu kirjautumistoiminnallisuus on kiva, mutta siitä puuttuu uloskirjautuminen. Uloskirjautumisen lisääminen on suoraviivaista. Lisätään ensin <code>layout.html</code>-tiedostoon linkki uloskirjautumiseen -- sovitaan tässä, että uloskirjautumista hoitaa funktio, jonka nimi on <code>auth_logout</code>.
+</p>
+
+
+<pre class="sh_xml code-highlight"><code>...
+  
+&lt;body&gt;
+{% if current_user.is_authenticated %}
+&lt;p&gt;
+Kirjautunut nimellä {{ current_user.name }}. &lt;a href="{{ url_for('auth_logout') }}"&gt;Kirjaudu ulos&lt;/a&gt;
+&lt;/p&gt;
+{% else %}
+&lt;a href="{{ url_for('auth_login') }}"&gt;Kirjaudu&lt;/a&gt;
+{% endif %}
+
+...
+</code></pre>
+
+<p>
+  Nyt kirjautuneelle käyttäjälle näkyy linkki, jossa lukee "Kirjaudu ulos".
+</p>
+
+<img src="../img/kirjaudu-ulos-b8352c88.png" alt="Sivulla näkyy uloskirjautumislinkki."/>
+
+<p>
+  Lisätään vielä kirjautumiseen liittyviä toiminnallisuuksia sisältävän kansion <code>auth</code> alla olevaan tiedostoon <code>views.py</code> konkreettinen uloskirjautumistoiminnallisuus. Uloskirjautuminen tapahtuu <code>flask_login</code>-kirjaston tarjoamalla <code>logout_user</code>-funktiolla.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import render_template, request, redirect, url_for
+from flask_login import login_user, logout_user
+
+from application import app, db
+from application.auth.models import User
+from application.auth.forms import LoginForm
+
+@app.route("/auth/login", methods = ["GET", "POST"])
+def auth_login():
+    # aiemmin toteutettu kirjautumistoiminnallisuus
+  
+    return redirect(url_for("index"))    
+
+
+@app.route("/auth/logout")
+def auth_logout():
+    logout_user()
+    return redirect(url_for("index"))    
+</code></pre>
+
+<p>
+  Nyt käyttäjä voi sekä kirjautua että kirjautua ulos. Kirjautuneen käyttäjän tiedot löytyvät palvelimelta <code>current_user</code>-nimisestä muuttujasta.
+</p>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Selkokieliset salasanat
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Esimerkissä tietokantaan tallennettiin selkokielisiä salasanoja. Yleisesti ottaen tämä on erittäin huono tapa. Palaamme myöhemmin hieman järkevämpään tapaan -- halutessasi voit nyt jo etsiä lisää tietoa aiheesta avainsanoilla <code>flask login bcrypt password</code>.
+  </p>
+  
+
+  </div>
+</div>
+
+<h2 class="material-heading">
+    Uusien käyttäjien luominen
+
+</h2>
+
+<p>
+  Mikäli sovellukseen haluaa luoda uusia käyttäjiä, tulee ne luoda joko komentoriviltä, tai käyttäjien hallintaan tulee luoda erillinen näkymä. Uusien käyttäjien luominen tai käyttäjien muokkaaminen toimii samalla tavalla kuin tehtävien luominen.
+</p>
+
+
+<h2 class="material-heading">
+    Polkujen suojaaminen
+
+</h2>
+
+<p>
+  Kun kirjautumistoiminnallisuus on käytössä, sovelluksen polkuja voidaan suojata <code>@login_required</code>-määreellä. Määreen tulee olla määreen <code>@app.route</code> jälkeen.
+</p>
+
+<p>
+  Määritellään tehtävien lisäämiseen ja muokkaamiseen vaatimus kirjautumisesta. Muokataan kansiossa <code>tasks</code> olevaa tiedostoa <code>views.py</code> seuraavasti. Alla funktiot <code>tasks_form</code>, <code>tasks_set_done</code>, sekä <code>tasks_create</code> vaativat käyttäjän kirjautumista.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>from flask import render_template, request, redirect, url_for
+from flask_login import login_required
+
+from application import app, db
+from application.tasks.models import Task
+from application.tasks.forms import TaskForm
+
+
+@app.route("/tasks/", methods=["GET"])
+def tasks_index():
+    return render_template("tasks/list.html", tasks = Task.query.all())
+
+  
+@app.route("/tasks/new/")
+@login_required
+def tasks_form():
+    return render_template("tasks/new.html", form = TaskForm())
+
+@app.route("/tasks/&lt;task_id&gt;", methods=["POST"])
+@login_required
+def tasks_set_done(task_id):
+
+    t = Task.query.get(task_id)
+    t.done = True
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+
+@app.route("/tasks/", methods=["POST"])
+@login_required
+def tasks_create():
+    form = TaskForm(request.form)
+  
+    if not form.validate():
+        return render_template("tasks/new.html", form = form)
+
+  
+    t = Task(form.name.data)
+    t.done = form.done.data
+  
+    db.session().add(t)
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+</code></pre>
+
+<p>
+  Nyt sovellus ohjaa käyttäjän kirjautumissivulle mikäli käyttäjä hakee kirjautumista vaativaa osoitetta.
+</p>
+
+<img src="../img/kirjautumista-vaativa-sivu-d286eda6.gif" alt="Käyttäjälle näytetään kirjautumissivu mikäli käyttäjä pyrkii osoitteeseen, mihin hänellä ei ole oikeutta."/>
+
+
+
+<h1 class="material-heading">
+    Viitteet taulujen välillä
+
+</h1>
+
+<p>
+  Tarkastellaan tässä viitteitä taulujen välillä. Osoitteessa <a href="http://flask-sqlalchemy.pocoo.org/2.3/models/" target="_blank" norel>http://flask-sqlalchemy.pocoo.org/2.3/models/</a> oleva opas on tässä(kin) hyvä.
+</p>
+
+<p>
+  Luodaan esimerkinomaisesti sovellukseen toiminnallisuus, missä jokainen tehtävä liittyy tiettyyn käyttäjään.
+</p>
+
+
+<h2 class="material-heading">
+    Käyttäjään liittyvät tehtävät
+
+</h2>
+
+<p>
+  Muokataan sovellusta seuraavaksi siten, että jokainen luotu tehtävä liittyy aina johonkin käyttäjään. Tätä toiminnallisuutta varten tarvitsemme tehtävä-käsitteeseen viitteen käyttäjään, sekä käyttäjään tiedon siitä, että käyttäjään liittyy tehtäviä.
+</p>
+
+<p>
+  Muokataan ensin kansiossa <code>tasks</code> olevaa tiedostoa <code>models.py</code> siten, että tehtävään liittyy aina käyttäjä. 
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import db
+  
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
+    onupdate=db.func.current_timestamp())
+
+    name = db.Column(db.String(144), nullable=False)
+    done = db.Column(db.Boolean, nullable=False)
+
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
+                           nullable=False)
+
+    def __init__(self, name):
+        self.name = name
+        self.done = False
+</code></pre>
+
+<p>
+  Muokataan tämän jälkeen kansiossa <code>auth</code> olevaa tiedostoa <code>models.py</code> siten, että jokaiseen käyttäjään liitetään käyttäjän tehtävät.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import db
+
+class User(db.Model):
+
+    __tablename__ = "account"
+  
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
+                              onupdate=db.func.current_timestamp())
+
+    name = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False)
+    password = db.Column(db.String(144), nullable=False)
+
+    tasks = db.relationship("Task", backref='account', lazy=True)
+  
+    def __init__(self, name):
+        self.name = name
+        
+    def get_id(self):
+        return self.id
+  
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def is_authenticated(self):
+        return True
+</code></pre>
+
+<p>
+  Poistetaan käytössä oleva tietokanta (tiedosto <code>tasks.db</code> kansiossa <code>application</code>), jotta tietokantataulun luodaan uudestaan. Nyt kun sovellus on käynnistetty kertaalleen, tiedosto <code>tasks.db</code> on luotu uudestaan.
+</p>
+
+<p>
+  Tietokannan rakenne on nyt seuraava.
+</p>
+
+
+<pre class="terminal">SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> .schema
+CREATE TABLE account (
+    id INTEGER NOT NULL, 
+    date_created DATETIME, 
+    date_modified DATETIME, 
+    name VARCHAR(144) NOT NULL, 
+    username VARCHAR(144) NOT NULL, 
+    password VARCHAR(144) NOT NULL, 
+    PRIMARY KEY (id)
+);
+CREATE TABLE task (
+    id INTEGER NOT NULL, 
+    date_created DATETIME, 
+    date_modified DATETIME, 
+    name VARCHAR(144) NOT NULL, 
+    done BOOLEAN NOT NULL, 
+    account_id INTEGER NOT NULL, 
+    PRIMARY KEY (id), 
+    CHECK (done IN (0, 1)), 
+    FOREIGN KEY(account_id) REFERENCES account (id)
+);
+sqlite> 
+</pre>
+
+<p>
+  Taululla <code>task</code> on nyt viiteavain <code>account_id</code>, joka viittaa käyttäjiä sisältävään <code>account</code>-tauluun.
+</p>
+
+
+<h2 class="material-heading">
+    Viitteen lisääminen: Uuden tehtävän luominen
+
+</h2>
+
+<p>
+  <em>
+    Mikäli (kun) poistit edellä tietokannan, luo uusi käyttäjä tietokantaan ennen tämän askeleen testaamista. Aiemmin luotu 'hello world'-käyttäjä on poistunut tietokannan mukana.
+  </em>
+</p>
+
+<p>
+  Muokataan tehtävän lisäämiseen tarkoitettua toiminnallisuutta siten, että luotavaan tehtävään kytketään aina käyttäjä. Kirjautunut käyttäjä on muuttujassa <code>current_user</code>, ja kirjautuneen käyttäjän pääavain on käyttäjän <code>id</code>-muuttujassa. Muokataan kansiossa <code>tasks</code> olevaa <code>views.py</code>-tiedostoa siten, että uuden tehtävän luominen asettaa myös käyttäjän luotavalle tehtävälle.
+</p>
+
+
+
+<pre class="sh_python code-highlight"><code>from flask import render_template, request, redirect, url_for
+from flask_login import login_required, current_user
+
+from application import app, db
+from application.tasks.models import Task
+from application.tasks.forms import TaskForm
+
+
+@app.route("/tasks/", methods=["GET"])
+def tasks_index():
+    return render_template("tasks/list.html", tasks = Task.query.all())
+
+  
+@app.route("/tasks/new/")
+@login_required
+def tasks_form():
+    return render_template("tasks/new.html", form = TaskForm())
+
+  
+@app.route("/tasks/&lt;task_id&gt;/", methods=["POST"])
+@login_required
+def tasks_set_done(task_id):
+
+    t = Task.query.get(task_id)
+    t.done = True
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+
+  
+@app.route("/tasks/", methods=["POST"])
+@login_required
+def tasks_create():
+    form = TaskForm(request.form)
+  
+    if not form.validate():
+        return render_template("tasks/new.html", form = form)
+  
+    t = Task(form.name.data)
+    t.done = form.done.data
+    t.account_id = current_user.id
+  
+    db.session().add(t)
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+</code></pre>
+
+<p>
+  Nyt tehtävän luomisen yhteydessä (funktio <code>tasks_create</code>) luotavalle tehtävälle asetetaan tällä hetkellä kirjautuneen käyttäjän tunnus.
+</p>
+
+
+<h1 class="material-heading">
+    Kehitys- ja tuotantoympäristöt
+
+</h1>
+
+<p>
+  Sovelluksemme toimii tällä hetkellä paikallisesti <code>SQLiteä</code> käyttäen. Lisätään sovellukseen vielä PostgreSQL-tuki, mikä mahdollistaa Herokun tarjoaman PostgreSQL:n käytön.
+</p>
+
+<p>
+  Asennetaan sovellukseen ensin PostgreSQL-tietokannanhallintajärjestelmän käyttöön tarvittava ajuri <a href="http://initd.org/psycopg/" target="_blank" norel>psycopg2</a>.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ pip install psycopg2
+Collecting psycopg2
+...
+Successfully installed psycopg2-2.7.4
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Luodaan tämän jälkeen uusi versio <code>requirements.txt</code>-tiedostosta, jota Heroku käyttää riippuvuuksien lataamiseen.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ pip freeze | grep -v pkg-resources > requirements.txt
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Lisätään tämän jälkeen muutetut tiedostot versionhallintaan -- tätä ei erikseen ohjeisteta.
+</p>
+
+<p>
+  Lisätään seuraavaksi sovelluksen käyttöön tieto siitä, että sovellus on Herokussa. Tämä tapahtuu luomalla Herokuun ympäristömuuttuja HEROKU. Ympäristömuuttujan lisääminen tapahtuu komentoriviltä komennolla <code>heroku config:set HEROKU=1</code> -- tässä komento <code>heroku</code> on osa Herokun komentorivityökaluja.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ heroku config:set HEROKU=1
+Setting HEROKU and restarting ⬢ <em>sovellus</em>... done
+HEROKU: 1
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Tarkastellaan nyt sovellusta ja katsotaan onko sovelluksella olemassa jo tietokanta. Tämä onnistuu kirjautumisyrityksellä Herokun PostgreSQL-tietokantaan.
+</p>
+
+
+<pre class="terminal">(venv) ~/todosovellus$ heroku pg:psql
+▸    ⬢ <em>sovellus</em> has no databases
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Yllä oleva viesti antaa ymmärtää, että tietokantaa ei ole. Lisätään Herokuun tietokanta.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ heroku addons:add heroku-postgresql:hobby-dev
+...
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Nyt sovellukselle on Herokussa tietokanta. Heroku antaa tietokannan ympäristömuuttujassa <code>DATABASE_URL</code>. Muokataan sovelluksen <code>__init__.py</code>-tiedostoa siten, että Herokussa ollessamme käytetään Herokun tietokantaan, muulloin omaa tietokantaamme. Tämän lisäksi tietokantataulujen luominen tapahtuu vain kerran (try-catch).
+</p>
+
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+
+from flask_sqlalchemy import SQLAlchemy
+
+import os
+
+if os.environ.get("HEROKU"):
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"    
+    app.config["SQLALCHEMY_ECHO"] = True
+
+  
+db = SQLAlchemy(app)
+
+from application import views
+
+from application.tasks import models
+from application.tasks import views
+
+from application.auth import models
+from application.auth import views
+
+
+# login
+from application.auth.models import User
+from os import urandom
+app.config["SECRET_KEY"] = urandom(32)
+
+from flask_login import LoginManager
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+login_manager.login_view = "auth_login"
+login_manager.login_message = "Please login to use this functionality."
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+
+try: 
+    db.create_all()
+except:
+    pass
+</code></pre>
+
+<p>
+  Nyt sovelluksen lisääminen Herokuun onnistuu, ja sovellus toimii melkein. Sovelluksessa ei ole yhtäkään käyttäjää, joten kirjautumisesta ei ole juurikaan hyötyä. Lisätään sovellukseen vielä käyttäjä.
+</p>
+
+
+<pre class="terminal">(venv) ~/todosovellus$ heroku pg:psql
+--> Connecting to <em>osoite</em>
+psql (9.5.12, server 10.3 (Ubuntu 10.3-1.pgdg14.04+1))
+WARNING: psql major version 9.5, server major version 10.
+Some psql features might not work.
+SSL connection (protocol: TLSv1.2, cipher: <em>jotain</em>, bits: 256, compression: off)
+Type "help" for help.
+
+<em>sovellus</em>::DATABASE=> \dt
+List of relations
+Schema |  Name   | Type  |     Owner      
+--------+---------+-------+----------------
+public | account | table | wkxxmbgyjastfs
+public | task    | table | wkxxmbgyjastfs
+(2 rows)
+
+<em>sovellus</em>::DATABASE=> INSERT INTO account (name, username, password) VALUES ('hello world', 'hello', 'world');
+INSERT 0 1
+<em>sovellus</em>::DATABASE=> SELECT * FROM account;
+id | date_created | date_modified |    name     | username | password 
+----+--------------+---------------+-------------+----------+----------
+1 |              |               | hello world | hello    | world
+(1 row)
+
+<em>sovellus</em>::DATABASE=> 
+<em>sovellus</em>::DATABASE=> \q
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Nyt tietokannassa on käyttäjä, jonka käyttäjätunnus on <code>hello</code> ja salasana <code>world</code>.
+</p>
+
+<p>
+  Kun kokeilemme sovellusta verkossa, siihen saattaa liittyy pieniä omituisuuksia. Tarkista, että sovelluksen Procfile sisältää toisen osan ehdotetut parametrit.
+</p>
+
+<pre class="terminal">(venv) ~/todosovellus$ cat Procfile
+web: gunicorn --preload --workers 1 application:app
+(venv) ~/todosovellus$ 
+</pre>
+
+<p>
+  Mikäli sovellus ei vieläkään toimi, Herokuun saa logituksen päälle suoraviivaisesti. Muokkaa <code>run.py</code>-tiedostoa siten, että se sisältää seuraavat <code>app.logger</code>-rivit.
+</p>
+
+<pre class="sh_python code-highlight"><code>from application import app
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+</code></pre>
+
+<p>
+  Eräs tyypillinen virhe liittyy kirjautumiseen. Mikäli olet kirjautunut ja käynnistät sovelluksen uudelleen, kirjautumistiedot katoaa. Sovellusta kannattaa testata selaimen anonyymimodessa (esim. Chromen "New incognito window"). Kun käynnistät sovelluksen uudelleen, sulje myös selaimen anonyymi-ikkuna ja avaa se uudelleen. Tämän jälkeen kirjaudu sovellukseen ja käytä sitä.
+</p>
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    <a href="../license/">Kiitokset ja materiaalista</a>
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/tsoha-20/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/tsoha-20/edit/master/source/osa3.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/tsoha-20" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-aecf9e21.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+  </body>
+</html>
