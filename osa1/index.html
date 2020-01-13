@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tietokantasovellus, 2019 | Osa 1</title>
+    <title>Tietokantasovellus, 2020 | Osa 1</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -114,18 +114,17 @@
     
   <ul>
     <li>
-      Olet asentanut kurssilla tarvittavat työvälineet.
+      Olet valinnut harjoitustyöllesi aiheen.
     </li>
     <li>
-      Olet lukenut materiaalissa olevan lyhyen Python-oppaan ja kokeillut siinä olevia esimerkkejä.
+      Olet luonut harjoitustyölle github-repositoryn, jossa on lyhyt kuvaus harjoitustyön aiheesta.
     </li>
+	  <li>
+	    Olet tehnyt hahmotelman tietokantakaaviosta.
+	  </li>
     <li>
-      Olet tutustunut web-sovellusten toimintaan ja toteuttanut tämän sivun ohjeistusta mukaillen ensimmäisen Flaskia käyttävän web-sovelluksesi. <br>
-      <b>HUOM! Tarkoituksena on harjoitella sovelluksen toteuttamisen alkeita, älä kopioi tätä palautettavaan repositorioon!</b>
-    </li>
-    <li>
-      Olet luonut tämän sivun ohjeistusta noudattaen projektille sivun Herokuun. Tämän osan tarkoituksena on harjoitella työkalujen käyttöä, ei vielä aloittaa omaa projektia.
-    </li>
+	    Kirjoita dokumentaatio Markdown-muodossa. Voit katsoa vihjeitä muotoiluun esimerkiksi <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" norel>täältä.</a>
+	</li>
   </ul>
   
 
@@ -134,698 +133,220 @@
 
 
 <h1 class="material-heading">
-    Johdanto
+    Aiheen valinta
 
 </h1>
 
-<p>
-  Tämän osan alussa tarkastellaan web-sovelluksia, jonka jälkeen harjoitellaan oman sovelluksen tekemistä. 
-  Tämä osa on puhtaasti työkalujen käytön harjoittelua ja opastusta. Oma projekti aloitetaan seuraavassa osassa.
-</p>
-
-<p>
-  Kurssimateriaalin esimerkkisovelluksia ei kannata seurata kirjaimellisesti omaa työtä tehdessä. Esimerkkisovellus ei kokonaisuutena kata kurssin vaatimuksia, vaan on tarkoitettu esimerkiksi jonka kautta materiaalia voi soveltaa omaan työhönsä.
-</p>
-
-
-<h1 class="material-heading">
-    Web-sovellusten perusteet
-
-</h1>
-
-<p>
-  Web-sovellukset koostuvat selain- ja palvelinpuolesta. Käyttäjä käyttää selainohjelmistoa (esim. Chrome, kännykän selain, pädin selain, Kindlen selain, ...), joka tekee käyttäjän toimien perusteella pyyntöjä verkossa sijaitsevalle palvelimelle. Kun palvelin vastaanottaa pyynnön, se käsittelee pyynnön ja rakentaa vastauksen. Vastaus voi sisältää esimerkiksi web-sivun HTML-koodia tai jossain muussa muodossa olevaa tietoa.
-</p>
-
-<p>
-  Palvelin on kone aivan samalla tavalla kuin kännykkä, kannettava tietokone, pädi ym on kone. Kumpikin on kiinni verkossa, ja kummallakin on (ainakin välillisesti) koneen tunnistava IP-osoite. Kun käyttäjä tekee selainohjelmistolla pyynnön, pyyntö ohjautuu käyttäjän koneen verkkoyhteyden kautta palvelimen koneelle, jossa palvelinohjelmisto vastanottaa pyynnön ja käsittelee sen. Vaikka käyttäjä hakee tyypillisesti tekstimuotoisia osoitteita kuten <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a>, ei koneet näistä ymmärrä -- verkossa on erilliset palvelut tekstimuotoisten osoitteiden muuntamiseksi IP-osoitteiksi.
-</p>
-
-<p>
-  Selaimen tekemät pyynnöt noudattavat HTTP-protokollaa, joka on määritelty standardi pyyntöjen tekemiseen sekä niiden käsittelyyn. Resurssien -- eli tietyn osoitteen polkujen -- hakeminen tapahtuu HTTP-protokollan GET-tyyppisillä pyynnöillä, kun taas tiedon lähettäminen tapahtuu HTTP-protokollan POST-tyyppisillä pyynnöillä.
-</p>
-
-<p>
-  Selaimet tarjoavat tyypillisesti mahdollisuuden haettavien resurssien tarkasteluun. Esimerkiksi Google Chromessa selaintyövälineet saa auki painamalla näppäinyhdistelmää <code>Ctrl+Shift+I</code> tai valitsemalla Chromen valikosta <code>Developer Tools</code>. Selaimen työvälineet näyttävät seuraavalta.
-</p>
-
-<img src="../img/devtools-1-cb9565d1.png"/>
-
-<p>
-  &nbsp;
-</p>
-
-<p>
-  Kun selaimeen kirjoittaa osoitteen -- alla olevassa esimerkissä <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a> -- tekee selain GET-tyyppisen pyynnön osoitteeseen eli hakee osoitteessa olevalta palvelimelta polun osoittamaa resurssia.
-</p>
-
-<p>
-  Kun palvelin palauttaa resurssin, tyypillisesti HTML-kielisen sivun, voi resurssissa olla linkkejä myös toisiin resursseihin. Selaimet on ohjelmointu siten, että esimerkiksi HTML-kielisen sivun resurssit haetaan automaattisesti. Yhtä sivua haettaessa saatetaan noutaakin todellisuudessa kymmeniä ellei satoja resursseja.
-</p>
-
-<img src="../img/devtools-2-4def13b4.png"/>
-
-<p>
-  &nbsp;
-</p>
-
-<p>
-  Yllä olevassa kuvassa osoitteessa <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a> olevan sivun lataus on vielä kesken. Sivua rakennettaessa on tehty 101 pyyntöä, ja tietoa on siirretty 1.6 megatavua.
-</p>
-
-
-<p>
-  Web-sovellusten kehitys on tapana jakaa selainohjelmistojen kehitykseen ja palvelinohjelmistojen kehitykseen, vaikkakin nykyään molemmat kattava fullstack-kehitys on yhä suositumpaa.
-</p>
-
-<p>
-  Selainohjelmistoja ja käyttöliittymää kehitettäessä painotetaan rakenteen, ulkoasun ja toiminnallisuuden erottamista toisistaan. Karkeasti voidaan sanoa, että selaimessa näkyvän sivun sisältö ja rakenne määritellään HTML-tiedostoilla, ulkoasu CSS-tiedostoilla ja toiminnallisuus JavaScript-tiedostoilla.
-</p>
-
-<p>
-  Palvelinpuolen toiminnallisuutta toteutettaessa keskitytään tyypillisesti selainohjelmiston tarvitsevan "APIn" suunnitteluun ja toteutukseen, sivujen muodostamiseen selainohjelmistoa varten, datan tallentamiseen ja käsittelyyn, sekä sellaisten laskentaoperaatioiden toteuttamiseen, joita selainohjelmistossa ei kannata tai voida tehdä.
-</p>
-
-
-
-<h1 class="material-heading">
-    Web-kehitys Flask-kirjastolla
-
-</h1>
-
-<p>
-  Harjoitustyössä käytetään Pythonin <a href="http://flask.pocoo.org/" target="_blank">Flask</a>-kirjastoa web-sovelluksen toiminnallisuuden toteuttamiseen. Tutustutaan lyhyesti pienen Flask-sovelluksen toteuttamiseen. 
-</p>
-
 <h2 class="material-heading">
-    Virtuaaliympäristön luominen
+    Työ omasta aiheesta
 
 </h2>
 
 <p>
-  Luodaan ensin hakemisto sovellustamme varten ja luodaan sen sisälle Python-virtuaaliympäristö komennolla <code>python3 -m venv <em>venv</em></code>. Kutsutaan sovellusta nimellä <code>demo</code>. 
-</p>
-
-<pre class="terminal">$ ls
-$ mkdir demo
-$ ls
-demo
-$ cd demo
-~/demo$ python3 -m venv venv
-~/demo$ ls
-venv
-$ 
-</pre>
-
-<p>
-  Nyt luomallamme virtuaaliympäristöllä on kansio <code>venv</code>. Tarkastellaan sen sisältöä.
-</p>
-
-<pre class="terminal">~/demo$ ls venv
-bin  include  lib  lib64  pyvenv.cfg  share
-$
-</pre>
-
-<p>
-  Kansiossa on kansiot <code>bin</code>, <code>include</code>, <code>lib</code> ja <code>share</code>. Kansio <code>lib64</code> on todellisuudessa linkki kansioon <code>lib</code>. Tiedosto <code>pyvenv.cfg</code> sisältää virtuaaliympäristön asetukset.
+  Mikäli haluat tehdä työn omasta aiheesta ja työ täyttää harjoitustyön vaatimukset (tietokanta jossa noin 3-5 taulua, monen suhde moneen, yhteenvetokyselyitä, jne), voit toteuttaa työn omalla aiheellasi. Aiheesta täytyy laatia aihekuvaus, joka tulee tallettaa github-repositorioosi ensimmäisen osan palautuksen yhteydessä. Voit myös toteuttaa valmiista aihe-ehdotuksesta oman variaatiosi.
 </p>
 
 <p>
-  Kun haluamme ottaa luodun virtuaalisen Python-ympäristön käyttöön, aktivoimme sen komennolla <code>source venv/bin/activate</code>. Muuttuneesta komentokehoitteesta näkee että virtuaaliympäristö on aktiivinen.
+  Hyviä aiheideoita voit saada vaikkapa omista harrasteista ja kiinnostuksen kohteista. Kurssilla on vuosien saatossa toteutettu mm. kaikennäköisiä roolipelitietokantoja, lintutietokanta, bussinbongaustietokanta ja haalarimerkkigalleria.
 </p>
 
-<pre class="terminal">~/demo$ source venv/bin/activate
-(venv) ~/demo$
-</pre>
-
 <p>
-  Haluamme lisätä käyttöömme Flask-kirjaston. Tämä onnistuu kansiossa <code>bin</code> olevalla <code>pip</code>-kemonnolla.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ pip install Flask
-....
-....
-You are using pip version 8.1.1, however version 9.0.1 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.
-(venv) ~/demo$ 
-</pre>
-
-<p>
-  Flask-kirjaston asentamisen yhteydessä saimme tiedon siitä, että käytössä oleva pip on vanhahko. Päivitetään se samalla.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ pip install --upgrade pip
-Collecting pip
-  Using cached pip-9.0.1-py2.py3-none-any.whl
-    Installing collected packages: pip
-Found existing installation: pip 8.1.1
-  Uninstalling pip-8.1.1:
-    Successfully uninstalled pip-8.1.1
-Successfully installed pip-9.0.1
-(venv) ~/demo$ ls venv
-bin  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
-(venv) ~/demo$
-</pre>
-
-<p>
-  Käytössämme on nyt Flask, jonka lisäksi versionhallinnassa käytetyn pipin versiota on päivitetty.
+  Aiheesta on hyvä keskustella ohjaajan kanssa. Täten varmistetaan aiheen sopiva laajuus, työ ei saa olla liian suppea, mutta se ei myöskään saa olla liian laaja. Tavoite olisi, että jokaisella olisi aihe olemassa jo aloitusluennon jälkeen.
 </p>
 
 
 <h2 class="material-heading">
-    Ensimmäinen Flask-sovellus
+     Valmiita aiheaihioita
 
 </h2>
 
 <p>
-  <a href="http://flask.pocoo.org/" target="_blank" norel>Flask</a>-kirjaston etusivulla on seuraava lähdekoodi.
+  Alla on esimerkin vuoksi mahdollisia työaiheita.
 </p>
 
-<pre class="sh_python code-highlight"><code>from flask import Flask
-app = Flask(__name__)
-
-@app.route("/")
-def hello():
-    return "Hello World!"
-</code></pre>
-
-<p>
-  Luodaan uusi tiedosto <code>hello.py</code> edellä luotuun demo-kansioomme ja kopioidaan esimerkkilähdekoodi tiedoston <code>hello.py</code> sisällöksi. Suoritetaan tämän jälkeen tiedoston <code>hello.py</code> lähdekoodi.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ ls
-hello.py  venv
-(venv) ~/demo$ python3 hello.py
-(venv) ~/demo$
-</pre>
-
-<p>
-  Mitään ei tapahtunut. Huraa?
-</p>
-
-<p>
-  Flask-sovellusten käynnistäminen suoraan tiedostosta vaatii sovellukseen vielä ohjeistuksen komentoriviltä käynnistämiseen. Lisätään <code>hello.py</code>-tiedostoon vielä muutama rivi, jotka ohjeistavat sovelluksen käynnistämiseen kun se suoritetaan komentoriviltä.
-</p>
-
-<pre class="sh_python code-highlight"><code>from flask import Flask
-app = Flask(__name__)
-  
-@app.route("/")
-def hello():
-    return "Hello World!"
-
-if __name__ == "__main__":
-    app.run()
-</code></pre>
-
-<p>
-  Kokeillaan sovelluksen käynnistämistä uudestaan.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ ls
-hello.py  venv
-(venv) ~/demo$ python3 hello.py
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-</pre>
-
-<p>
-  Sovellus on nyt käynnissä. Kun menemme selaimella osoitteeseen <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a>, näemme seuraavanlaisen sivun.
-</p>
-
-<img src="../img/helloworld-c36b779d.png"/>
-
-<p>
-  &nbsp;
-</p>
-
-<p>
-  Sovellus on käynnissä! Huomaamme, että komentoriville on ilmestynyt muutamia lisärivejä. Rivit kuvaavat ovat palvelinohjelmiston logirivejä ja ne kertovat palvelimelle tulleista pyynnöistä.
-</p>
-
-<p>
-  Palvelimelle on tullut oikeastaan kaksi pyyntöä, vaikka haimme sivua vain kerran. Ensimmäinen pyyntö <code>"GET / HTTP/1.1"</code> haki tietoa sovelluksen juuripolusta. Tämä on oikeastaan juuri se, mitä sovelluksemme metodi <code>hello()</code> käsittelee. Toinen pyyntö <code>"GET /favicon.ico HTTP/1.1"</code> haki sivulle ikonia -- palvelimelta ei tällaista löytynyt.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ ls
-hello.py  venv
-(venv) ~/demo$ python3 hello.py
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-127.0.0.1 - - [29/Feb/2019 18:07:31] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [29/Feb/2019 18:07:31] "GET /favicon.ico HTTP/1.1" 404 -
-</pre>
-
-<p>
-  Palvelimen sammuttaminen onnistuu komentoriviltä painamalla <code>CTRL+C</code>, eli näppäimiä <code>ctrl</code> ja <code>c</code> samanaikaisesti.
-</p>
-
-
-<h2 class="material-heading">
-    Debug-moodi
-
-</h2>
-
-<p>
-  Lähdekooditiedoston <code>hello.py</code> suorittaminen käynnistää palvelinohjelmiston.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ ls
-hello.py  venv
-(venv) ~/demo$ python3 hello.py
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-</pre>
-
-<p>
-  Kun sovellus on käynnissä, muokkaukset tiedostoon <code>hello.py</code> eivät näy kun tietoa haetaan selaimella uudestaan. Ohjelmistokehityksen nopeuden kannalta olisi kuitenkin hyödyllistä, jos muutoksia voisi tarkastella ilman että palvelinta käynnistellään jatkuvasti uudelleen.
-</p>
-
-<p>
-  Flaskille voi määritellä ns. debug-moodin, mikä muuntaa sovelluksen toimintaa muunmuassa siten, että sovelluksen uudelleenkäynnistäminen muutosten yhteydessä ei ole tarpeellista. Muokataan sovelluksen käynnistävää tiedostoa <code>hello.py</code> siten, että komento <code>app.run()</code> saa parametrinaan tiedon debug-tilasta. Tämä onnistuu seuraavasti.
-</p>
-
-<pre class="sh_python code-highlight"><code>from flask import Flask
-app = Flask(__name__)
-  
-@app.route("/")
-def hello():
-    return "Hello World!"
-
-if __name__ == "__main__":
-    app.run(debug=True)
-</code></pre>
-
-<p>
-  Kun sovelluksen sammuttaa ja käynnistää uudelleen, selaimella sivu näyttää yhä seuraavalta.
-</p>
-
-<img src="../img/helloworld-c36b779d.png"/>
-
-<p>
-  &nbsp;
-</p>
-
-<p>
-  Terminaalissa tosin tulostus on hieman erilainen.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ ls
-hello.py  venv
-(venv) ~/demo$ python3 hello.py
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 231-450-049
-</pre>
-
-<p>
-  Muokataan tiedostoa <code>hello.py</code> siten, että sivun pitäisi näyttää teksti "Hei maailma!".
-</p>
-
-</p>
-
-<pre class="sh_python code-highlight"><code>from flask import Flask
-app = Flask(__name__)
-  
-@app.route("/")
-def hello():
-    return "Hei maailma!"
-
-if __name__ == "__main__":
-    app.run(debug=True)
-</code></pre>
-
-<p>
-  Kun tallennamme tiedoston, huomaamme, että terminaalissa näkyvä tulostus päivittyy.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ ls
-hello.py  venv
-(venv) ~/demo$ python3 hello.py
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 231-450-049
-* Detected change in '/polku/demo/hello.py', reloading
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 231-450-049
-</pre>
-
-<p>
-  Kun sivun lataa selaimessa uudestaan, sivulla näkyy nyt päivitetty teksti. 
-</p>
-
-<img src="../img/heimaailma-7a86e830.png"/>
-
-<p>
-  &nbsp;
-</p>
-
-<p>
-  Debug-tilasta on muitakin hyötyjä. Pääset esimerkiksi tarkastelemaan selaimesta sovelluksen tilaa virhetilanteen yhteydessä. Tämän takia on myös hyvä varmistaa, ettei debug-tila ole koskaan päällä kun sovellus viedään tuotantoon -- debug-tila mahdollistaa myös mm. tietokannan salasanojen ym tarkastelun. Ei hyvä asia tuotannossa.
-</p>
-
-
-<h2 class="material-heading">
-    HTML-näkymien luominen
-
-</h2>
-
-<p>
-  Tutustutaan seuraavaksi HTML-kielellä toteutettavien näkymien luomiseen. Mikäli HTML-kieli ei ole tuttu, käy läpi ainakin osoitteessa <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML" target="_blank" norel>https://developer.mozilla.org/en-US/docs/Learn/HTML</a> oleva opas.
-</p>
-
-<p>
-  Jatketaan aiemmin luodun sovelluksen parissa.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ ls
-hello.py  venv
-</pre>
-
-<p>
-  Luodaan HTML-näkymiä varten kansio nimeltä <code>templates</code> ja mennään kansioon.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ mkdir templates
-(venv) ~/demo$ cd templates
-(venv) ~/demo/templates$ ls
-(venv) ~/demo/templates$
-</pre>
-
-<p>
-  Kansio on toistaiseksi tyhjä. Luodaan kansioon kaksi tiedostoa <code>layout.html</code> ja <code>index.html</code>. Tiedostoon <code>layout.html</code> tulee sivun yleinen rakenne, menuvalikko ym. Tiedostoon <code>index.html</code> taas sivun etusivun sisältö.
-</p>
-
-<p>
-  Asetetaan sivun <code>layout.html</code> sisällöksi seuraava.
-</p>
-
-<pre class="sh_xml code-highlight"><code>  &lt;!DOCTYPE html&gt;
-  &lt;html&gt;
-    &lt;head&gt;
-      &lt;meta charset="utf-8"&gt;
-      &lt;title&gt;Demo&lt;/title&gt;
-    &lt;/head&gt;
-
-    &lt;body&gt;
-      {% block body %}
-      &lt;p&gt;
-	Tähän tuodaan sisältö muualta.
-      &lt;/p&gt;
-      {% endblock %}
-    &lt;/body&gt;
-  &lt;/html&gt;
-</code></pre>
-
-<p>
-  Ja sivun <code>index.html</code> sisällöksi seuraava.
-</p>
-
-<pre class="sh_xml code-highlight"><code>{% extends "layout.html" %}
-
-{% block body %}
-&lt;p&gt;
-  Hei maailma!
-&lt;/p&gt;
-{% endblock %}
-</code></pre>
-
-<div class="hint">
-  <div class="hint__header">
-    <i class="fa fa-info-circle hint__icon"></i>Jinja 2
-  </div>
-
-  <div class="hint__body">
-    
-  <p>
-    Flask käyttää oletuksena <a href="http://jinja.pocoo.org/docs/2.10/">Jinja</a>-nimistä kirjastoa käyttäjälle näytettävien sivujen luomiseen. Jinja on hieman tietokantojen perusteista tutun Thymeleafin kaltainen kirjasto, jota käytetään HTML-sivujen luomiseen. Jinja mahdollistaa myös esimerkiksi toistolauseiden ym. käyttämisen osana HTML-näkymiä -- sivut luodaan palvelimella.
-  </p>
-  
-
-  </div>
-</div>
-
-<p>
-  Nyt sovelluksemme kansion <code>templates</code> sisällön pitäisi olla seuraavanlainen.
-</p>
-
-<pre class="terminal">(venv) ~/demo/templates$ ls
-index.html  layout.html
-(venv) ~/demo/templates$
-</pre>
-
-<p>
-  Palataan tiedostohierarkiassa aiempaan kansioon.
-</p>
-
-<pre class="terminal">(venv) ~/demo/templates$ ls
-index.html  layout.html
-(venv) ~/demo/templates$ cd ..
-(venv) ~/demo$
-</pre>
-
-<p>
-  Muokataan kansiossa olevaa <code>hello.py</code>-tiedostoa. Emme näytäkään käyttäjälle suoraan merkkijonoa <code>Hei maailma!</code>, vaan luomme käyttäjälle näkymän juuri luomiemme tiedostojen pohjalta.
-</p>
-
-<p>
-  Tarvitsemme sovelluksen käyttöön Flaskin <code>render_template</code>-funktion. Funktio lisätään sekä tiedoston alussa olevaan import-lauseeseen, että pyynnön käsittelevään funktioon <code>hello</code>, jossa kyseistä funktiota kutsutaan. Funktiolle <code>render_template</code> annetaan kutsuttaessa parametrina HTML-tiedoston nimi, josta käyttäjälle palautettava sivu luodaan.
-</p>
-
-<pre class="sh_python code-highlight"><code>from flask import Flask, render_template
-app = Flask(__name__)
-  
-@app.route("/")
-def hello():
-    return render_template("index.html")
-
-if __name__ == "__main__":
-    app.run(debug=True)
-</code></pre>
-
-<p>
-  Käynnistetään sovellus.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ ls
-hello.py  templates  venv
-(venv) ~/demo$ python3 hello.py 
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 231-450-049
-</pre>
-
-<p>
-  Kun menemme osoitteeseen <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a>, näemme seuraavanlaisen sivun.
-</p>
-
-<img src="../img/heimaailma-template-1581af2b.png"/>
-
-<p>
-  &nbsp;
-</p>
-
-<p>
-  Nopealla vilkaisulla mikään ei ole muuttunut. Kun tarkastelemme sivuun liittyvää lähdekoodia, huomaamme kuitenkin selkeitä muutoksia. Lähdekoodin tarkastelu onnistuu selaimessa klikkaamalla sivua oikealla hiirennäppäimellä ja valitsemalla <code>View page source</code> (pikanäppäin <code>Ctrl+S</code>).
-</p>
-
-<p>
-  Lähdekoodi paljastaa totuuden. Näyttää siltä, että sivun lähdekoodin runko on tullut <code>templates</code>-kansion tiedostosta <code>layout.html</code> ja sisältö tiedostosta <code>index.html</code>. 
-</p>
-
-<img src="../img/heimaailma-template-source-caf3263e.png"/>
-
-<p>
-  &nbsp;
-</p>
-
-<p>
-  Voimme siis määritellä sivustolle ulkoasun tiedostossa <code>layout.html</code>. Sivukohtainen sisältö määritellään taas sivukohtaisessa tiedostossa -- esimerkiksi juurisivun sisältö löytyy tiedostosta <code>index.html</code>.
-</p>
-
-
-<h2 class="material-heading">
-    Tiedon lisääminen näkymään
-
-</h2>
-
-<p>
-  Funktiolle <code>render_template</code> voidaan antaa parametreina muuttujia, joiden arvoja voidaan lisätä näkymiin. Tarkastellaan tässä muuttujien, listojen sekä olioita sisältävien listojen käsittelyä.
-</p>
-
-<p>
-  Näkymien luomiseen käytettävä Jinja-kirjasto etsii HTML-koodista kaksinkertaisilla aaltosuluilla rajattuja alueita sekä niiden sisällä olevaa koodia. Mikäli aaltosulkujen sisältä löytyy <code>render_template</code>-funktiolle parametrina annetun muuttujan nimi, aaltosulkujen paikalle vaihdetaan muuttujan arvo.
-</p>
-
-<p>
-  Kontrollirakenteita kuten <code>if</code> ja <code>for</code> voi käyttää Jinjassa yksinkertaisten aaltosulkujen avulla siten, että avaavaa aaltosulkua seuraa prosenttimerkki, ja lopettavaa aaltosulkua edeltää prosenttimerkki. Esimerkiksi <code>{% for arvo in lista %}{{ arvo }}{% endfor %}</code> kävisi jokaisen listalla olevan arvon läpi ja lisäisi sen sivulle.
-</p>
-
-<p>
-  Luodaan kansioon <code>templates</code> tiedosto <code>demo.html</code>, jonka avulla demonstroidaan useampaa tapaa muuttujien käyttöön. Asetetaan tiedoston sisällöksi seuraava.
-</p>
-
-<pre class="sh_xml code-highlight"><code>  {% extends "layout.html" %}
-
-  {% block body %}
-  &lt;p&gt;
-    Hei maailma!
-  &lt;/p&gt;
-  &lt;p&gt;
-    &lt;!-- etsitään muuttujaa nimeltä nimi ja asetetaan sen arvo tähän --&gt;
-    {{ nimi }}
-  &lt;/p&gt;
-
-  &lt;ul&gt;
-    &lt;!-- Yritetään käydä lista-nimistä tietorakennetta läpi.
-	 Jokaiselle tietorakenteen alkiolle luodaan li-elementti, 
-	 jonka sisälle asetetaan alkion arvo. --&gt;
-    {% for arvo in lista %}
-    &lt;li&gt;{{ arvo }}&lt;/li&gt;
-    {% endfor %}
-  &lt;/ul&gt;
-
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Nimi&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;!-- Yritetään käydä tietorakenne nimeltä esineet läpi. 
-	 Jokaiselle esineelle luodaan oma rivi taulukkoon. 
-	 Jokaista taulukon solua luodessa oletetaan, että 
-	 esine on olio, ja että alkiolla on muuttuja name. 
-	 Muuttujan arvo asetetaan solun arvoksi. --&gt;
-    {% for esine in esineet %}
-    &lt;tr&gt;
-      &lt;td&gt;{{ esine.name }}&lt;/td&gt;
-    &lt;/tr&gt;
-    {% endfor %}
-  &lt;/table&gt;
-
-  {% endblock %}
-</code></pre>
-
-<p>
-  Edellä oletetaan, että käytössä on kolme muuttujaa: <code>nimi</code>, <code>lista</code>, ja <code>esineet</code>. Tämän lisäksi jokaisella esineellä tulee olla muuttuja <code>name</code>.
-</p>
-
-<p>
-  Muokataan taas tiedostoa <code>hello.py</code>. Luodaan tiedostoon esinettä kuvaava luokka <code>Item</code>, jolla on oliomuuttuja <code>name</code>. Luodaan tiedostoon myös muuttujat <code>nimi</code>, <code>lista</code>, ja <code>esineet</code> ja asetetaan näihin esimerkkiä varten arvot.
-</p>
-
-<p>
-  Luodaan lopulta erillinen funktio, joka kuuntelee polkuun <code>/demo</code> tehtäviä pyyntöjä. Kun pyyntö vastaanotetaan, käyttäjälle palautetaan funktion <code>render_template</code> luoma sivua kuvaava merkkijono. Funktiolle <code>render_template</code> annetaan parametrina aiemmin luotua demosivua kuvaava <code>demo.html</code> sekä muuttujat <code>nimi</code>, <code>lista</code>, ja <code>esineet</code>. Jokaiselle muuttujalle asetetaan myös nimi kutsun funktiokutsun yhteydessä.
-</p>
-
-
-<pre class="sh_python code-highlight"><code>from flask import Flask, render_template
-app = Flask(__name__)
-
-class Item:
-    def __init__(self, name):
-        self.name = name
-
-nimi = "Essi Esimerkki"
-
-lista = [1, 1, 2, 3, 5, 8, 11]
-
-esineet = []
-esineet.append(Item("Eka"))
-esineet.append(Item("Toka"))
-esineet.append(Item("Kolmas"))
-esineet.append(Item("Neljäs"))
-  
-@app.route("/")
-def hello():
-    return render_template("index.html")
-
-@app.route("/demo")
-def content():
-    return render_template("demo.html", nimi=nimi, lista=lista, esineet=esineet)
-
-if __name__ == "__main__":
-    app.run(debug=True)
-</code></pre>
-
-<p>
-  Mikäli sovellus ei ole käynnissä, käynnistetään se.
-</p>
-
-<pre class="sh_python code-highlight"><code>(venv) ~/demo$ python3 hello.py 
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 231-450-049
-</code></pre>
-
-<p>
-  Osoitteessa <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a> on tuttu sivu, joka näyttää viestin "Hei maailma!". Kun menemme osoitteeseen <a href="http://127.0.0.1:5000/demo" target="_blank" norel>http://127.0.0.1:5000/demo</a>, pyyntö ohjautuu <code>hello.py</code>-tiedoston funktiolle nimeltä <code>content</code>. Näemme lopulta seuraavanlaisen sivun.
-</p>
-
-
-<img src="../img/contentdemo-27cd9bc3.png"/>
-
-<p>
-  &nbsp;
-</p>
-
-
-<h1 class="material-heading">
-    Sovelluksen tallentaminen ja siirto pilveen
-
-</h1>
-
-<p>
-  Seuraava osuus saattaa vaikuttaa tutulta edellisestä osasta erityisesti GitHubin osalta, ja osittain ne ovatkin samanlaiset. Osassa 0 luotiin jo repositorio omaa aihetta varten. Nyt meillä onkin jo websovellus, joka tarvitsee myös tallentaa repositorioon. Sen lisäksi haluamme, että sovellus toimii muuallakin kuin omalla koneella. Käytämme tässä palvelintarjoaja Herokua, jolta saamme käyttöömme ilmaista tallennustilaa sovellustamme varten.
-</p>
-
-<p>
-  Älä tallenna tätä työtä samaan repositorioon, jonka teit Osassa 0. Tätä ei tarvitse myöskään palauttaa Labtooliin. Tämän osan tarkoitus on olla harjoittelua, jotta seuraavassa osassa aloitettava oma työ sujuu mallikkaasti ja helposti.
-</p>
-
-<h2 class="material-heading">
-    Luo harjoitustyölle github-repositorio
-
-</h2>
-
-<p>
-  Luo github-tunnuksesi alle uusi repositorio. Kuten edellisessä osassa, anna repositorion nimeksi haluamasi nimi.
-</p>
 
 <h3 class="material-heading">
-    Siirrä sovellus Githubiin
+    Esimerkkiaiheita ja kuvauksen hahmottelua
 
 </h3>
 
-<p>
-  Lisää ensin projektin kansioon <code>.gitignore</code>-tiedosto, johon lisätään versionhallinnasta poisjätettävät tiedostot. Emme halua, että virtuaaliympäristön sisältämät binäärit ovat versionhallinnassa, joten lisätään tiedostoon rivi "venv". Tämä tarkoittaa sitä, että kansiota <code>venv</code> ei lisätä versionhallintaan.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ echo "venv" > .gitignore
-(venv) ~/demo$ cat .gitignore
-venv
-(venv) ~/demo$
-</pre>
+<strong>Kurssitarjonta ja kurssipaikan varaus</strong>
 
 <p>
-  Saat luomasi github-repositorion osoitteen selville Githubista. Tässä oletetaan, että osoite on <code>https://github.com/avihavai/tsoha.git</code>.
+  Kurssikeskus Opinahjo järjestää maksullisia kursseja eri aihepiireistä. Yhteen aihepiiriin liittyen pidetään vuodessa 1-20 kurssia. Sama kurssin voidaan vuoden aikana järjestää useaan kertaan. Kursseille voi osallistua keskimäärin 20 opiskelijaa, mutta isoja yli sadankin hengen kursseja on joskus ohjelmassa. Kustakin kurssista on laadittu esite, josta käyvät selville kurssin aika, kurssipaikka kurssin opettajat ja kurssin sisältö.
 </p>
+
+<p>
+  Kuka tahansa voi tutkia kurssitietoja ja ilmoittautua kurssille. Jotta ilmoittautuminen tulisi voimaan, on varaajan maksettava varausmaksu. Tätä varten varaajalle ilmoitetaan tilinumero ja varaukseen liittyvä viitenumero ja varausmaksun määrä. Jos varaaja erikseen pyytää laskua varausmaksusta, sellainen lähetetään. Varsinainen kurssimaksun laskutus ei kuulu tämän järjestelmän piiriin.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Kurssin syöttö ja muokkaus</li>
+  <li>Kurssitarjonnan katselu ja varauksen teko</li>
+  <li>Varauslaskujen kirjoitus - niille jotka ovat sitä pyytäneet tai eivät ole viikon kuluessa vauksesta maksaneet varausmaksua. (valinnainen)</li>
+  <li>Ilmoittautuneiden luettelo</li>
+  <li>Varauksen peruutus yrityksen toimesta, jos maksua ei ole maksettu</li>
+  <li>Varauksen peruutus asiakkaan toimesta</li>
+  <li>Kurssin peruutus</li>
+</ul>
+
+
+
+
+<strong>Projektin työaikaseuranta</strong>
+
+<p>
+  Tehtävänä on laatia järjestelmä, jolla voidaan seurata projektiin käytettyä työaikaa. Järjestelmää on tarkoitus käyttää ohjelmistotuotantoprojekteissa sekä harjoitustöissä. Projektipäällikkö tai ohjaaja saa järjestelmältä yhteenvetoja käytetystä työajasta viikottain, henkilöittäin ja tehtävälajeittain. Kukin projektiin osallistuva henkilö kirjaa järjestelmän tekemänsä työtunnit, työlajin ja mahdollisen selityksen. Projektin osallistuja saa nähtäväkseen tekemänsä kirjaukset. Hän saa esiin myös itseensä liittyvät yhteenvetoraportit. Projektipäällikkö saa halutessaan käyttöönsä myös tiedot kunkin työntekijään yksityiskohtaisista kirjauksista.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Työaikakirjauksen teko</li>
+  <li>Projektin perustaminen</li>
+  <li>Henkilön liittäminen projektiin</li>
+  <li>Henkilön poistaminen projektista</li>
+  <li>Projektipäällikön raportit</li>
+  <li>Yksityiskohtainen työraportti</li>
+</ul>
+
+
+<strong>Keskustelufoorumi</strong>
+
+<p>
+  Harjoitustyössä tehdään keskustelufoorumi jonkin yhteisön, vaikkapa opiskelijajärjestön sisäiseen käyttöön. Käyttäjä voi lukea järjestelmän tallennettuja kirjoituksia ja lisätä tietokantaan uusia kirjoituksia, jotka voivat olla myös vastineita aiempiin kirjoituksiin. Kirjoituksia voi hakea kirjoittajan nimen tai aiheen tai artikkelin iän perusteella. Lukija voi seurata myös vastinepolkua. Oletusarvoisesti lukijalle näytetään kaikki tietty ikää tuoreemmat artikkelit varustettuna informaatiolla siitä onko lukija itse ja ovatko kaikki yhteisön jäsenet jo lukeneet artikkelin. Lukija identifioi aina itsensä ja artikkeleihin liitetään tieto henkilöistä jotka ovat lukeneet ne. Tämä tieto on kaikkien lukijoiden saatavissa.
+</p>
+
+<p>
+  Järjestelmän ylläpitäjällä on oma liittymä, jonka kautta hän ylläpitää järjestön käyttäjien jäsentietoja ja heidän kuulumistan eri ryhmiin, siivota kirjoituskantaa ja määrittellä aiheita, joiden perusteella kirjoituksia voi ryhmitellä.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>  
+  <li>Kirjautuminen</li>
+  <li>Kirjoituksen lisääminen</li>
+  <li>Kirjoitusten näyttäminen eri kriteerein</li>
+  <li>Ryhmän jäsenen lisääminen, muokkaaminen ja poistaminen</li>
+  <li>Vastineen laatiminen ja muokkaus</li>
+  <li>Kirjoitusten poistaminen</li>
+  <li>Aiheiden määrittely, muokkaus ja poisto</li>
+</ul>
+
+
+<strong>Lääkäriaseman työvuorolista</strong>
+
+
+<p>
+  Tehtävänä on laatia järjestelmä, jolla voidaan laatia lääkäriaseman työvuorolistoja. Lääkäriaseman henkilöstö jaetaan kolmeen luokkaan: lääkärit, sairaanhoitajat ja perushoitajat. Myös aseman aukioloajat jaetaan tarvittavan henkilöstövahvuuden mukaan eri kiireellisyysluokkiin. Jokaiselle kiireellisyysluokalle määritellään minimivahvuus eli kuinka monta kunkin henkilöstöluokan työntekijää täytyy olla töissä. Kuitenkin laskettessa minimivahvuutta ylempi voi korvata alemman eli lääkäri voi olla sairaanhoitaja tai perushoitaja, ja sairaanhoitaja voi olla myös perushoitaja. Jokainen aseman aukiolotunti kuuluu johonkin kiireellisyysluokkaan.
+</p>
+
+<p>
+  Huom. järjestelmä saa hyväksyä vain sellaiset työvuorolistat, jotka täyttävät vaaditut henkilöstövahvuudet. Lisäksi jokaisella työntekijällä on määritelty päivä- tai viikkotuntimäärä, jonka ylitykset järjestelmään täytyy estää.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Kiireellisyysluokkien teko (ja muutos)</li>
+  <li>Henkilöstövahvuuskalenterin teko (ja muutos)</li>
+  <li>Työvuorolistan teko (ja muutos)</li>
+  <li>Henkilökohtaisen työvuorolistan listaus</li>
+  <li>Työvuorolistan listaus</li>
+  <li>Työntekijäkohtainen työraportti (tehdäyt tunnit tietyllä aikavälillä)</li>
+  <li>Työntekijään tekemien tuntien listaus kiireellisyysluokittain</li>
+  <li>Työvuorolistan ylimiehityksen raportointi</li>
+</ul>
+
+
+<h2 class="material-heading">
+    Lisää aiheita
+
+</h2>
+
+<ul>  <li>Elektroninen keittokirja</li>
+  <li>Graduaiheet</li>
+  <li>Henkilögalleria</li>
+  <li>Hiihtokisojen tulospalvelu</li>
+  <li>Huutokauppa</li>
+  <li>Kennelkerho</li>
+  <li>Keskustelufoorumi</li>
+  <li>Kurssikysely</li>
+  <li>Kurssin kotisivu</li>
+  <li>Kurssitarjonta ja kurssipaikan varaus</li>
+  <li>Lääkäriaseman työvuorolista</li>
+  <li>Lääkärin kotikäynnit</li>
+  <li>Matkojen markkinointi</li>
+  <li>Muistilista</li>
+  <li>Ostoskassi</li>
+  <li>Palvelubisnes</li>
+  <li>Parturi-Kampaamo</li>
+  <li>Pizzapalvelu</li>
+  <li>Pokémon-tietokanta</li>
+  <li>Projektin työaikaseuranta</li>
+  <li>Rankkauslista</li>
+  <li>Taloyhtiön palvelut</li>
+  <li>Tavaranvaihto</li>
+  <li>Tukkuliikkeen tilaustenkäsittely</li>
+  <li>Tutkimusaineiston keräys</li>
+  <li>Työaihekanta</li>
+  <li>Usein kysytyt kysymykset</li>
+  <li>Vedonlyönti</li>
+  <li>Vuokra-asuntojen välitys</li>
+  <li>Ystävänvälityspalvelu</li>
+  <li>Äänestys</li>
+</ul>
+
+<h1 class="material-heading">
+    Tietokantakaavio
+
+</h1>
+
+<p>
+  Tee työllesi alustava tietokantakaavio. Kaavion on tarkoitus kuvata suunnitelmaa mihin työtäsi kurssin aikana viet. Näin myös sinun on helppo seurata kurssin edetessä omaa suunnitelmaasi ja tarvittaessa päivittää sitä.
+</p>
+
+<p>
+  Tietokantakaavion tekemistä voi kerrata esimerkiksi <a href="https://tietokantojen-perusteet-19.mooc.fi/osa-3/3-kasiteanalyysista-tietokantakaavioksi" target="_blank">Tietokantojen perusteet</a> -kurssin materiaalista.
+</p>
+
+<h1 class="material-heading">
+    Luo aiheelle github-repositorio ja kuvaus
+
+</h1>
+
+<p>
+  Luo github-tunnuksesi alle uusi repositorio. Aseta repositorion nimeksi aiheesi nimi. Luo tämän jälkeen repositorion juureen tiedosto <code>README.md</code>, johon kirjoitat aihekuvauksen. Kuvauksen ei tarvitse olla tässä vaiheessa pitkä, muutama lause riittää. Lisää myös linkki tietokantakaavioosi.
+</p>
+
+<h2 class="material-heading">
+    Siirrä sovellus Githubiin
+
+</h2>
 
 <p>
   Luodaan projektikansiolle git-versionhallinta komennolla <code>git init</code>. Tämä luo mahdollisuuden projektin versiointiin ja luo kansioon <code>.git</code>-nimisen kansion.
 </p>
 
-
-<pre class="terminal">(venv) ~/demo$ git init
-(venv) ~/demo$ 
-</pre>
-
 <p>
-  Lisätään githubissa oleva repositorio kansion paikallisen versionhallinnan etäpisteeksi. Projektin osoite löytyy githubista (se on tyypillisesti muotoa <code>https://github.com/käyttäjätunnus/projektin-nimi.git</code>.
+  Lisätään githubissa oleva repositorio kansion paikallisen versionhallinnan etäpisteeksi. Projektin osoite löytyy githubista (se on tyypillisesti muotoa <code>https://github.com/käyttäjätunnus/projektin-nimi.git</code>. Esimerkeissä oletetaan sovelluksen olevan kansiossa <code>demo</code>, josta ajamme myös komennot. Vastaavaa esimerkkiä käytetään jatkossakin kurssin aikana.
 </p>
 
-<pre class="terminal">(venv) ~/demo$ git remote add origin <em>github-projektin osoite</em>
-(venv) ~/demo$ 
+<pre class="terminal">~/demo$ git remote add origin <em>github-projektin osoite</em>
+~/demo$ 
 </pre>
 
 <p>
@@ -833,170 +354,31 @@ venv
 </p>
 
 
-<pre class="terminal">(venv) ~/demo$ git add .
-(venv) ~/demo$ git push -u origin master
+<pre class="terminal">~/demo$ git add .
+~/demo$ git push -u origin master
 ..-
-(venv) ~/demo$ 
+~/demo$ 
 </pre>
 
 <p>
   Nyt projektin lähdekoodit löytyvät githubista.
 </p>
 
+<h1 class="material-heading">
+    Palauta työ labtooliin
 
-<h2 class="material-heading">
-    Siirrä sovellus Herokuun
-
-</h2>
-
-<p>
-  Sovelluksen Herokuun siirtämistä varten sovellukselle tulee lisätä web-palvelin, jota Heroku osaa käyttää. Valitsemme käyttöön <a href="http://gunicorn.org/" target="_blank" norel>Gunicorn</a>-palvelimen.
-</p>
-
-
-<pre class="terminal">~/demo$ source venv/bin/activate
-(venv) ~/demo$ pip install gunicorn
-Collecting gunicorn
-Downloading gunicorn-19.7.1-py2.py3-none-any.whl (111kB)
-100% |████████████████████████████████| 112kB 2.0MB/s 
-Installing collected packages: gunicorn
-Successfully installed gunicorn-19.7.1
-(venv) ~/demo$ 
-</pre>
+</h1>
 
 <p>
-  Jäädytetään seuraavaksi projektin tämän hetkiset riippuvuudet, jotta Heroku tietää mitä riippuvuuksia tulee asentaa. Tämä onnistuu komennolla <code>pip freeze</code>. Komennon tulostus ohjataan tiedostoon <code>requirements.txt</code>. Alla tehdään sekä jäädytys että tulostetaan riippuvuudet sisältävän tiedoston <code>requirements.txt</code> sisältö.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ pip freeze &gt; requirements.txt
-(venv) ~/demo$ cat requirements.txt
-click==6.7
-Flask==0.12.2
-gunicorn==19.7.1
-itsdangerous==0.24
-Jinja2==2.10
-MarkupSafe==1.0
-pkg-resources==0.0.0
-Werkzeug==0.14.1
-(venv) ~/demo$ 
-</pre>
-
-<p>
-  Tiedostossa oleva rivi <code>pkg-resources==0.0.0</code> <a href="https://stackoverflow.com/questions/40670602/could-not-find-a-version-that-satisfies-the-requirement-pkg-resources-0-0-0" target="_blank" norel>aiheuttaa ongelmia Herokussa</a>, joten poistetaan se toistaiseksi. Tiedoston <code>requirements.txt</code> sisältö on tämän jälkeen seuraava.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ cat requirements.txt
-click==6.7
-Flask==0.12.2
-gunicorn==19.7.1
-itsdangerous==0.24
-Jinja2==2.10
-MarkupSafe==1.0
-Werkzeug==0.14.1
-(venv) ~/demo$ 
-</pre>
-
-<p>
-  Voit nyt tarvittaessa asentaa projektisi riippuvuudet <code>requirements.txt</code>-tiedoston avulla komennolla <code>pip install -r requirements.txt</code>. Jos jossain vaiheessa esimerkiksi kloonaat repositoriosi koodin toiselle koneelle ja aloitat siten työskentelyn "puhtaasta" koodista, voit asentaa riippuvuudet luomaasi uuteen virtuaaliseen ympäristöön.
+  Kun olet luonut aihekuvauksen, tehnyt repositorion ja lisännyt repositorioon aihekuvauksen, lisää lopulta aiheesi <a href="https://study.cs.helsinki.fi/labtool/" target="_blank" norel>labtooliin</a>. Olet nyt sitoutunut suorittamaan harjoitustyön tässä periodissa.
 </p>
 
 <p>
-  Lisätään seuraavaksi projektille <code>Procfile</code>-niminen tiedosto. Tiedosto <code>Procfile</code> on Herokun odottama tiedosto, joka sisältää Herokun tarvitsemat ohjeet sovelluksen käynnistämiseen. Lisätään ohjeiksi "web: gunicorn --preload --workers 1 hello:app", eli käynnistä <code>hello</code>.py-tiedostosta <code>app</code>-sovellus <code>web</code>-prosessina <code>gunicorn</code>-palvelinta käyttäen.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ echo "web: gunicorn --preload --workers 1 hello:app" > Procfile
-(venv) ~/demo$ cat Procfile
-web: gunicorn --preload --workers 1 hello:app
-(venv) ~/demo$
-</pre>
-
-<p>
-  Luodaan tämän jälkeen sovellukselle paikka Herokuun. Tässä oletuksena on, että käytössä on Herokun käyttäjätunnus sekä Herokun työvälineet komentoriville (<a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" norel>Heroku CLI</a>). Paikan luominen tapahtuu komennolla <code>heroku create</code>, jota seuraa toivottu sovelluksen nimi. Sovelluksen nimen tulee olla uniikki, eli alla oleva <code>tsoha-python-demo</code> tulee vaihtaa omaa sovellusta kuvaavaksi. Mikäli nimen jättää pois, Heroku luo satunnaisen nimen sovellukselle, mikä riittää tällä kurssilla.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ heroku create tsoha-python-demo
-Creating ⬢ tsoha-python-demo... done
-https://tsoha-python-demo.herokuapp.com/ | https://git.heroku.com/tsoha-python-demo.git
-(venv) ~/demo$
-</pre>
-
-<p>
-  Nyt sovellukselle on paikka Herokussa. Lisätään vielä paikalliseen versionhallintaan tieto Herokusta.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ git remote add heroku https://git.heroku.com/tsoha-python-demo.git
-(venv) ~/demo$ 
-</pre>
-
-<p>
-  Ja lähetetään projekti Herokuun.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ git add .
-(venv) ~/demo$ git commit -m "Initial commit"
-(venv) ~/demo$ git push heroku master
-Counting objects: 13, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (11/11), done.
-Writing objects: 100% (13/13), 1.79 KiB | 0 bytes/s, done.
-Total 13 (delta 2), reused 0 (delta 0)
-remote: Compressing source files... done.
-remote: Building source:
-remote: 
-remote: -----> Python app detected
-remote: -----> Installing python-3.6.4
-remote: -----> Installing pip
-remote: -----> Installing requirements with pip
-remote:        Collecting click==6.7 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 1))
-remote:          Downloading click-6.7-py2.py3-none-any.whl (71kB)
-remote:        Collecting Flask==0.12.2 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 2))
-remote:          Downloading Flask-0.12.2-py2.py3-none-any.whl (83kB)
-remote:        Collecting gunicorn==19.7.1 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 3))
-remote:          Downloading gunicorn-19.7.1-py2.py3-none-any.whl (111kB)
-remote:        Collecting itsdangerous==0.24 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 4))
-remote:          Downloading itsdangerous-0.24.tar.gz (46kB)
-remote:        Collecting Jinja2==2.10 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 5))
-remote:          Downloading Jinja2-2.10-py2.py3-none-any.whl (126kB)
-remote:        Collecting MarkupSafe==1.0 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 6))
-remote:          Downloading MarkupSafe-1.0.tar.gz
-remote:        Collecting Werkzeug==0.14.1 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 7))
-remote:          Downloading Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
-remote:        Installing collected packages: click, itsdangerous, Werkzeug, MarkupSafe, Jinja2, Flask, gunicorn
-remote:          Running setup.py install for itsdangerous: started
-remote:            Running setup.py install for itsdangerous: finished with status 'done'
-remote:          Running setup.py install for MarkupSafe: started
-remote:            Running setup.py install for MarkupSafe: finished with status 'done'
-remote:        Successfully installed Flask-0.12.2 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 click-6.7 gunicorn-19.7.1 itsdangerous-0.24
-remote: 
-remote: -----> Discovering process types
-remote:        Procfile declares types -> web
-remote: 
-remote: -----> Compressing...
-remote:        Done: 42.7M
-remote: -----> Launching...
-remote:        Released v3
-remote:        https://tsoha-python-demo.herokuapp.com/ deployed to Heroku
-remote: 
-remote: Verifying deploy... done.
-To https://git.heroku.com/tsoha-python-demo.git
-* [new branch]      master -> master
-(venv) ~/demo$
-</pre>
-
-<p>
-  Nyt sovellus on tarkasteltavana osoitteessa <a href="https://tsoha-python-demo.herokuapp.com/" target="_blank" norel>https://tsoha-python-demo.herokuapp.com/</a>. Osoite on toki riippuvainen sovellukselle valitusta nimestä.
+  Voit mennä Labtooliin yllä olevasta linkistä, etsiä oikean kurssin ja rekisteröityä sille. Kurssin suora rekisteröitymisosoite Labtooliin ilmoitetaan normaalisti kurssin courses-sivulla, joten rekisteröityminen kyseisen sivun kautta voi säästää hieman vaivaa.
 </p>
 
 <p>
-  Sovellus on myös hyvä lähettää Githubiin, sillä siihen on tullut päivityksiä.
-</p>
-
-<pre class="terminal">(venv) ~/demo$ git push origin master
-(venv) ~/demo$ 
-</pre>
-
-<p>
-  Nyt kun työkalut on hallussa, on aika siirtyä oman harjoitustyön pariin!
+  Jatkossa viikoittaiset palautukset tehdään palauttamalla ajan tasalla oleva koodi Githubiin ja päivittämällä sovellus Herokussa. Labtoolista voit lukea palautuksista saamasi pisteet ja ohjaajien kommentit.
 </p>
 
         </div>
