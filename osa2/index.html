@@ -918,6 +918,24 @@ sqlite&gt; .exit
  Yritetään seuraavaksi luoda toiminnallisuus tiedon tietokantaan lisäämiseen.
 </p>
 
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Huom!
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    SQlite poikkeaa jossain määrin muista relaatiotietokannoista mm. siten että oletuksena viiteavaimia ei tarkisteta. Harjoitustyössä kuitenkin käytetään SQLiten lisäksi myös Postgres-tietokannanhallintajärjestelmää, joka tarkistaa aina viiteavaimet.
+  </p>
+
+  <p>
+    Yllä mainittu ero saattaa aiheuttaa jonkin verran ongelmia siirryttäessä käyttämään Postgres-tietokantaa. Myös SQLitessä on <a href="https://docs.sqlalchemy.org/en/13/dialects/sqlite.html#foreign-key-support" target="_blank" rel="noopener">mahdollista laittaa tämä tarkistus päälle</a>, mikä saattaa helpottaa joidenkin ongelmien selvittelyä.
+  </p>
+
+
+  </div>
+</div>
 
 <h2 class="material-heading">
     Tiedon lisääminen tietokantaan
